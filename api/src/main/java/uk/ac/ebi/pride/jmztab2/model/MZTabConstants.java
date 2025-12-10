@@ -72,8 +72,8 @@ public final class MZTabConstants {
     public static final String REGEX_DEFAULT_RELIABILITY = "[1234]{1}";
     /** More complex for isotopes: \[\d*M([\w\d]+)*([+-][\w\d]+)*\]\d*[+-] **/
     /** Constant <code>REGEX_ADDUCT="^\[\d*M([+-][\w\d]+)*\]\d*[+-]$"</code> */
-    public static final String REGEX_ADDUCT = "^\\[\\d*M([+-][\\w\\d]+)*\\]\\d*[+-]$";
-    
+    public static final String REGEX_ADDUCT = "^\\[(\\d*)M(?![a-z])((?:[+-]?\\d+(?![A-Z]))?)([+-][\\w\\d].*)?.*\\](\\d*)([+-])?$";
+
     /** Constant <code>REGEX_SPECTRA_REF_THERMO_NATIVE = "controllerType=[\\d]+ controllerNumber=[1-9]\\d* scan=[1-9]\\d*"</code> */
     public static final String REGEX_SPECTRA_REF_THERMO_NATIVE = "controllerType=[\\d]+ controllerNumber=[1-9]\\d* scan=[1-9]\\d*";
     /** Constant <code>REGEX_SPECTRA_REF_WATERS_NATIVE = "function=[1-9]\\d* process=[\\d]+ scan=[\\d]+"</code> */

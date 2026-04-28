@@ -34,8 +34,8 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import jakarta.xml.bind.JAXBException;
 import java.net.URI;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for MzTabWriter.
@@ -44,7 +44,7 @@ import org.junit.Test;
  */
 public class MzTabValidatorTest {
 
-    @Rule
+    @RegisterExtension
     public LogMethodName methodNameLogger = new LogMethodName();
 
     public static MzTab createTestFile() {

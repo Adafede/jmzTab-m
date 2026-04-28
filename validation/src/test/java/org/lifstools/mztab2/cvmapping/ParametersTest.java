@@ -16,8 +16,8 @@
 package org.lifstools.mztab2.cvmapping;
 
 import org.lifstools.mztab2.model.Parameter;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -41,7 +41,7 @@ public class ParametersTest {
             cvAccession("879123").
             name("jklajsd").
             value("klhasd");
-        assertTrue("Parameters should be equal", CvMappingUtils.isEqualTo(parameter1, parameter2));
+        assertTrue(CvMappingUtils.isEqualTo(parameter1, parameter2), "Parameters should be equal");
     }
     
     @Test
@@ -57,15 +57,15 @@ public class ParametersTest {
             name("jklajsd").
             value("klhasd");
         //differences in cvAccession should violate equality
-        assertFalse("Parameters should NOT be equal", CvMappingUtils.isEqualTo(parameter1, parameter2));
+        assertFalse(CvMappingUtils.isEqualTo(parameter1, parameter2), "Parameters should NOT be equal");
         
         //differences in cvLabel should violate equality
         parameter2.cvLabel("CLI").cvAccession("214873");
-        assertFalse("Parameters should NOT be equal", CvMappingUtils.isEqualTo(parameter1, parameter2));
+        assertFalse(CvMappingUtils.isEqualTo(parameter1, parameter2), "Parameters should NOT be equal");
         
         //differences in name should violate equality
         parameter2.cvLabel("MS").name("lklakshd");
-        assertFalse("Parameters should NOT be equal", CvMappingUtils.isEqualTo(parameter1, parameter2));
+        assertFalse(CvMappingUtils.isEqualTo(parameter1, parameter2), "Parameters should NOT be equal");
     }
     
     @Test
@@ -82,7 +82,7 @@ public class ParametersTest {
             value("klhasd");
         //ignore differences in value
         parameter2.value("pouiopzuqwe");
-        assertTrue("Parameters should be equal", CvMappingUtils.isEqualTo(parameter1, parameter2));
+        assertTrue(CvMappingUtils.isEqualTo(parameter1, parameter2), "Parameters should be equal");
     }
         
     

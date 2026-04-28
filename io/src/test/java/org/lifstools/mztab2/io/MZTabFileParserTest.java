@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2018 Leibniz-Institut für Analytische Wissenschaften – ISAS – e.V..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,27 +29,25 @@ import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_NEGATIVE
 import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL;
 import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL;
 import org.lifstools.mztab2.test.utils.ExtractClassPathFiles;
-import org.lifstools.mztab2.test.utils.LogMethodName;
+import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_EXAMPLE;
+import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_NO_SML_EXAMPLE;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import jakarta.xml.bind.JAXBException;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_EXAMPLE;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_NO_SML_EXAMPLE;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorOverflowException;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
@@ -59,14 +57,10 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  *
  * @author nilshoffmann
  */
-@RunWith(Parameterized.class)
 public class MZTabFileParserTest {
 
-    @Rule
-    public LogMethodName methodNameLogger = new LogMethodName();
-
-    @ClassRule
-    public static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
+    @RegisterExtension
+    static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
             MTBLS263,
             MOUSELIVER_NEGATIVE,
             MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT,
@@ -82,46 +76,31 @@ public class MZTabFileParserTest {
             XCMS_NO_SML_EXAMPLE
     );
 
-    @Parameterized.Parameters(
-            name = "{index}: semantic validation of '{0}' on level '{1}' expecting '{2}' structural/logical errors and MzTab to be null: '{3}'")
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-            {MTBLS263, MZTabErrorType.Level.Warn, 0, false},
-            {MOUSELIVER_NEGATIVE, MZTabErrorType.Level.Warn, 0, false},
-            {MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT,
-                MZTabErrorType.Level.Error, 1, false},
-            {STANDARDMIX_NEGATIVE_EXPORTPOSITIONLEVEL,
-                MZTabErrorType.Level.Warn, 0, false},
-            {STANDARDMIX_NEGATIVE_EXPORTSPECIESLEVEL,
-                MZTabErrorType.Level.Warn, 0, false},
-            {STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL,
-                MZTabErrorType.Level.Warn, 0, false},
-            {STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL,
-                MZTabErrorType.Level.Warn, 0, false},
-            {LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Warn,
-                0, false},
-            {LIPIDOMICS_EXAMPLE_WRONG_MSSCAN_REF, MZTabErrorType.Level.Error,
-                1, true},
-            {GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Warn, 0, false},
-            {MINIMAL_EXAMPLE, MZTabErrorType.Level.Error, 0, false},
-            {MINIMAL_EXAMPLE, MZTabErrorType.Level.Warn, 0, false},
-            {MINIMAL_EXAMPLE, MZTabErrorType.Level.Info, 1, false},
-            {XCMS_EXAMPLE, MZTabErrorType.Level.Info, 1, false},
-            {XCMS_NO_SML_EXAMPLE, MZTabErrorType.Level.Warn, 0, false}
-        });
+    static Stream<Arguments> data() {
+        return Stream.of(
+            Arguments.of(MTBLS263, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(MOUSELIVER_NEGATIVE, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT, MZTabErrorType.Level.Error, 1, false),
+            Arguments.of(STANDARDMIX_NEGATIVE_EXPORTPOSITIONLEVEL, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(STANDARDMIX_NEGATIVE_EXPORTSPECIESLEVEL, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(LIPIDOMICS_EXAMPLE_WRONG_MSSCAN_REF, MZTabErrorType.Level.Error, 1, true),
+            Arguments.of(GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(MINIMAL_EXAMPLE, MZTabErrorType.Level.Error, 0, false),
+            Arguments.of(MINIMAL_EXAMPLE, MZTabErrorType.Level.Warn, 0, false),
+            Arguments.of(MINIMAL_EXAMPLE, MZTabErrorType.Level.Info, 1, false),
+            Arguments.of(XCMS_EXAMPLE, MZTabErrorType.Level.Info, 1, false),
+            Arguments.of(XCMS_NO_SML_EXAMPLE, MZTabErrorType.Level.Warn, 0, false)
+        );
     }
 
-    @Parameterized.Parameter(0)
-    public ClassPathFile resource;
-    @Parameterized.Parameter(1)
-    public MZTabErrorType.Level validationLevel;
-    @Parameterized.Parameter(2)
-    public int expectedStructuralLogicalErrors;
-    @Parameterized.Parameter(3)
-    public boolean mzTabMustBeNull;
-
-    @Test
-    public void testExamples() throws MZTabException, JAXBException {
+    @ParameterizedTest(name = "{index}: semantic validation of ''{0}'' on level ''{1}'' expecting ''{2}'' structural/logical errors and MzTab to be null: ''{3}''")
+    @MethodSource("data")
+    public void testExamples(ClassPathFile resource, MZTabErrorType.Level validationLevel,
+            int expectedStructuralLogicalErrors, boolean mzTabMustBeNull)
+            throws MZTabException, JAXBException {
         testExample(EXTRACT_FILES.getBaseDir(), resource,
                 validationLevel, expectedStructuralLogicalErrors, mzTabMustBeNull);
     }
@@ -135,11 +114,11 @@ public class MZTabFileParserTest {
             MzTab mzTab = TestResources.parseResource(tf, resource.fileName(), level,
                     expectedErrors, mzTabMustBeNull);
             if (mzTabMustBeNull) {
-                Assert.assertNull(mzTab);
+                assertNull(mzTab);
                 System.out.println("Example was null");
             } else {
-                Assert.assertNotNull(mzTab);
-                Assert.assertNotNull(mzTab.getMetadata());
+                assertNotNull(mzTab);
+                assertNotNull(mzTab.getMetadata());
                 MzTabNonValidatingWriter writer = new MzTabNonValidatingWriter();
                 System.out.println("JACKSON serialized: " + resource);
                 try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
@@ -155,11 +134,11 @@ public class MZTabFileParserTest {
         } catch (URISyntaxException ex) {
             Logger.getLogger(MZTabFileParserTest.class.getName()).
                     log(Level.SEVERE, null, ex);
-            Assert.fail(ex.getMessage());
+            fail(ex.getMessage());
         } catch (IOException | IndexOutOfBoundsException ex) {
             Logger.getLogger(MZTabFileParserTest.class.getName()).
                     log(Level.SEVERE, null, ex);
-            Assert.fail(ex.getMessage());
+            fail(ex.getMessage());
         } catch (MZTabException | MZTabErrorOverflowException e) {
             Logger.getLogger(MZTabFileParserTest.class.getName()).
                     log(Level.SEVERE, null, e);

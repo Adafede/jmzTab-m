@@ -18,9 +18,9 @@ package uk.ac.ebi.pride.jmztab2.model;
 import org.lifstools.mztab2.model.Assay;
 import org.lifstools.mztab2.model.OptColumnMapping;
 import org.lifstools.mztab2.model.Parameter;
-import org.junit.Assert;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilder.GlobalOptColumnMappingBuilder;
 import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilder.IndexedElementOptColumnMappingBuilder;
 
@@ -51,7 +51,7 @@ public class OptColumnMappingBuilderTest {
         
         try {
             FIXTURE_GLOBAL.withParameter(new Parameter());
-            Assert.fail("Should throw IllegalStateException");
+            Assertions.fail("Should throw IllegalStateException");
         } catch (IllegalStateException ise) {
             
         }
@@ -70,7 +70,7 @@ public class OptColumnMappingBuilderTest {
         
         try {
             FIXTURE_INDEXED_ELEMENT.withParameter(new Parameter());
-            Assert.fail("Should throw IllegalStateException");
+            Assertions.fail("Should throw IllegalStateException");
         } catch (IllegalStateException ise) {
             
         }
@@ -104,30 +104,33 @@ public class OptColumnMappingBuilderTest {
     /**
      * Test of withParameter method without cv label, of class OptColumnMappingBuilder with non-cv parameters.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testWithCvParameterWithoutCvLabel() {
-        OptColumnMapping ocm = OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
-                name("Assay 1")).withParameter(new Parameter().cvAccession("MS").cvLabel("").value("made up for testing")).
-            build("1");
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+            OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
+                    name("Assay 1")).withParameter(new Parameter().cvAccession("MS").cvLabel("").value("made up for testing")).
+                build("1"));
     }
-    
+
     /**
      * Test of withParameter method without cv accession, of class OptColumnMappingBuilder with non-cv parameters.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testWithCvParameterWithoutCvAccession() {
-        OptColumnMapping ocm = OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
-                name("Assay 1")).withParameter(new Parameter().cvAccession("").value("made up for testing")).
-            build("1");
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+            OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
+                    name("Assay 1")).withParameter(new Parameter().cvAccession("").value("made up for testing")).
+                build("1"));
     }
-    
+
     /**
      * Test of withParameter method without parameter name, of class OptColumnMappingBuilder with non-cv parameters.
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testWithCvParameterWithoutParamName() {
-        OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
-                name("Assay 1")).withParameter(new Parameter().cvAccession("MS:19872").cvLabel("MS").name("").value("made up for testing")).
-            build("1");
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+            OptColumnMappingBuilder.forIndexedElement(new Assay().id(1).
+                    name("Assay 1")).withParameter(new Parameter().cvAccession("MS:19872").cvLabel("MS").name("").value("made up for testing")).
+                build("1"));
     }
 }

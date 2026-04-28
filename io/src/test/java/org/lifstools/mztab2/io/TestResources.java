@@ -20,7 +20,7 @@ import org.lifstools.mztab2.model.MzTab;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorOverflowException;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
@@ -47,16 +47,16 @@ public class TestResources {
     public static MzTab parseResource(File tf, String resource,
         MZTabErrorType.Level level, Integer expectedErrors, boolean mzTabMustBeNull) throws URISyntaxException, IOException, MZTabException, MZTabErrorOverflowException {
         File testFile = new File(tf, resource);
-        Assert.assertTrue(testFile.exists() && testFile.isFile());
+        Assertions.assertTrue(testFile.exists() && testFile.isFile());
         MzTabFileParser parser = new MzTabFileParser(testFile);
         parser.parse(System.err, level, 500);
         if (parser.getErrorList().
             size() != expectedErrors) {
-            Assert.fail(parser.getErrorList().
+            Assertions.fail(parser.getErrorList().
                 toString());
         }
         if (parser.getMZTabFile() == null && !mzTabMustBeNull) {
-            Assert.fail(parser.getErrorList().
+            Assertions.fail(parser.getErrorList().
                 toString());
         }
         return parser.getMZTabFile();

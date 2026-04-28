@@ -15,8 +15,8 @@
  */
 package uk.ac.ebi.pride.jmztab2.utils.errors;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -30,33 +30,33 @@ public class MZTabErrorListTest {
     @Test
     public void testAdd() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 5);
-        Assert.assertEquals(0, list.size());
+        Assertions.assertEquals(0, list.size());
         MZTabError err = new MZTabError(FormatErrorType.MTDLine, 0,
             "MTD\tTEST LINE");
         list.add(err);
-        Assert.assertEquals(1, list.size());
+        Assertions.assertEquals(1, list.size());
         MZTabError err2 = new MZTabError(LogicalErrorType.NotNULL, 0,
             "testcolumn");
         list.add(err2);
-        Assert.assertEquals(2, list.size());
+        Assertions.assertEquals(2, list.size());
         MZTabError err3 = new MZTabError(LogicalErrorType.NoSmallMoleculeFeatureSection, 0);
         list.add(err3);
         //should remain the same size
-        Assert.assertEquals(2, list.size());
+        Assertions.assertEquals(2, list.size());
         
         list = new MZTabErrorList(MZTabErrorType.Level.Info, 5);
         err = new MZTabError(FormatErrorType.MTDLine, 0,
             "MTD\tTEST LINE");
         list.add(err);
-        Assert.assertEquals(1, list.size());
+        Assertions.assertEquals(1, list.size());
         err2 = new MZTabError(LogicalErrorType.NotNULL, 0,
             "testcolumn");
         list.add(err2);
-        Assert.assertEquals(2, list.size());
+        Assertions.assertEquals(2, list.size());
         err3 = new MZTabError(LogicalErrorType.NoSmallMoleculeFeatureSection, 0);
         list.add(err3);
         //should remain the same size
-        Assert.assertEquals(3, list.size());
+        Assertions.assertEquals(3, list.size());
     }
 
     /**
@@ -65,7 +65,7 @@ public class MZTabErrorListTest {
     @Test
     public void testGetMaxErrorCount() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(1, list.getMaxErrorCount());
+        Assertions.assertEquals(1, list.getMaxErrorCount());
     }
 
     /**
@@ -74,9 +74,9 @@ public class MZTabErrorListTest {
     @Test
     public void testSetMaxErrorCount() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(1, list.getMaxErrorCount());
+        Assertions.assertEquals(1, list.getMaxErrorCount());
         list.setMaxErrorCount(2);
-        Assert.assertEquals(2, list.getMaxErrorCount());
+        Assertions.assertEquals(2, list.getMaxErrorCount());
     }
 
     /**
@@ -85,7 +85,7 @@ public class MZTabErrorListTest {
     @Test
     public void testGetLevel() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(MZTabErrorType.Level.Warn, list.getLevel());
+        Assertions.assertEquals(MZTabErrorType.Level.Warn, list.getLevel());
     }
 
     /**
@@ -94,9 +94,9 @@ public class MZTabErrorListTest {
 //    @Test
 //    public void testSetLevel() {
 //        MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-//        Assert.assertEquals(MZTabErrorType.Level.Warn, list.getLevel());
+//        Assertions.assertEquals(MZTabErrorType.Level.Warn, list.getLevel());
 //        list.setLevel(MZTabErrorType.Level.Info);
-//        Assert.assertEquals(MZTabErrorType.Level.Info, list.getLevel());
+//        Assertions.assertEquals(MZTabErrorType.Level.Info, list.getLevel());
 //    }
 
     /**
@@ -105,13 +105,13 @@ public class MZTabErrorListTest {
     @Test
     public void testClear() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(0, list.size());
+        Assertions.assertEquals(0, list.size());
         MZTabError err = new MZTabError(FormatErrorType.MTDLine, 0,
             "MTD\tTEST LINE");
         list.add(err);
-        Assert.assertEquals(1, list.size());
+        Assertions.assertEquals(1, list.size());
         list.clear();
-        Assert.assertEquals(0, list.size());
+        Assertions.assertEquals(0, list.size());
     }
 
     /**
@@ -120,11 +120,11 @@ public class MZTabErrorListTest {
     @Test
     public void testSize() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(0, list.size());
+        Assertions.assertEquals(0, list.size());
         MZTabError err = new MZTabError(FormatErrorType.MTDLine, 0,
             "MTD\tTEST LINE");
         list.add(err);
-        Assert.assertEquals(1, list.size());
+        Assertions.assertEquals(1, list.size());
     }
 
     /**
@@ -133,11 +133,11 @@ public class MZTabErrorListTest {
     @Test
     public void testGetError() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertEquals(0, list.size());
+        Assertions.assertEquals(0, list.size());
         MZTabError err = new MZTabError(FormatErrorType.MTDLine, 0,
             "MTD\tTEST LINE");
         list.add(err);
-        Assert.assertEquals(err, list.getError(0));
+        Assertions.assertEquals(err, list.getError(0));
     }
 
     /**
@@ -146,7 +146,7 @@ public class MZTabErrorListTest {
     @Test
     public void testIsEmpty() {
         MZTabErrorList list = new MZTabErrorList(MZTabErrorType.Level.Warn, 1);
-        Assert.assertTrue(list.isEmpty());
+        Assertions.assertTrue(list.isEmpty());
     }
 
 }

@@ -25,8 +25,8 @@ import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.SmallMoleculeEvidence;
 import org.lifstools.mztab2.model.SpectraRef;
 import java.util.Arrays;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.IOptColumnMappingBuilder;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilder;
@@ -98,10 +98,10 @@ public class SmallMoleculeEvidenceSerializerTest extends AbstractSerializerTest 
         ObjectWriter writer = smallMoleculeEvidenceWriter(mzTabFile);
         String serializedString = serializeSequence(writer, mzTabFile.
             getSmallMoleculeEvidence());
-        Assert.assertFalse(serializedString.isEmpty());
+        Assertions.assertFalse(serializedString.isEmpty());
         System.out.println(serializedString);
         //check for exactly one header line + 2 entry lines
-        Assert.assertEquals(3,
+        Assertions.assertEquals(3,
             serializedString.split(MZTabConstants.NEW_LINE).length);
         String expected = "SEH	SME_ID	evidence_input_id	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	derivatized_form	adduct_ion	exp_mass_to_charge	charge	theoretical_mass_to_charge	spectra_ref	identification_method	ms_level	id_confidence_measure[1]	rank	opt_global_qualifiers_evidence_grouping_ID_REFS" + MZTabConstants.NEW_LINE
             + "SME	1	1	LM:LMSP0501AB02	C42H83NO3	CCCCCCCCCCCCCCCCCCCCCCCC(=O)N[C@@H](CO)[C@H](O)/C=C/CCCCCCCCCCCCC	InChI=1S/C42H83NO3/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-23-24-26-28-30-32-34-36-38-42(46)43-40(39-44)41(45)37-35-33-31-29-27-25-16-14-12-10-8-6-4-2/h35,37,40-41,44-45H,3-34,36,38-39H2,1-2H3,(H,43,46)/b37-35+/t40-,41+/m0/s1	LacCer d18:1/12:0	http://www.lipidmaps.org/data/LMSDRecord.php?LM_ID=LMSP02010012	null	[M+H]1+	650.6432	1	650.6446	ms_run[1]:index=731	[, , qualifier ions exact mass, ]	[MS, MS:100511, ms level, 1]	0.958	1	2" + MZTabConstants.NEW_LINE

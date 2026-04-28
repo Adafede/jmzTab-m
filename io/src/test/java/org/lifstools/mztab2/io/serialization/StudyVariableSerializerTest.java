@@ -25,7 +25,7 @@ import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
 import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.StudyVariable;
 import java.util.stream.Collectors;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.BAR;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;

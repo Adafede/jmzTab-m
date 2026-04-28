@@ -15,28 +15,16 @@
  */
 package org.lifstools.mztab2.io;
 
-import static org.lifstools.mztab2.io.MZTabFileParserTest.EXTRACT_FILES;
 import org.lifstools.mztab2.model.MzTab;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.GCXGC_MS_EXAMPLE;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.LIPIDOMICS_EXAMPLE;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.LIPIDOMICS_EXAMPLE_WRONG_MSSCAN_REF;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.MINIMAL_EXAMPLE;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.MOUSELIVER_NEGATIVE;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT;
 import static org.lifstools.mztab2.test.utils.ClassPathFile.MTBLS263;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_NEGATIVE_EXPORTPOSITIONLEVEL;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_NEGATIVE_EXPORTSPECIESLEVEL;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL;
 import org.lifstools.mztab2.test.utils.ExtractClassPathFiles;
 import org.lifstools.mztab2.test.utils.LogMethodName;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import jakarta.xml.bind.JAXBException;
-import static org.junit.Assert.assertEquals;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
 
@@ -46,11 +34,11 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class MZTabFileParserExtTest {
 
-    @Rule
-    public LogMethodName methodNameLogger = new LogMethodName();
+    @RegisterExtension
+    LogMethodName methodNameLogger = new LogMethodName();
 
-    @ClassRule
-    public static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
+    @RegisterExtension
+    static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
             MTBLS263
     );
 

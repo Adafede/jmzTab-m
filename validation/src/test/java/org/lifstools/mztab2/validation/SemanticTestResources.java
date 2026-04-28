@@ -20,8 +20,9 @@ import org.lifstools.mztab2.model.MzTab;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import org.junit.Assert;
-import org.junit.rules.TemporaryFolder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorOverflowException;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
@@ -37,22 +38,18 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class SemanticTestResources {
 
-    public static MzTab parseResource(TemporaryFolder tf, String resource,
+    public static MzTab parseResource(File baseDir, String resource,
         MZTabErrorType.Level level, Integer expectedErrors) throws URISyntaxException, IOException, MZTabException, MZTabErrorOverflowException {
-        File testFile = new File(tf.getRoot(), resource);
-        Assert.assertTrue(testFile.exists() && testFile.isFile());
+        File testFile = new File(baseDir, resource);
+        assertTrue(testFile.exists() && testFile.isFile());
         MzTabFileParser parser = new MzTabFileParser(testFile);
         parser.parse(System.err, level, 500);
-        Assert.assertEquals(String.format(
-            "Expected %d structural or logical errors, found %d! Errors: %s",
-            expectedErrors, parser.getErrorList().
-                size(), parser.getErrorList().
-                convertToValidationMessages()),
-            (long) expectedErrors, (long) parser.getErrorList().
-                size());
-        Assert.assertNotNull(
-            "Expected parser.getMZTabFile() to return a non null MzTab object",
-            parser.getMZTabFile());
+        assertEquals((long) expectedErrors, (long) parser.getErrorList().size(),
+            String.format("Expected %d structural or logical errors, found %d! Errors: %s",
+                expectedErrors, parser.getErrorList().size(),
+                parser.getErrorList().convertToValidationMessages()));
+        assertNotNull(parser.getMZTabFile(),
+            "Expected parser.getMZTabFile() to return a non null MzTab object");
         return parser.getMZTabFile();
     }
 }

@@ -15,9 +15,9 @@
  */
 package uk.ac.ebi.pride.jmztab2.model;
 
-import org.junit.Assert;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -62,15 +62,15 @@ public class MZTabStringUtilsTest {
     @Test
     public void testParseString() {
         String toParse = null;
-        Assert.assertNull(MZTabStringUtils.parseString(toParse));
+        Assertions.assertNull(MZTabStringUtils.parseString(toParse));
         toParse = "";
-        Assert.assertNull(MZTabStringUtils.parseString(toParse));
+        Assertions.assertNull(MZTabStringUtils.parseString(toParse));
         toParse = " null ";
-        Assert.assertNull(MZTabStringUtils.parseString(toParse));
+        Assertions.assertNull(MZTabStringUtils.parseString(toParse));
         toParse = " NULL";
-        Assert.assertNull(MZTabStringUtils.parseString(toParse));
+        Assertions.assertNull(MZTabStringUtils.parseString(toParse));
         toParse ="anklsa ";
-        Assert.assertEquals("anklsa", MZTabStringUtils.parseString(toParse));
+        Assertions.assertEquals("anklsa", MZTabStringUtils.parseString(toParse));
     }
     
 }

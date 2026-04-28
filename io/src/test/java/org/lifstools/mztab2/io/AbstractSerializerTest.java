@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Proxy;
 import java.util.Collection;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.lifstools.mztab2.model.IndexedElement;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
 
@@ -94,7 +94,7 @@ public abstract class AbstractSerializerTest {
     }
     
     public void assertEqSentry(String a, String b) {
-        Assert.assertEquals("'"+a+"'","'"+b+"'");
+        Assertions.assertEquals("'"+a+"'","'"+b+"'");
     }
 
 }

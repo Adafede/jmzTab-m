@@ -18,8 +18,8 @@ package org.lifstools.mztab2.io.serialization;
 import java.net.URI;
 import org.lifstools.mztab2.io.serialization.UriConverter;
 import org.lifstools.mztab2.model.Uri;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author nilshoffmann
@@ -33,7 +33,7 @@ public class UriConverterTest {
     public void testConvert() {
         UriConverter converter = new UriConverter();
         String converted = converter.convert(new Uri().value(URI.create("https://github.com/HUPO-PSI/mzTab")));
-        Assert.assertEquals("https://github.com/HUPO-PSI/mzTab", converted);
+        Assertions.assertEquals("https://github.com/HUPO-PSI/mzTab", converted);
     }
     
 }

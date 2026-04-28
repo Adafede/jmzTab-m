@@ -51,7 +51,7 @@ import org.hibernate.validator.constraints.*;
   MsRun.JSON_PROPERTY_HASH,
   MsRun.JSON_PROPERTY_HASH_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
 public class MsRun {
 
   /**

@@ -47,7 +47,7 @@ import org.hibernate.validator.constraints.*;
   Sample.JSON_PROPERTY_DISEASE,
   Sample.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
 public class Sample {
 
   /**

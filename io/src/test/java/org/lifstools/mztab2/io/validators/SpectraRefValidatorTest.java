@@ -25,8 +25,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import uk.ac.ebi.pride.jmztab2.model.IMZTabColumn;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.REGEX_SPECTRA_REF_THERMO_NATIVE;
@@ -59,7 +59,7 @@ public class SpectraRefValidatorTest {
             "", 
             Collections.emptyList()
         );
-        assertFalse("Did not expect errors here: "+result, result.isEmpty());
+        assertFalse(result.isEmpty(), "Did not expect errors here: "+result);
         assertEquals(1, result.size());
         assertEquals(1026, result.get(0).getType().getCode().longValue());
         System.out.println(result.get(0));
@@ -80,7 +80,7 @@ public class SpectraRefValidatorTest {
             "ms_run[1]:controllerType=0 controllerNumber=1 scan=1", 
             Arrays.asList(new SpectraRef().msRun(msRun).reference("controllerType=0 controllerNumber=1 scan=1"))
         );
-        assertFalse("Did not expect errors here: "+result, result.isEmpty());
+        assertFalse(result.isEmpty(), "Did not expect errors here: "+result);
         assertEquals(1, result.size());
         assertEquals(2021, result.get(0).getType().getCode().longValue());
         System.out.println(result.get(0));
@@ -104,7 +104,7 @@ public class SpectraRefValidatorTest {
             "ms_run[1]:databasekey=1231", 
             Arrays.asList(new SpectraRef().msRun(msRun).reference("databasekey=1231"))
         );
-        assertFalse("Did not expect errors here: "+result, result.isEmpty());
+        assertFalse(result.isEmpty(), "Did not expect errors here: "+result);
         assertEquals(1, result.size());
         assertEquals(2051, result.get(0).getType().getCode().longValue());
         System.out.println(result.get(0));
@@ -128,17 +128,17 @@ public class SpectraRefValidatorTest {
             "ms_run[1]:controllerType=0 controllerNumber=1 scan=1", 
             Arrays.asList(new SpectraRef().msRun(msRun).reference("controllerType=0 controllerNumber=1 scan=1"))
         );
-        assertTrue("Did not expect errors here: "+result, result.isEmpty());
+        assertTrue(result.isEmpty(), "Did not expect errors here: "+result);
         assertEquals(0, result.size());
-        
+
         result = instance.validateLine(
-            lineNumber, 
-            parserContext, 
-            column, 
-            "ms_run[1]:controllerType=0 controllerNumber=1 scan=0", 
+            lineNumber,
+            parserContext,
+            column,
+            "ms_run[1]:controllerType=0 controllerNumber=1 scan=0",
             Arrays.asList(new SpectraRef().msRun(msRun).reference("controllerType=0 controllerNumber=1 scan=0"))
         );
-        assertFalse("Did not expect this to pass!", result.isEmpty());
+        assertFalse(result.isEmpty(), "Did not expect this to pass!");
         assertEquals(1, result.size());
     }
     
@@ -160,17 +160,17 @@ public class SpectraRefValidatorTest {
             "ms_run[1]:scan=0", 
             Arrays.asList(new SpectraRef().msRun(msRun).reference("scan=0"))
         );
-        assertTrue("Did not expect errors here: "+result, result.isEmpty());
+        assertTrue(result.isEmpty(), "Did not expect errors here: "+result);
         assertEquals(0, result.size());
-        
+
         result = instance.validateLine(
-            lineNumber, 
-            parserContext, 
-            column, 
-            "ms_run[1]:scan=-1", 
+            lineNumber,
+            parserContext,
+            column,
+            "ms_run[1]:scan=-1",
             Arrays.asList(new SpectraRef().msRun(msRun).reference("scan=-1"))
         );
-        assertFalse("Did not expect this to pass!", result.isEmpty());
+        assertFalse(result.isEmpty(), "Did not expect this to pass!");
         assertEquals(1, result.size());
     }
 

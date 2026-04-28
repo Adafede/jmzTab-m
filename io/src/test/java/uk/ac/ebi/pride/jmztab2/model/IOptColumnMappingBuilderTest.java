@@ -15,7 +15,8 @@
  */
 package uk.ac.ebi.pride.jmztab2.model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -26,10 +27,10 @@ public class IOptColumnMappingBuilderTest {
     /**
      * Test of build method, of class IOptColumnMappingBuilder.
      */
-    @Test(expected=RuntimeException.class)
+    @Test
     public void testBuild() {
         IOptColumnMappingBuilderImpl impl = new IOptColumnMappingBuilderImpl();
-        impl.build("");
+        Assertions.assertThrows(RuntimeException.class, () -> impl.build(""));
     }
 
     public class IOptColumnMappingBuilderImpl implements IOptColumnMappingBuilder {

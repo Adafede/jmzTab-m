@@ -38,7 +38,7 @@ import org.hibernate.validator.constraints.*;
   PublicationItem.JSON_PROPERTY_TYPE,
   PublicationItem.JSON_PROPERTY_ACCESSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
 public class PublicationItem {
 
   /**

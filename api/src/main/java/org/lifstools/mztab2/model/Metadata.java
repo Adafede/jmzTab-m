@@ -80,7 +80,7 @@ import org.hibernate.validator.constraints.*;
   Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE,
   Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
 public class Metadata {
 
   /**

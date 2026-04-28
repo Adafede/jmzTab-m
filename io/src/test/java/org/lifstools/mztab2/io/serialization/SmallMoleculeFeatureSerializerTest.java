@@ -22,8 +22,8 @@ import org.lifstools.mztab2.model.MzTab;
 import org.lifstools.mztab2.model.OptColumnMapping;
 import org.lifstools.mztab2.model.SmallMoleculeFeature;
 import java.util.Arrays;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 
 /**
@@ -92,10 +92,10 @@ public class SmallMoleculeFeatureSerializerTest extends AbstractSerializerTest {
         ObjectWriter writer = smallMoleculeFeatureWriter(mzTabFile);
         String serializedString = serializeSequence(writer, mzTabFile.
             getSmallMoleculeFeature());
-        Assert.assertFalse(serializedString.isEmpty());
+        Assertions.assertFalse(serializedString.isEmpty());
         System.out.println(serializedString);
         //check for exactly one header line + 4 entry lines
-        Assert.assertEquals(5,
+        Assertions.assertEquals(5,
             serializedString.split(MZTabConstants.NEW_LINE).length);
 
         String reference = "SFH	SMF_ID	SME_ID_REFS	SME_ID_REF_ambiguity_code	adduct_ion	isotopomer	exp_mass_to_charge	charge	retention_time_in_seconds	retention_time_in_seconds_start	retention_time_in_seconds_end	abundance_assay[1]	abundance_assay[2]	opt_global_quantifiers_SMF_ID_REFS"+MZTabConstants.NEW_LINE

@@ -41,7 +41,7 @@ import org.hibernate.validator.constraints.*;
   SampleProcessing.JSON_PROPERTY_ID,
   SampleProcessing.JSON_PROPERTY_SAMPLE_PROCESSING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-08T17:12:00.460651+01:00[Europe/Berlin]", comments = "Generator version: 7.17.0")
 public class SampleProcessing {
 
   /**

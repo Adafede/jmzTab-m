@@ -22,7 +22,7 @@ import org.lifstools.mztab2.io.TestResources;
 import org.lifstools.mztab2.model.CV;
 import org.lifstools.mztab2.model.Metadata;
 import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
 

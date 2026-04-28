@@ -17,8 +17,8 @@ package org.lifstools.mztab2.io.serialization;
 
 import org.lifstools.mztab2.io.serialization.ParameterConverter;
 import org.lifstools.mztab2.model.Parameter;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *

@@ -36,6 +36,7 @@ import org.lifstools.mztab2.model.Sample;
 import org.lifstools.mztab2.model.SampleProcessing;
 import org.lifstools.mztab2.model.Software;
 import org.lifstools.mztab2.model.StudyVariable;
+import org.lifstools.mztab2.model.StudyVariableGroup;
 import org.lifstools.mztab2.model.Uri;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -355,8 +356,19 @@ public class MetadataSerializer extends StdSerializer<Metadata> {
                     Comparator.nullsFirst(Comparator.naturalOrder())
                 ));
             } else {
-                
+
                     log.debug( "Study Variable is null!");
+            }
+            //study variable group
+            if (t.getStudyVariableGroup() != null) {
+                serializeList(
+                    t.getStudyVariableGroup(), jg, sp, Comparator.comparing(
+                    StudyVariableGroup::getId,
+                    Comparator.nullsFirst(Comparator.naturalOrder())
+                ));
+            } else {
+
+                    log.debug( "Study Variable Group is null!");
             }
             //custom
             if (t.getCustom() != null) {

@@ -43,6 +43,7 @@ public enum MetadataElement {
     SAMPLE                            ("sample"),
     ASSAY                             ("assay"),
     STUDY_VARIABLE                    ("study_variable"),
+    STUDY_VARIABLE_GROUP              ("study_variable_group"),
     CV                                ("cv"),
     COLUNIT                           ("colunit"),
     COLUNIT_SMALL_MOLECULE            ("colunit-small_molecule"),

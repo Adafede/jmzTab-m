@@ -30,6 +30,7 @@ import org.lifstools.mztab2.model.Sample;
 import org.lifstools.mztab2.model.SampleProcessing;
 import org.lifstools.mztab2.model.Software;
 import org.lifstools.mztab2.model.StudyVariable;
+import org.lifstools.mztab2.model.StudyVariableGroup;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,6 +68,7 @@ public class MZTabParserContext {
     
     private SortedMap<Integer, Sample> sampleMap = new TreeMap<>();
     private SortedMap<Integer, StudyVariable> studyVariableMap = new TreeMap<>();
+    private SortedMap<Integer, StudyVariableGroup> studyVariableGroupMap = new TreeMap<>();
     private SortedMap<Integer, CV> cvMap = new TreeMap<>();
     private SortedMap<Integer, Database> databaseMap = new TreeMap<>();
     private List<ColumnParameterMapping> smallMoleculeColUnitList = new ArrayList<>();
@@ -1302,6 +1304,167 @@ public class MZTabParserContext {
             metadata.addStudyVariableItem(studyVariable);
         } else {
             studyVariable.setAverageFunction(checkParameter);
+        }
+        return studyVariable;
+    }
+
+    /**
+     * Add a study_variable_group into metadata.
+     *
+     * @param studyVariableGroup SHOULD NOT be null.
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariableGroup} object.
+     */
+    public StudyVariableGroup addStudyVariableGroup(Metadata metadata,
+        StudyVariableGroup studyVariableGroup) {
+        if (studyVariableGroup == null) {
+            throw new IllegalArgumentException("StudyVariableGroup should not be null");
+        }
+        studyVariableGroupMap.put(studyVariableGroup.getId(), studyVariableGroup);
+        metadata.addStudyVariableGroupItem(studyVariableGroup);
+        return studyVariableGroup;
+    }
+
+    /**
+     * Add a study_variable_group[id]-description.
+     *
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @param id SHOULD be positive integer.
+     * @param description if empty, ignore operation.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariableGroup} object.
+     */
+    public StudyVariableGroup addStudyVariableGroupDescription(Metadata metadata,
+        Integer id, String description) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("study_variable_group id should be greater than 0!");
+        }
+        StudyVariableGroup svg = studyVariableGroupMap.get(id);
+        if (isEmpty(description)) {
+            return svg;
+        }
+        if (svg == null) {
+            svg = new StudyVariableGroup();
+            svg.id(id);
+            metadata.addStudyVariableGroupItem(svg);
+        }
+        svg.setDescription(description);
+        studyVariableGroupMap.put(id, svg);
+        return svg;
+    }
+
+    /**
+     * Add a study_variable_group[id]-type (STATO parameter).
+     *
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @param id SHOULD be positive integer.
+     * @param type SHOULD NOT be null.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariableGroup} object.
+     */
+    public StudyVariableGroup addStudyVariableGroupType(Metadata metadata,
+        Integer id, Parameter type) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("study_variable_group id should be greater than 0!");
+        }
+        StudyVariableGroup svg = studyVariableGroupMap.get(id);
+        if (type == null) {
+            return svg;
+        }
+        if (svg == null) {
+            svg = new StudyVariableGroup();
+            svg.id(id);
+            svg.setType(type);
+            studyVariableGroupMap.put(id, svg);
+            metadata.addStudyVariableGroupItem(svg);
+        } else {
+            svg.setType(type);
+        }
+        return svg;
+    }
+
+    /**
+     * Add a study_variable_group[id]-datatype (xsd: string).
+     *
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @param id SHOULD be positive integer.
+     * @param datatype if empty, ignore operation.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariableGroup} object.
+     */
+    public StudyVariableGroup addStudyVariableGroupDatatype(Metadata metadata,
+        Integer id, String datatype) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("study_variable_group id should be greater than 0!");
+        }
+        StudyVariableGroup svg = studyVariableGroupMap.get(id);
+        if (isEmpty(datatype)) {
+            return svg;
+        }
+        if (svg == null) {
+            svg = new StudyVariableGroup();
+            svg.id(id);
+            metadata.addStudyVariableGroupItem(svg);
+        }
+        svg.setDatatype(datatype);
+        studyVariableGroupMap.put(id, svg);
+        return svg;
+    }
+
+    /**
+     * Add a study_variable_group[id]-unit parameter.
+     *
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @param id SHOULD be positive integer.
+     * @param unit SHOULD NOT be null.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariableGroup} object.
+     */
+    public StudyVariableGroup addStudyVariableGroupUnit(Metadata metadata,
+        Integer id, Parameter unit) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("study_variable_group id should be greater than 0!");
+        }
+        StudyVariableGroup svg = studyVariableGroupMap.get(id);
+        if (unit == null) {
+            return svg;
+        }
+        if (svg == null) {
+            svg = new StudyVariableGroup();
+            svg.id(id);
+            svg.setUnit(unit);
+            studyVariableGroupMap.put(id, svg);
+            metadata.addStudyVariableGroupItem(svg);
+        } else {
+            svg.setUnit(unit);
+        }
+        return svg;
+    }
+
+    /**
+     * Add a study_variable[id]-group_ref linking to a StudyVariableGroup.
+     *
+     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+     * @param id SHOULD be positive integer (study variable id).
+     * @param group SHOULD NOT be null and SHOULD be defined in metadata first.
+     * @return a {@link org.lifstools.mztab2.model.StudyVariable} object.
+     */
+    public StudyVariable addStudyVariableGroupRef(Metadata metadata,
+        Integer id, StudyVariableGroup group) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("study_variable id should be greater than 0!");
+        }
+        if (group == null) {
+            throw new NullPointerException("study_variable[n]-group_ref should not be null.");
+        }
+        if (!studyVariableGroupMap.containsValue(group)) {
+            throw new IllegalArgumentException("study_variable_group should be defined in metadata first");
+        }
+        StudyVariable studyVariable = studyVariableMap.get(id);
+        if (studyVariable == null) {
+            studyVariable = new StudyVariable();
+            studyVariable.id(id);
+            studyVariable.setGroupRef(group);
+            studyVariableMap.put(id, studyVariable);
+            metadata.addStudyVariableItem(studyVariable);
+        } else {
+            studyVariable.setGroupRef(group);
         }
         return studyVariable;
     }

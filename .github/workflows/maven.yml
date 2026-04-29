@@ -32,7 +32,7 @@ jobs:
         USERNAME: ${{ github.actor }}
         PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        echo "RELEASE_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+        echo "RELEASE_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout | tr -d '\n')" >> $GITHUB_ENV
     - name: Restore Maven cache
       uses: skjolber/maven-cache-github-action@v3.1.2
       with:

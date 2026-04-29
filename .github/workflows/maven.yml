@@ -61,6 +61,12 @@ jobs:
             jf mvn-config --repo-deploy-releases=lifs-libs-release-local --repo-deploy-snapshots=lifs-libs-snapshot-local
             jf mvn -B deploy -DskipTests -Pjfrog --file pom.xml
             jf rt bp
+    - name: Upload CLI distribution zip
+      uses: actions/upload-artifact@v4
+      with:
+        name: jmztabm-cli-dist
+        path: cli/target/jmztabm-cli-*-bin.zip
+        if-no-files-found: error
     - name: Save Maven cache
       uses: skjolber/maven-cache-github-action@v3.1.2
       with:

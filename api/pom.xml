@@ -39,6 +39,7 @@
                                         <performBeanValidation>true</performBeanValidation>
                                         <withXml>false</withXml>
                                         <supportsInheritance>true</supportsInheritance>
+                                        <useJakartaEe>true</useJakartaEe>
                                     </configOptions>
                                     <library>native</library>
                                     <output>${project.basedir}</output>
@@ -52,6 +53,7 @@
                                     <generateApis>false</generateApis>
                                     <generateModelTests>true</generateModelTests>
                                     <additionalProperties>true</additionalProperties>
+                                    <!-- activate to generate BaseApi class and others -->
                                     <generateSupportingFiles>false</generateSupportingFiles>
                                     <generateApiDocumentation>false</generateApiDocumentation>
                                 </configuration>

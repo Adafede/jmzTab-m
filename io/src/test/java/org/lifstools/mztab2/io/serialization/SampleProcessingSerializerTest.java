@@ -47,8 +47,7 @@ public class SampleProcessingSerializerTest extends AbstractSerializerTest {
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.sampleProcessing.
-                getPropertyName() + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE_PROCESSING + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sp.getSampleProcessing().
                     get(0))
             + NEW_LINE, serializeSingle(writer, mtd));

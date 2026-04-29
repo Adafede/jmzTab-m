@@ -15,10 +15,8 @@
  */
 package uk.ac.ebi.pride.jmztab2.model;
 
-import org.lifstools.mztab2.model.IndexedElement;
 import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.SmallMoleculeEvidence;
-import static org.lifstools.mztab2.model.SmallMoleculeEvidence.Properties.*;
 import org.lifstools.mztab2.model.StringList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,42 +49,34 @@ public class SmallMoleculeEvidenceColumn implements ISmallMoleculeEvidenceColumn
      * Stable {@link SmallMoleculeEvidenceColumn} definition templates.
      */
     public static enum Stable {
-        SME_ID(smeId.toUpper(), Integer.class, false, "01"),
-        EVIDENCE_INPUT_ID(evidenceInputId, Integer.class, false, "02"),
-        DATABASE_IDENTIFIER(databaseIdentifier, String.class, false, "03"),
+        SME_ID(SmallMoleculeEvidence.JSON_PROPERTY_SME_ID.toUpperCase(), Integer.class, false, "01"),
+        EVIDENCE_INPUT_ID(SmallMoleculeEvidence.JSON_PROPERTY_EVIDENCE_INPUT_ID, Integer.class, false, "02"),
+        DATABASE_IDENTIFIER(SmallMoleculeEvidence.JSON_PROPERTY_DATABASE_IDENTIFIER, String.class, false, "03"),
         CHEMICAL_FORMULA(
-            chemicalFormula, String.class, true, "04"),
-        SMILES(smiles,
+            SmallMoleculeEvidence.JSON_PROPERTY_CHEMICAL_FORMULA, String.class, true, "04"),
+        SMILES(SmallMoleculeEvidence.JSON_PROPERTY_SMILES,
             String.class, true, "05"),
-        INCHI(inchi,
+        INCHI(SmallMoleculeEvidence.JSON_PROPERTY_INCHI,
             String.class, true, "06"),
         CHEMICAL_NAME(
-            chemicalName, String.class, true, "07"),
-        URI(uri,
+            SmallMoleculeEvidence.JSON_PROPERTY_CHEMICAL_NAME, String.class, true, "07"),
+        URI(SmallMoleculeEvidence.JSON_PROPERTY_URI,
             java.net.URI.class, true, "08"),
-        DERIVATIZED_FORM(derivatizedForm, String.class, true, "09"),
+        DERIVATIZED_FORM(SmallMoleculeEvidence.JSON_PROPERTY_DERIVATIZED_FORM, String.class, true, "09"),
         ADDUCT_ION(
-            adductIon, String.class, false, "10"),
+            SmallMoleculeEvidence.JSON_PROPERTY_ADDUCT_ION, String.class, false, "10"),
         EXP_MASS_TO_CHARGE(
-            expMassToCharge, Double.class, false, "11"),
-        CHARGE(charge, Integer.class, false, "12"),
-        THEORETICAL_MASS_TO_CHARGE(theoreticalMassToCharge, Double.class,
+            SmallMoleculeEvidence.JSON_PROPERTY_EXP_MASS_TO_CHARGE, Double.class, false, "11"),
+        CHARGE(SmallMoleculeEvidence.JSON_PROPERTY_CHARGE, Integer.class, false, "12"),
+        THEORETICAL_MASS_TO_CHARGE(SmallMoleculeEvidence.JSON_PROPERTY_THEORETICAL_MASS_TO_CHARGE, Double.class,
             false, "13"),
-        SPECTRA_REF(spectraRef, StringList.class, false, "14"),
-        IDENTIFICATION_METHOD(identificationMethod, Parameter.class, false,
+        SPECTRA_REF(SmallMoleculeEvidence.JSON_PROPERTY_SPECTRA_REF, StringList.class, false, "14"),
+        IDENTIFICATION_METHOD(SmallMoleculeEvidence.JSON_PROPERTY_IDENTIFICATION_METHOD, Parameter.class, false,
             "15"),
-        MS_LEVEL(msLevel, Parameter.class, false, "16"),
-        RANK(rank, Integer.class, false, "17");
+        MS_LEVEL(SmallMoleculeEvidence.JSON_PROPERTY_MS_LEVEL, Parameter.class, false, "16"),
+        RANK(SmallMoleculeEvidence.JSON_PROPERTY_RANK, Integer.class, false, "17");
 
         private final ISmallMoleculeEvidenceColumn column;
-
-        private Stable(SmallMoleculeEvidence.Properties property,
-            Class columnType, boolean optional,
-            String order) {
-            this.column = new SmallMoleculeEvidenceColumn(property.
-                getPropertyName(), columnType, optional,
-                order);
-        }
 
         private Stable(String name, Class columnType, boolean optional,
             String order) {

@@ -295,18 +295,18 @@ public class MzTabTest {
                 "Group A description").
             addAssayRefsItem(
                 assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable1);
         StudyVariable studyVariable2 = new StudyVariable().
             id(2).
             name("Grou B name").
             description("Group B description").
             addAssayRefsItem(assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable2);
         mtd.addCvItem(new CV().id(1).
             label("MS").

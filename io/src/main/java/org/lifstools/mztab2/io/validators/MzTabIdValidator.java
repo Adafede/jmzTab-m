@@ -35,7 +35,7 @@ public class MzTabIdValidator implements RefiningValidator<Metadata> {
         if (metadata.getMzTabID() == null || metadata.getMzTabID().isEmpty()) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.mzTabID.getPropertyName(),
+                    Metadata.JSON_PROPERTY_MZ_TAB_I_D,
                     metadata.getMzTabVersion()));
         }
         return Collections.emptyList();

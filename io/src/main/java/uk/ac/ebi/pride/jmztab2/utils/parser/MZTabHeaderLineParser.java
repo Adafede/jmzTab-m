@@ -181,7 +181,7 @@ public abstract class MZTabHeaderLineParser extends MZTabLineParser {
             } else {
                 id = parseIndex(nameLabel, matcher.group(3));
 
-                if (object_id.contains(Metadata.Properties.assay.getPropertyName())) {
+                if (object_id.contains(Metadata.JSON_PROPERTY_ASSAY)) {
                     Assay element = context.getAssayMap().get(id);
                     // not found assay_id in metadata.
                     if (element == null) {
@@ -192,7 +192,7 @@ public abstract class MZTabHeaderLineParser extends MZTabLineParser {
                     } else {
                         factory.addOptionalColumn(element, param, dataType);
                     }
-                } else if (object_id.contains(Metadata.Properties.studyVariable.getPropertyName())) {
+                } else if (object_id.contains(Metadata.JSON_PROPERTY_STUDY_VARIABLE)) {
                     StudyVariable element = context.getStudyVariableMap().get(id);
                     // not found study_variable_id in metadata.
                     if (element == null) {
@@ -203,7 +203,7 @@ public abstract class MZTabHeaderLineParser extends MZTabLineParser {
                     } else {
                         factory.addOptionalColumn(element, param, dataType);
                     }
-                } else if (object_id.contains(Metadata.Properties.msRun.getPropertyName())) {
+                } else if (object_id.contains(Metadata.JSON_PROPERTY_MS_RUN)) {
                     // not found ms_run_id in metadata.
                     MsRun element = context.getMsRunMap().get(id);
                     if (element == null) {
@@ -287,10 +287,10 @@ public abstract class MZTabHeaderLineParser extends MZTabLineParser {
      */
     protected int checkAbundanceColumns(int offset, String order) throws MZTabException {
         String headerString = items[offset];
-        if (headerString.contains(SmallMoleculeSummary.Properties.abundanceAssay.getPropertyName())) {
+        if (headerString.contains(SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_ASSAY)) {
             checkAbundanceAssayColumn(headerString, order);
             return offset;
-        } else if (headerString.contains(SmallMoleculeSummary.Properties.abundanceStudyVariable.getPropertyName()) || headerString.contains(SmallMoleculeSummary.Properties.abundanceVariationStudyVariable.getPropertyName())) {
+        } else if (headerString.contains(SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_STUDY_VARIABLE) || headerString.contains(SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_VARIATION_STUDY_VARIABLE)) {
             checkAbundanceStudyVariableColumns(headerString, order);
             return offset;
         } else {
@@ -351,8 +351,8 @@ public abstract class MZTabHeaderLineParser extends MZTabLineParser {
                                                     String order) throws MZTabException {
         header = header.trim().toLowerCase();
 
-        if (!header.contains(SmallMoleculeSummary.Properties.abundanceStudyVariable.getPropertyName()
-            ) && !header.contains(SmallMoleculeSummary.Properties.abundanceVariationStudyVariable.getPropertyName())) {
+        if (!header.contains(SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_STUDY_VARIABLE
+            ) && !header.contains(SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_VARIATION_STUDY_VARIABLE)) {
             MZTabError error = new MZTabError(FormatErrorType.AbundanceColumn, lineNumber, header);
             throw new MZTabException(error);
         } else {

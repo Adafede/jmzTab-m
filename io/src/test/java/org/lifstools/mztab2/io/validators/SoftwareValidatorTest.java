@@ -42,7 +42,7 @@ public class SoftwareValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.software.getPropertyName(),
+                Metadata.JSON_PROPERTY_SOFTWARE,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

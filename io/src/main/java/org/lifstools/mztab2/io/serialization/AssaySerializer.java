@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import static org.lifstools.mztab2.io.serialization.Serializers.addLineWithProperty;
 import static org.lifstools.mztab2.io.serialization.Serializers.addSubElementStrings;
 import org.lifstools.mztab2.model.Assay;
+import org.lifstools.mztab2.model.Metadata;
 import org.lifstools.mztab2.model.MsRun;
 import org.lifstools.mztab2.model.Sample;
 import java.io.IOException;
@@ -78,15 +79,15 @@ public class AssaySerializer extends StdSerializer<Assay> {
                 assay.
                     getName());
             
-            addLineWithProperty(jg, Section.Metadata.getPrefix(), Assay.Properties.externalUri.getPropertyName(),
+            addLineWithProperty(jg, Section.Metadata.getPrefix(), Assay.JSON_PROPERTY_EXTERNAL_URI,
                 assay, assay.getExternalUri());
 
-            addSubElementStrings(jg, Section.Metadata.getPrefix(), assay, Assay.Properties.custom.getPropertyName(), assay.getCustom(), false);
+            addSubElementStrings(jg, Section.Metadata.getPrefix(), assay, Assay.JSON_PROPERTY_CUSTOM, assay.getCustom(), false);
 
             List<MsRun> msRunRef = assay.getMsRunRef();
             if (msRunRef != null) {
                 addSubElementStrings(jg, Section.Metadata.getPrefix(), assay,
-                    Assay.Properties.msRunRef.getPropertyName(), msRunRef.
+                    Assay.JSON_PROPERTY_MS_RUN_REF, msRunRef.
                         stream().
                         sorted(Comparator.comparing(MsRun::getId,
                             Comparator.nullsFirst(Comparator.
@@ -94,7 +95,7 @@ public class AssaySerializer extends StdSerializer<Assay> {
                         )).
                         map((mref) ->
                         {
-                            return new StringBuilder().append(org.lifstools.mztab2.model.Metadata.Properties.msRun.getPropertyName()).
+                            return new StringBuilder().append(Metadata.JSON_PROPERTY_MS_RUN).
                                 append("[").
                                 append(mref.getId()).
                                 append("]").
@@ -105,7 +106,7 @@ public class AssaySerializer extends StdSerializer<Assay> {
             Sample sampleRef = assay.getSampleRef();
             if (sampleRef != null) {
                 addSubElementStrings(jg, Section.Metadata.getPrefix(), assay,
-                    Assay.Properties.sampleRef.getPropertyName(), Arrays.asList(sampleRef).
+                    Assay.JSON_PROPERTY_SAMPLE_REF, Arrays.asList(sampleRef).
                         stream().
                         sorted(Comparator.comparing(Sample::getId,
                             Comparator.nullsFirst(Comparator.
@@ -113,7 +114,7 @@ public class AssaySerializer extends StdSerializer<Assay> {
                         )).
                         map((sref) ->
                         {
-                            return new StringBuilder().append(org.lifstools.mztab2.model.Metadata.Properties.sample.getPropertyName()).
+                            return new StringBuilder().append(Metadata.JSON_PROPERTY_SAMPLE).
                                 append("[").
                                 append(sref.getId()).
                                 append("]").

@@ -96,7 +96,7 @@ public class SMFLineParser extends MZTabDataLineParser<SmallMoleculeFeature> {
                             String adductIon = checkString(column,
                                 target);
                             checkRegexMatches(errorList, lineNumber,
-                                SmallMoleculeFeature.Properties.adductIon,
+                                SmallMoleculeFeature.JSON_PROPERTY_ADDUCT_ION,
                                 MZTabConstants.REGEX_ADDUCT, Arrays.asList(
                                     adductIon));
                             smallMoleculeFeature.adductIon(adductIon);
@@ -146,8 +146,7 @@ public class SMFLineParser extends MZTabDataLineParser<SmallMoleculeFeature> {
 
                 } else if (column instanceof AbundanceColumn) {
                     if (columnName.startsWith(
-                        SmallMoleculeFeature.Properties.abundanceAssay.
-                            getPropertyName())) {
+                        SmallMoleculeFeature.JSON_PROPERTY_ABUNDANCE_ASSAY)) {
                         smallMoleculeFeature.addAbundanceAssayItem(checkDouble(
                             column, target));
                     }
@@ -177,7 +176,7 @@ public class SMFLineParser extends MZTabDataLineParser<SmallMoleculeFeature> {
     }
 
     protected void checkRegexMatches(MZTabErrorList errorList, int lineNumber,
-        SmallMoleculeFeature.Properties elementProperty,
+        String elementPropertyName,
         String regularExpression, List<String> elements) {
         if (!elements.isEmpty()) {
             Pattern p = Pattern.compile(regularExpression);
@@ -188,7 +187,7 @@ public class SMFLineParser extends MZTabDataLineParser<SmallMoleculeFeature> {
                     if (!m.matches()) {
                         errorList.add(new MZTabError(
                             FormatErrorType.RegexMismatch,
-                            lineNumber, elementProperty.getPropertyName(),
+                            lineNumber, elementPropertyName,
                             element,
                             "" + (i + 1), regularExpression));
                     }

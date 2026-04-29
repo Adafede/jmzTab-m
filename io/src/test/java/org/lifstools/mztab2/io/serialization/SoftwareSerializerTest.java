@@ -55,15 +55,15 @@ public class SoftwareSerializerTest extends AbstractSerializerTest {
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.software + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SOFTWARE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(software1.
                     getParameter())
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.software + "[1]-" + Software.Properties.setting + "[1]" + TAB_STRING + software1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SOFTWARE + "[1]-" + Software.JSON_PROPERTY_SETTING + "[1]" + TAB_STRING + software1.
                 getSetting().
                 get(0)
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.software + "[1]-" + Software.Properties.setting + "[2]" + TAB_STRING + software1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SOFTWARE + "[1]-" + Software.JSON_PROPERTY_SETTING + "[2]" + TAB_STRING + software1.
                 getSetting().
                 get(1)
             + NEW_LINE,

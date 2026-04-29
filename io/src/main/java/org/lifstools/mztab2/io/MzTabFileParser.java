@@ -20,6 +20,7 @@ import org.lifstools.mztab2.model.Comment;
 import org.lifstools.mztab2.model.Metadata;
 import org.lifstools.mztab2.model.MsRun;
 import org.lifstools.mztab2.model.MzTab;
+import org.lifstools.mztab2.model.MzTabAccess;
 import org.lifstools.mztab2.model.SmallMoleculeEvidence;
 import org.lifstools.mztab2.model.SmallMoleculeFeature;
 import org.lifstools.mztab2.model.SmallMoleculeSummary;
@@ -275,7 +276,7 @@ public class MzTabFileParser {
      * protein/peptide/small_molecule/small_molecule_feature/small_molecule_evidence
      * header lines, if there exist any errors.
      * @throws uk.ac.ebi.pride.jmztab.utils.errors.MZTabErrorOverflowException
-     * when too many errors are detected, as defined by the mztab.properties
+     * when too many errors are detected, as defined by the MzTabAccess.Properties
      * file mztab.max_error_count parameter.
      */
     private void check() throws IOException, MZTabException, MZTabErrorOverflowException {
@@ -498,9 +499,8 @@ public class MzTabFileParser {
                         if (!matcher.matches()) {
                             errorList.add(new MZTabError(
                                 FormatErrorType.RegexMismatch, -1,
-                                SmallMoleculeSummary.Properties.reliability.
-                                    getPropertyName(), reliability,
-                                MzTab.Properties.smallMoleculeSummary.
+                                SmallMoleculeSummary.JSON_PROPERTY_RELIABILITY, reliability,
+                                MzTabAccess.Properties.smallMoleculeSummary.
                                     getPropertyName(), "" + smi.getSmlId(),
                                 REGEX_DEFAULT_RELIABILITY));
                         }
@@ -510,8 +510,8 @@ public class MzTabFileParser {
                     mzTabFile.
                         getMetadata().
                         getColunitSmallMolecule()),
-                    Metadata.Properties.colunitSmallMolecule,
-                    MzTab.Properties.smallMoleculeSummary);
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE,
+                    MzTabAccess.Properties.smallMoleculeSummary);
             }
 
             if (smallMoleculeFeatureMap.isEmpty() && !smallMoleculeSummaryMap.
@@ -537,8 +537,8 @@ public class MzTabFileParser {
                     mzTabFile.
                         getMetadata().
                         getColunitSmallMoleculeFeature()),
-                    Metadata.Properties.colunitSmallMoleculeFeature,
-                    MzTab.Properties.smallMoleculeFeature);
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE,
+                    MzTabAccess.Properties.smallMoleculeFeature);
             }
             if (smallMoleculeEvidenceMap.isEmpty() && !smallMoleculeSummaryMap.
                 isEmpty()) {
@@ -555,8 +555,8 @@ public class MzTabFileParser {
                     mzTabFile.
                         getMetadata().
                         getColunitSmallMoleculeEvidence()),
-                    Metadata.Properties.colunitSmallMoleculeEvidence,
-                    MzTab.Properties.smallMoleculeEvidence
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE,
+                    MzTabAccess.Properties.smallMoleculeEvidence
                 );
             }
             //check ID refs, starting at SML level
@@ -578,11 +578,10 @@ public class MzTabFileParser {
                             //Reference id "{0}" for column "{1}" from element "{2}" in section "{3}" to section "{4}" must have a matching element defined.
                             errorList.add(new MZTabError(
                                 LogicalErrorType.UnknownRefId, -1, "" + smfRefId,
-                                SmallMoleculeSummary.Properties.smfIdRefs.
-                                    getPropertyName(), "" + sms.getSmlId(),
-                                MzTab.Properties.smallMoleculeSummary.
+                                SmallMoleculeSummary.JSON_PROPERTY_SMF_ID_REFS, "" + sms.getSmlId(),
+                                MzTabAccess.Properties.smallMoleculeSummary.
                                     getPropertyName(),
-                                MzTab.Properties.smallMoleculeFeature.
+                                MzTabAccess.Properties.smallMoleculeFeature.
                                     getPropertyName()));
                         }
                     }
@@ -609,11 +608,10 @@ public class MzTabFileParser {
                                 errorList.add(new MZTabError(
                                     LogicalErrorType.UnknownRefId, -1,
                                     "" + smeRefId,
-                                    SmallMoleculeFeature.Properties.smeIdRefs.
-                                        getPropertyName(), "" + smf.getSmfId(),
-                                    MzTab.Properties.smallMoleculeFeature.
+                                    SmallMoleculeFeature.JSON_PROPERTY_SME_ID_REFS, "" + smf.getSmfId(),
+                                    MzTabAccess.Properties.smallMoleculeFeature.
                                         getPropertyName(),
-                                    MzTab.Properties.smallMoleculeEvidence.
+                                    MzTabAccess.Properties.smallMoleculeEvidence.
                                         getPropertyName()));
                             }
                         }
@@ -626,7 +624,7 @@ public class MzTabFileParser {
 
     protected void checkColunitMapping(MZTabColumnFactory columnFactory,
         Optional<Collection<ColumnParameterMapping>> columnParameterMapping,
-        Metadata.Properties colUnitProperty, MzTab.Properties mzTabSection) {
+        String colUnitProperty, MzTabAccess.Properties mzTabSection) {
         columnParameterMapping.orElse(Collections.emptyList()).
             forEach((colUnit) ->
             {
@@ -636,8 +634,7 @@ public class MzTabFileParser {
                 if (column == null) {
                     errorList.add(new MZTabError(
                         FormatErrorType.ColUnit, -1,
-                        colUnitProperty.
-                            getPropertyName(), columnName,
+                        colUnitProperty, columnName,
                         mzTabSection.
                             getPropertyName()));
                 }

@@ -35,7 +35,7 @@ public class MzTabVersionValidator implements RefiningValidator<Metadata> {
         if (metadata.getMzTabVersion() == null || metadata.getMzTabVersion().isEmpty()) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.mzTabVersion.getPropertyName(),
+                    Metadata.JSON_PROPERTY_MZ_TAB_VERSION,
                     metadata.getMzTabVersion()));
         }
         return Collections.emptyList();

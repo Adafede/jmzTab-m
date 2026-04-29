@@ -16,8 +16,8 @@
 package uk.ac.ebi.pride.jmztab2.model;
 
 import org.lifstools.mztab2.model.IndexedElement;
+import org.lifstools.mztab2.model.SmallMoleculeEvidence;
 import org.lifstools.mztab2.model.SmallMoleculeFeature;
-import static org.lifstools.mztab2.model.SmallMoleculeFeature.Properties.*;
 import org.lifstools.mztab2.model.StringList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,32 +53,24 @@ public class SmallMoleculeFeatureColumn implements ISmallMoleculeFeatureColumn {
      * Stable {@link SmallMoleculeFeatureColumn} definition templates.
      */
     public static enum Stable {
-        SMF_ID(smfId.toUpper(), Integer.class, false, "01"),
-        SME_ID_REFS(smeIdRefs.toUpper(), StringList.class, true, "02"),
+        SMF_ID(SmallMoleculeFeature.JSON_PROPERTY_SMF_ID.toUpperCase(), Integer.class, false, "01"),
+        SME_ID_REFS(SmallMoleculeFeature.JSON_PROPERTY_SME_ID_REFS.toUpperCase(), StringList.class, true, "02"),
         SME_ID_REF_AMBIGUITY_CODE("SME_ID_REF_ambiguity_code", Integer.class,
             true, "03"),
         ADDUCT_ION(
-            adductIon, String.class, true, "04"),
-        ISOTOPOMER(isotopomer, String.class, true, "05"),
+            SmallMoleculeFeature.JSON_PROPERTY_ADDUCT_ION, String.class, true, "04"),
+        ISOTOPOMER(SmallMoleculeFeature.JSON_PROPERTY_ISOTOPOMER, String.class, true, "05"),
         EXP_MASS_TO_CHARGE(
-            expMassToCharge, Double.class, false, "06"),
-        CHARGE(charge, Integer.class, true, "07"),
-        RETENTION_TIME_IN_SECONDS(retentionTimeInSeconds, Double.class, true,
+            SmallMoleculeFeature.JSON_PROPERTY_EXP_MASS_TO_CHARGE, Double.class, false, "06"),
+        CHARGE(SmallMoleculeFeature.JSON_PROPERTY_CHARGE, Integer.class, true, "07"),
+        RETENTION_TIME_IN_SECONDS(SmallMoleculeFeature.JSON_PROPERTY_RETENTION_TIME_IN_SECONDS, Double.class, true,
             "08"),
-        RETENTION_TIME_IN_SECONDS_START(retentionTimeInSecondsStart,
+        RETENTION_TIME_IN_SECONDS_START(SmallMoleculeFeature.JSON_PROPERTY_RETENTION_TIME_IN_SECONDS_START,
             Double.class, true, "09"),
-        RETENTION_TIME_IN_SECONDS_END(retentionTimeInSecondsEnd, Double.class,
+        RETENTION_TIME_IN_SECONDS_END(SmallMoleculeFeature.JSON_PROPERTY_RETENTION_TIME_IN_SECONDS_END, Double.class,
             true, "10");
 
         private final ISmallMoleculeFeatureColumn column;
-
-        private Stable(SmallMoleculeFeature.Properties property,
-            Class columnType, boolean optional,
-            String order) {
-            this.column = new SmallMoleculeFeatureColumn(property.
-                getPropertyName(), columnType, optional,
-                order);
-        }
 
         private Stable(String name, Class columnType, boolean optional,
             String order) {

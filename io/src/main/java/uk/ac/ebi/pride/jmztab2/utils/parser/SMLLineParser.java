@@ -97,7 +97,7 @@ public class SMLLineParser extends MZTabDataLineParser<SmallMoleculeSummary> {
                             List<String> adductIons = checkStringList(
                                 column, target, MZTabConstants.BAR);
                             checkRegexMatches(errorList, lineNumber,
-                                SmallMoleculeSummary.Properties.adductIons,
+                                SmallMoleculeSummary.JSON_PROPERTY_ADDUCT_IONS,
                                 MZTabConstants.REGEX_ADDUCT, adductIons);
                             smallMoleculeSummary.adductIons(adductIons);
                             break;
@@ -157,18 +157,15 @@ public class SMLLineParser extends MZTabDataLineParser<SmallMoleculeSummary> {
 
                 } else if (column instanceof AbundanceColumn) {
                     if (columnName.startsWith(
-                        SmallMoleculeSummary.Properties.abundanceAssay.
-                            getPropertyName())) {
+                        SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_ASSAY)) {
                         smallMoleculeSummary.addAbundanceAssayItem(checkDouble(
                             column, target));
                     } else if (columnName.startsWith(
-                        SmallMoleculeSummary.Properties.abundanceStudyVariable.
-                            getPropertyName())) {
+                        SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_STUDY_VARIABLE)) {
                         smallMoleculeSummary.addAbundanceStudyVariableItem(
                             checkDouble(column, target));
                     } else if (columnName.startsWith(
-                        SmallMoleculeSummary.Properties.abundanceVariationStudyVariable.
-                            getPropertyName())) {
+                        SmallMoleculeSummary.JSON_PROPERTY_ABUNDANCE_VARIATION_STUDY_VARIABLE)) {
                         smallMoleculeSummary.
                             addAbundanceVariationStudyVariableItem(checkDouble(
                                 column, target));
@@ -197,39 +194,39 @@ public class SMLLineParser extends MZTabDataLineParser<SmallMoleculeSummary> {
 
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getChemicalFormula(),
-            SmallMoleculeSummary.Properties.chemicalFormula);
+            SmallMoleculeSummary.JSON_PROPERTY_CHEMICAL_FORMULA);
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getSmiles(),
-            SmallMoleculeSummary.Properties.smiles);
+            SmallMoleculeSummary.JSON_PROPERTY_SMILES);
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getInchi(),
-            SmallMoleculeSummary.Properties.inchi);
+            SmallMoleculeSummary.JSON_PROPERTY_INCHI);
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getChemicalName(),
-            SmallMoleculeSummary.Properties.chemicalName);
+            SmallMoleculeSummary.JSON_PROPERTY_CHEMICAL_NAME);
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getUri(),
-            SmallMoleculeSummary.Properties.uri);
+            SmallMoleculeSummary.JSON_PROPERTY_URI);
         checkItemNumbers(errorList, lineNumber, smallMoleculeSummary.
             getDatabaseIdentifier(),
-            SmallMoleculeSummary.Properties.databaseIdentifier,
+            SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER,
             smallMoleculeSummary.getTheoreticalNeutralMass(),
-            SmallMoleculeSummary.Properties.theoreticalNeutralMass);
+            SmallMoleculeSummary.JSON_PROPERTY_THEORETICAL_NEUTRAL_MASS);
         return physicalPosition;
     }
 
     protected void checkRegexMatches(MZTabErrorList errorList, int lineNumber,
-        SmallMoleculeSummary.Properties elementProperty,
+        String elementPropertyName,
         String regularExpression, List<String> elements) {
         if (!elements.isEmpty()) {
             Pattern p = Pattern.compile(regularExpression);
@@ -239,7 +236,7 @@ public class SMLLineParser extends MZTabDataLineParser<SmallMoleculeSummary> {
                     Matcher m = p.matcher(element);
                     if (!m.matches()) {
                         errorList.add(new MZTabError(FormatErrorType.RegexMismatch,
-                            lineNumber, elementProperty.getPropertyName(), element,
+                            lineNumber, elementPropertyName, element,
                             "" + (i + 1), regularExpression));
                     }
                 }
@@ -249,13 +246,13 @@ public class SMLLineParser extends MZTabDataLineParser<SmallMoleculeSummary> {
     }
 
     protected void checkItemNumbers(MZTabErrorList errorList, int lineNumber,
-        List<?> reference, SmallMoleculeSummary.Properties referenceProperty,
-        List<?> toCheck, SmallMoleculeSummary.Properties toCheckProperty) throws MZTabErrorOverflowException {
+        List<?> reference, String referencePropertyName,
+        List<?> toCheck, String toCheckPropertyName) throws MZTabErrorOverflowException {
         //check that array types have same element number
         if (!toCheck.isEmpty() && reference.size() != toCheck.size()) {
             errorList.add(new MZTabError(LogicalErrorType.ItemNumberMismatch,
-                lineNumber, toCheckProperty.getPropertyName(), "" + toCheck.
-                size(), referenceProperty.getPropertyName(), "" + reference.
+                lineNumber, toCheckPropertyName, "" + toCheck.
+                size(), referencePropertyName, "" + reference.
                 size()));
         }
     }

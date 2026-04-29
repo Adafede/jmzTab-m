@@ -1218,33 +1218,33 @@ public class MZTabParserContext {
         return studyVariable;
     }
     
-    /**
-     * Add a study_variable[id]-factor. A Parameter further refining what is known about the study design.
-     * 
-     * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
-     * @param id id SHOULD be positive integer.
-     * @param checkParameter the study variable factor Parameter to add.
-     * @return a {@link org.lifstools.mztab2.model.StudyVariable} object.
-     */
-    public StudyVariable addStudyVariableFactors(Metadata metadata, Integer id, Parameter checkParameter) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("study variable id should be greater than 0!");
-        }
-        StudyVariable studyVariable = studyVariableMap.get(id);
-        if (checkParameter == null) {
-            return studyVariable;
-        }
+    // /**
+    //  * Add a study_variable[id]-factor. A Parameter further refining what is known about the study design.
+    //  * 
+    //  * @param metadata a {@link org.lifstools.mztab2.model.Metadata} object.
+    //  * @param id id SHOULD be positive integer.
+    //  * @param checkParameter the study variable factor Parameter to add.
+    //  * @return a {@link org.lifstools.mztab2.model.StudyVariable} object.
+    //  */
+    // public StudyVariable addStudyVariableFactors(Metadata metadata, Integer id, Parameter checkParameter) {
+    //     if (id <= 0) {
+    //         throw new IllegalArgumentException("study variable id should be greater than 0!");
+    //     }
+    //     StudyVariable studyVariable = studyVariableMap.get(id);
+    //     if (checkParameter == null) {
+    //         return studyVariable;
+    //     }
 
-        if (studyVariable == null) {
-            studyVariable = new StudyVariable();
-            studyVariable.id(id);
-            metadata.addStudyVariableItem(studyVariable);
-        }
+    //     if (studyVariable == null) {
+    //         studyVariable = new StudyVariable();
+    //         studyVariable.id(id);
+    //         metadata.addStudyVariableItem(studyVariable);
+    //     }
 
-        studyVariable.addFactorsItem(checkParameter);
-        studyVariableMap.put(id, studyVariable);
-        return studyVariable;
-    }
+    //     studyVariable.addFactorsItem(checkParameter);
+    //     studyVariableMap.put(id, studyVariable);
+    //     return studyVariable;
+    // }
     
     /**
      * Add a study_variable[id]-variation_function. This is a Parameter detailing how the

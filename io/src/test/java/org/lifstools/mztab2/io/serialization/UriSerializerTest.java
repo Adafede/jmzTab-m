@@ -50,8 +50,8 @@ public class UriSerializerTest extends AbstractSerializerTest {
             value(URI.create(uri2)));
 
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.uri + "[1]" + TAB_STRING + uri1 + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.uri + "[2]" + TAB_STRING + uri2 + NEW_LINE,
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_URI + "[1]" + TAB_STRING + uri1 + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_URI + "[2]" + TAB_STRING + uri2 + NEW_LINE,
             serializeSingle(writer, mtd));
     }
 

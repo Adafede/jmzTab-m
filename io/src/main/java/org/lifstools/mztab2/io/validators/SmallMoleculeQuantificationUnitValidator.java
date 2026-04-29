@@ -35,7 +35,7 @@ public class SmallMoleculeQuantificationUnitValidator implements RefiningValidat
         if (metadata.getSmallMoleculeQuantificationUnit() == null) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.smallMoleculeQuantificationUnit + ""));
+                    Metadata.JSON_PROPERTY_SMALL_MOLECULE_QUANTIFICATION_UNIT+ ""));
         }
         return Collections.emptyList();
     }

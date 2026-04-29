@@ -44,7 +44,7 @@ public class AssayValidatorTest {
         AssayValidator instance = new AssayValidator();
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.assay + ""));
+                Metadata.JSON_PROPERTY_ASSAY + ""));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -59,7 +59,7 @@ public class AssayValidatorTest {
         AssayValidator instance = new AssayValidator();
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.assay + ""));
+                Metadata.JSON_PROPERTY_ASSAY + ""));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -80,7 +80,7 @@ public class AssayValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.assay + "[" + 1 + "]-" + Assay.Properties.msRunRef)
+                        Metadata.JSON_PROPERTY_ASSAY + "[" + 1 + "]-" + Assay.JSON_PROPERTY_MS_RUN_REF)
         );
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

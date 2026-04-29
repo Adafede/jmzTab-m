@@ -425,14 +425,11 @@ public class MTDLineParser extends MZTabLineParser {
         if (!defineLabel.equals("colunit-protein")
             && !defineLabel.equals("colunit-peptide")
             && !defineLabel.equals("colunit-psm")
-            && !defineLabel.equals(Metadata.Properties.colunitSmallMolecule.
-                getPropertyName())
+            && !defineLabel.equals(Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE)
             && !defineLabel.equals(
-                Metadata.Properties.colunitSmallMoleculeEvidence.
-                    getPropertyName())
+                Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE)
             && !defineLabel.equals(
-                Metadata.Properties.colunitSmallMoleculeFeature.
-                    getPropertyName())) {
+                Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE)) {
             errorList.add(new MZTabError(
                 FormatErrorType.MTDDefineLabel, lineNumber,
                 defineLabel));
@@ -449,16 +446,14 @@ public class MTDLineParser extends MZTabLineParser {
                     FormatErrorType.InvalidColunitFormat, lineNumber, valueLabel));
             } else {
                 if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMolecule.getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE)) {
                     context.addSmallMoleculeColUnit(metadata, columnName, p);
                 } else if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMoleculeFeature.
-                        getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE)) {
                     context.addSmallMoleculeFeatureColUnit(metadata, columnName,
                         p);
                 } else if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMoleculeEvidence.
-                        getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE)) {
                     context.
                         addSmallMoleculeEvidenceColUnit(metadata, columnName, p);
                 } else {
@@ -782,7 +777,7 @@ public class MTDLineParser extends MZTabLineParser {
         if (sp == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
                 lineNumber,
-                Metadata.Properties.sampleProcessing + "[" + id + "]"));
+                Metadata.JSON_PROPERTY_SAMPLE_PROCESSING + "[" + id + "]"));
         }
     }
 
@@ -823,7 +818,7 @@ public class MTDLineParser extends MZTabLineParser {
             MZTabError error = new MZTabError(
                 FormatErrorType.MTDDefineLabel,
                 lineNumber,
-                Metadata.Properties.instrument + "[" + id + "]" + "-" + property);
+                Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]" + "-" + property);
             throw new MZTabException(error);
         }
 
@@ -844,12 +839,12 @@ public class MTDLineParser extends MZTabLineParser {
                 MZTabError error = new MZTabError(
                     FormatErrorType.MTDDefineLabel,
                     lineNumber,
-                    Metadata.Properties.instrument + "[" + id + "]" + "-" + property);
+                    Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]" + "-" + property);
                 throw new MZTabException(error);
         }
         if (instrument == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.instrument + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]"));
         }
     }
 
@@ -884,7 +879,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (software == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.software + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_SOFTWARE + "[" + id + "]"));
         }
     }
 
@@ -923,7 +918,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (contact == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.contact + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_CONTACT + "[" + id + "]"));
         }
     }
 
@@ -992,7 +987,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (msRun == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.msRun + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_MS_RUN + "[" + id + "]"));
         }
     }
 
@@ -1028,7 +1023,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (database == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.database + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_DATABASE + "[" + id + "]"));
         }
     }
 
@@ -1182,9 +1177,10 @@ public class MTDLineParser extends MZTabLineParser {
                         addStudyVariableDescription(metadata, id, valueLabel);
                     break;
                 case STUDY_VARIABLE_FACTORS:
-                    context.addStudyVariableFactors(metadata, id,
-                        checkParameter(defineLabel, valueLabel));
-                    break;
+                    // removed in version 2.1
+                    //context.addStudyVariableFactors(metadata, id,
+                    //    checkParameter(defineLabel, valueLabel));
+                    //break;
                 default:
                     MZTabError error = new MZTabError(
                         FormatErrorType.MTDDefineLabel,

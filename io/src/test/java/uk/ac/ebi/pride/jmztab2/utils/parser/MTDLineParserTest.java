@@ -17,7 +17,6 @@ package uk.ac.ebi.pride.jmztab2.utils.parser;
 
 import org.lifstools.mztab2.model.Assay;
 import org.lifstools.mztab2.model.Metadata;
-import static org.lifstools.mztab2.model.Metadata.Properties.uri;
 import org.lifstools.mztab2.model.MsRun;
 import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.Sample;
@@ -26,7 +25,6 @@ import org.lifstools.mztab2.test.utils.ExtractClassPathFiles;
 import org.lifstools.mztab2.test.utils.LogMethodName;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URI;
 import java.util.List;
@@ -606,15 +604,10 @@ public class MTDLineParserTest {
 
     @Test
     public void testCreateMetadata() throws Exception {
-        String fileName = "testset/mtdFile.txt";
         File mtdFile = new File(EXTRACT_FILES.getBaseDir(), "mtdFile.txt");
         assertTrue(mtdFile.exists());
-        if (uri != null) {
-            parseMetadata(mtdFile);
-            assertTrue(errorList.isEmpty());
-        } else {
-            throw new FileNotFoundException(fileName);
-        }
+        parseMetadata(mtdFile);
+        assertTrue(errorList.isEmpty());
     }
 
     @Test

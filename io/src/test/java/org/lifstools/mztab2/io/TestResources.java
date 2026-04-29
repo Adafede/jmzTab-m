@@ -37,7 +37,7 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class TestResources {
 
-    public static final String MZTAB_VERSION_HEADER = Metadata.PrefixEnum.MTD + MZTabConstants.TAB_STRING + Metadata.Properties.mzTabVersion + MZTabConstants.TAB_STRING + MZTabConstants.VERSION_MZTAB_M + MZTabConstants.NEW_LINE;
+    public static final String MZTAB_VERSION_HEADER = Metadata.PrefixEnum.MTD + MZTabConstants.TAB_STRING + Metadata.JSON_PROPERTY_MZ_TAB_VERSION + MZTabConstants.TAB_STRING + MZTabConstants.VERSION_MZTAB_M + MZTabConstants.NEW_LINE;
 
     public static MzTab parseResource(File tf, String resource,
         MZTabErrorType.Level level, Integer expectedErrors) throws URISyntaxException, IOException, MZTabException, MZTabErrorOverflowException {

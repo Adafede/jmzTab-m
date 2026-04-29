@@ -75,7 +75,7 @@ public class UriSerializer extends StdSerializer<Uri> {
         if (uri != null) {
             Serializers.checkIndexedElement(uri);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    Uri.Properties.value.getPropertyName(), uri,
+                    Uri.JSON_PROPERTY_VALUE, uri,
                     uri.
                             getValue());
 

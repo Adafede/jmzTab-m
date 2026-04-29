@@ -35,7 +35,7 @@ public class QuantificationMethodValidator implements RefiningValidator<Metadata
         if (metadata.getQuantificationMethod() == null) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.quantificationMethod.getPropertyName()));
+                    Metadata.JSON_PROPERTY_QUANTIFICATION_METHOD));
         }
         return Collections.emptyList();
     }

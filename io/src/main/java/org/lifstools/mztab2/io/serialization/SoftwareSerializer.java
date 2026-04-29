@@ -80,7 +80,7 @@ public class SoftwareSerializer extends StdSerializer<Software> {
                         software.getParameter());
                 if (software.getSetting() != null && !software.getSetting().isEmpty()) {
                     addSubElementStrings(jg, Section.Metadata.getPrefix(), software,
-                            Software.Properties.setting.getPropertyName(),
+                            Software.JSON_PROPERTY_SETTING,
                             software.getSetting(), false);
                 }
             }

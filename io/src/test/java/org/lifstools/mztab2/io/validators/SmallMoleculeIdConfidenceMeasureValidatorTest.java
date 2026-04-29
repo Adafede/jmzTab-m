@@ -42,7 +42,7 @@ public class SmallMoleculeIdConfidenceMeasureValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.idConfidenceMeasure.getPropertyName(),
+                Metadata.JSON_PROPERTY_ID_CONFIDENCE_MEASURE,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

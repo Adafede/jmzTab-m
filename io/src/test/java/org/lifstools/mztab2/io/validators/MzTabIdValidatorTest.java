@@ -42,7 +42,7 @@ public class MzTabIdValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.mzTabID.getPropertyName(),
+                Metadata.JSON_PROPERTY_MZ_TAB_I_D,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

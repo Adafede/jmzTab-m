@@ -42,7 +42,7 @@ public class QuantificationMethodValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.quantificationMethod.getPropertyName(),
+                Metadata.JSON_PROPERTY_QUANTIFICATION_METHOD,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

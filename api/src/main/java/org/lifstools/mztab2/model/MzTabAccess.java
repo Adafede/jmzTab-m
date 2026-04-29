@@ -15,6 +15,7 @@
  */
 package org.lifstools.mztab2.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -203,4 +204,40 @@ public class MzTabAccess {
         }
         return Optional.empty();
     }
+
+      /**
+   * Property enumeration for MzTab.
+   */
+  public static enum Properties {
+      metadata("metadata"), 
+      smallMoleculeSummary("smallMoleculeSummary"), 
+      smallMoleculeFeature("smallMoleculeFeature"), 
+      smallMoleculeEvidence("smallMoleculeEvidence"), 
+      comment("comment");
+
+    private final String propertyName;
+
+    private Properties(String propertyName) {
+      this.propertyName = propertyName;
+    }
+
+    public String getPropertyName() {
+      return propertyName;
+    }
+
+    public String toString() {
+      return propertyName;
+    }
+
+    public String toUpper() {
+      return propertyName.toUpperCase();
+    }
+
+    public static Properties of(String value) {
+      if(value==null) {
+        throw new NullPointerException("Argument value must not be null!");
+      }
+      return Arrays.asList(Properties.values()).stream().filter(m -> m.propertyName.equals(value.toLowerCase())).findAny().orElseThrow(IllegalArgumentException::new);
+    }
+  };
 }

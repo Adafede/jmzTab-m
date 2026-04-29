@@ -145,7 +145,7 @@ public class SMELineParser extends MZTabDataLineParser<SmallMoleculeEvidence> {
                         }
                         smallMoleculeEvidence.addOptItem(optColMapping);
                    }
-                } else if (column.getName().equals(SmallMoleculeEvidence.Properties.idConfidenceMeasure.getPropertyName())) {
+                } else if (column.getName().equals(SmallMoleculeEvidence.JSON_PROPERTY_ID_CONFIDENCE_MEASURE)) {
                     smallMoleculeEvidence.addIdConfidenceMeasureItem(checkDouble(column, target));
                 }
             }

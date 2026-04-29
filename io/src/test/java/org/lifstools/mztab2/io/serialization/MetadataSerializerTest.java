@@ -63,27 +63,29 @@ public class MetadataSerializerTest extends AbstractSerializerTest {
             ).
             addIdConfidenceMeasureItem(
                 new Parameter().
+                    id(1).
                     cvLabel("MS").
                     cvAccession("MS:1002889").
                     name("Progenesis MetaScope Score")
             ).addIdConfidenceMeasureItem(
                 new Parameter().
+                    id(2).
                     cvLabel("MS").
                     cvAccession("MS:1002890").
                     name("fragmentation score")  
             );
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.mzTabID + TAB_STRING + "ISAS_2017_M_11451" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.title + TAB_STRING + "A minimal test file" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.description + TAB_STRING + "A description of an mzTab file." + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.contact + "[1]-name" + TAB_STRING + "Nils Hoffmann" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.contact + "[1]-email" + TAB_STRING + "nils.hoffmann_at_isas.de" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.contact + "[1]-affiliation" + TAB_STRING + "ISAS e.V. Dortmund, Germany" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-location" + TAB_STRING + "file:///path/to/file1.mzML" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-format" + TAB_STRING + "[MS, MS:1000584, mzML file, ]" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.idConfidenceMeasure + "[1]" + TAB_STRING + "[MS, MS:1002889, Progenesis MetaScope Score, ]" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.idConfidenceMeasure + "[2]" + TAB_STRING + "[MS, MS:1002890, fragmentation score, ]" + NEW_LINE,
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MZ_TAB_I_D + TAB_STRING + "ISAS_2017_M_11451" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_TITLE + TAB_STRING + "A minimal test file" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_DESCRIPTION + TAB_STRING + "A description of an mzTab file." + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-name" + TAB_STRING + "Nils Hoffmann" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-email" + TAB_STRING + "nils.hoffmann_at_isas.de" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-affiliation" + TAB_STRING + "ISAS e.V. Dortmund, Germany" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-location" + TAB_STRING + "file:///path/to/file1.mzML" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-format" + TAB_STRING + "[MS, MS:1000584, mzML file, ]" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_ID_CONFIDENCE_MEASURE + "[1]" + TAB_STRING + "[MS, MS:1002889, Progenesis MetaScope Score, ]" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_ID_CONFIDENCE_MEASURE + "[2]" + TAB_STRING + "[MS, MS:1002890, fragmentation score, ]" + NEW_LINE,
             serializeSingle(writer, metadata));
     }
 

@@ -44,7 +44,7 @@ public class DatabaseValidatorTest {
         DatabaseValidator instance = new DatabaseValidator();
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.database + ""));
+                Metadata.JSON_PROPERTY_DATABASE + ""));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -64,10 +64,10 @@ public class DatabaseValidatorTest {
                 -1,
                 1 + "", "my illegal prefix"), new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.database + "[" + 1 + "]-" + Database.Properties.uri),
+                Metadata.JSON_PROPERTY_DATABASE + "[" + 1 + "]-" + Database.JSON_PROPERTY_URI),
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.database + "[" + 1 + "]-" + Database.Properties.version));
+                        Metadata.JSON_PROPERTY_DATABASE + "[" + 1 + "]-" + Database.JSON_PROPERTY_VERSION));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -87,10 +87,10 @@ public class DatabaseValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.database + "[" + 1 + "]-" + Database.Properties.uri),
+                        Metadata.JSON_PROPERTY_DATABASE + "[" + 1 + "]-" + Database.JSON_PROPERTY_URI),
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.database + "[" + 1 + "]-" + Database.Properties.version));
+                        Metadata.JSON_PROPERTY_DATABASE + "[" + 1 + "]-" + Database.JSON_PROPERTY_VERSION));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());

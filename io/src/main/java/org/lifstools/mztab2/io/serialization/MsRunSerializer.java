@@ -76,35 +76,34 @@ public class MsRunSerializer extends StdSerializer<MsRun> {
         if (msRun != null) {
             Serializers.checkIndexedElement(msRun);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                MsRun.Properties.name.getPropertyName(), msRun,
+                MsRun.JSON_PROPERTY_NAME, msRun,
                 msRun.getName());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                MsRun.Properties.location.getPropertyName(),
+                MsRun.JSON_PROPERTY_LOCATION,
                 msRun, msRun.getLocation());
             if (msRun.getInstrumentRef() != null) {
                 addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    MsRun.Properties.instrumentRef.getPropertyName(), msRun,
-                    new StringBuilder().append(Metadata.Properties.instrument.
-                        getPropertyName() + "[" + msRun.getInstrumentRef().
+                    MsRun.JSON_PROPERTY_INSTRUMENT_REF, msRun,
+                    new StringBuilder().append(Metadata.JSON_PROPERTY_INSTRUMENT + "[" + msRun.getInstrumentRef().
                             getId() + "]").
                         toString());
             }
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                MsRun.Properties.hash.getPropertyName(),
+                MsRun.JSON_PROPERTY_HASH,
                 msRun, msRun.getHash());
             addSubElementParameter(jg, Section.Metadata.getPrefix(), msRun,
-                MsRun.Properties.hashMethod.getPropertyName(),
+                MsRun.JSON_PROPERTY_HASH_METHOD,
                 msRun.getHashMethod());
             addSubElementParameter(jg, Section.Metadata.getPrefix(), msRun,
-                MsRun.Properties.format.getPropertyName(), msRun.getFormat());
+                MsRun.JSON_PROPERTY_FORMAT, msRun.getFormat());
             addSubElementParameters(jg, Section.Metadata.getPrefix(), msRun,
-                MsRun.Properties.fragmentationMethod.getPropertyName(),
+                MsRun.JSON_PROPERTY_FRAGMENTATION_METHOD,
                 msRun.getFragmentationMethod(), false);
             addSubElementParameters(jg, Section.Metadata.getPrefix(), msRun,
-                MsRun.Properties.scanPolarity.getPropertyName(),
+                MsRun.JSON_PROPERTY_SCAN_POLARITY,
                 msRun.getScanPolarity(), false);
             addSubElementParameter(jg, Section.Metadata.getPrefix(), msRun,
-                MsRun.Properties.idFormat.getPropertyName(),
+                MsRun.JSON_PROPERTY_ID_FORMAT,
                 msRun.getIdFormat());
         } else {
             log.debug(MsRun.class.getSimpleName() + " is null!");

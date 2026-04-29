@@ -86,82 +86,66 @@ public class SampleSerializerTest extends AbstractSerializerTest {
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.sample + "[1]" + TAB_STRING + sample1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]" + TAB_STRING + sample1.
                 getName()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.description + TAB_STRING + sample1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_DESCRIPTION + TAB_STRING + sample1.
                 getDescription()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.species + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_SPECIES + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getSpecies().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.cellType + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_CELL_TYPE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getCellType().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.disease + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_DISEASE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getDisease().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.disease + "[2]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_DISEASE + "[2]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getDisease().
                     get(1))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.tissue + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_TISSUE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getTissue().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.custom + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_CUSTOM + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getCustom().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[1]-" + Sample.Properties.custom + "[2]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[1]-" + Sample.JSON_PROPERTY_CUSTOM + "[2]" + TAB_STRING + new ParameterConverter().
                 convert(sample1.getCustom().
                     get(1))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]" + TAB_STRING + sample2.getName()
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]" + TAB_STRING + sample2.getName()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.description + TAB_STRING + sample2.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_DESCRIPTION + TAB_STRING + sample2.
                 getDescription()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.species + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_SPECIES + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getSpecies().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.species + "[2]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_SPECIES + "[2]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getSpecies().
                     get(1))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.cellType + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_CELL_TYPE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getCellType().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.tissue + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_TISSUE + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getTissue().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.custom + "[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_CUSTOM + "[1]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getCustom().
                     get(0))
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.sample.
-                getPropertyName() + "[2]-" + Sample.Properties.custom + "[2]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_SAMPLE + "[2]-" + Sample.JSON_PROPERTY_CUSTOM + "[2]" + TAB_STRING + new ParameterConverter().
                 convert(sample2.getCustom().
                     get(1))
             + NEW_LINE,

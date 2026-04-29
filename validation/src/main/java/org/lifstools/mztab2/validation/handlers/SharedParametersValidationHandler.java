@@ -61,7 +61,7 @@ public class SharedParametersValidationHandler implements CvTermValidationHandle
                 MZTabError error = new MZTabError(
                         CrossCheckErrorType.CvTermMalformed,
                         -1,
-                        Parameter.Properties.cvLabel.getPropertyName(),
+                        Parameter.JSON_PROPERTY_CV_LABEL,
                         new ParameterConverter().convert(p.
                                 getValue()), p.getValue().
                                 getCvLabel(), allowedParameter.getCvLabel(),
@@ -76,7 +76,7 @@ public class SharedParametersValidationHandler implements CvTermValidationHandle
                 MZTabError error = new MZTabError(
                         CrossCheckErrorType.CvTermMalformed,
                         -1,
-                        Parameter.Properties.cvAccession.getPropertyName(),
+                        Parameter.JSON_PROPERTY_CV_ACCESSION,
                         new ParameterConverter().convert(p.
                                 getValue()), p.getValue().
                                 getCvAccession(), allowedParameter.getCvAccession(),
@@ -91,7 +91,7 @@ public class SharedParametersValidationHandler implements CvTermValidationHandle
                 MZTabError error = new MZTabError(
                         CrossCheckErrorType.CvTermMalformed,
                         -1,
-                        Parameter.Properties.name.getPropertyName(),
+                        Parameter.JSON_PROPERTY_NAME,
                         new ParameterConverter().convert(p.
                                 getValue()), p.getValue().
                                 getName(), allowedParameter.getName(),

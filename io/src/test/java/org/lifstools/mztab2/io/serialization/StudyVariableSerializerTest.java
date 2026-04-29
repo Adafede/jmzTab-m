@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2018 Leibniz-Institut für Analytische Wissenschaften – ISAS – e.V..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,7 @@ import org.lifstools.mztab2.model.Metadata;
 import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
 import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.StudyVariable;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.BAR;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
@@ -60,9 +58,7 @@ public class StudyVariableSerializerTest extends AbstractSerializerTest {
                 name("standard error")).
             averageFunction(new Parameter().cvLabel("MS").
                 cvAccession("MS:1002883").
-                name("median")).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+                name("median"));
         mtd.addStudyVariableItem(studyVariable1);
         StudyVariable studyVariable2 = new StudyVariable().
             id(2).
@@ -75,57 +71,39 @@ public class StudyVariableSerializerTest extends AbstractSerializerTest {
                 name("standard error")).
             averageFunction(new Parameter().cvLabel("MS").
                 cvAccession("MS:1002883").
-                name("median")).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+                name("median"));
 
         mtd.addStudyVariableItem(studyVariable2);
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]" + TAB_STRING + studyVariable1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[1]" + TAB_STRING + studyVariable1.
                 getName()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]-" + StudyVariable.Properties.description + TAB_STRING + studyVariable1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[1]-" + StudyVariable.JSON_PROPERTY_DESCRIPTION + TAB_STRING + studyVariable1.
                 getDescription()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]-" + StudyVariable.Properties.factors + TAB_STRING + studyVariable1.
-                getFactors().
-                stream().
-                map((t) ->
-                {
-                    return new ParameterConverter().convert(t);
-                }).
-                collect(Collectors.joining("" + MZTabConstants.BAR)) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]-" + StudyVariable.Properties.averageFunction + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[1]-" + StudyVariable.JSON_PROPERTY_AVERAGE_FUNCTION + TAB_STRING + new ParameterConverter().
                 convert(studyVariable1.getAverageFunction())
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]-" + StudyVariable.Properties.variationFunction + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[1]-" + StudyVariable.JSON_PROPERTY_VARIATION_FUNCTION + TAB_STRING + new ParameterConverter().
                 convert(studyVariable1.getVariationFunction())
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[1]-" + StudyVariable.Properties.assayRefs + TAB_STRING + Metadata.Properties.assay + "[1]" + BAR + Metadata.Properties.assay + "[2]"
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[1]-" + StudyVariable.JSON_PROPERTY_ASSAY_REFS + TAB_STRING + Metadata.JSON_PROPERTY_ASSAY + "[1]" + BAR + Metadata.JSON_PROPERTY_ASSAY + "[2]"
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]" + TAB_STRING + studyVariable2.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[2]" + TAB_STRING + studyVariable2.
                 getName()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]-" + StudyVariable.Properties.description + TAB_STRING + studyVariable2.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[2]-" + StudyVariable.JSON_PROPERTY_DESCRIPTION + TAB_STRING + studyVariable2.
                 getDescription()
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]-" + StudyVariable.Properties.factors + TAB_STRING + studyVariable2.
-                getFactors().
-                stream().
-                map((t) ->
-                {
-                    return new ParameterConverter().convert(t);
-                }).
-                collect(Collectors.joining("" + MZTabConstants.BAR)) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]-" + StudyVariable.Properties.averageFunction + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[2]-" + StudyVariable.JSON_PROPERTY_AVERAGE_FUNCTION + TAB_STRING + new ParameterConverter().
                 convert(studyVariable2.getAverageFunction())
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]-" + StudyVariable.Properties.variationFunction + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[2]-" + StudyVariable.JSON_PROPERTY_VARIATION_FUNCTION + TAB_STRING + new ParameterConverter().
                 convert(studyVariable2.getVariationFunction())
             + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.studyVariable + "[2]-" + StudyVariable.Properties.assayRefs + TAB_STRING + Metadata.Properties.assay + "[1]" + BAR + Metadata.Properties.assay + "[2]"
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[2]-" + StudyVariable.JSON_PROPERTY_ASSAY_REFS + TAB_STRING + Metadata.JSON_PROPERTY_ASSAY + "[1]" + BAR + Metadata.JSON_PROPERTY_ASSAY + "[2]"
             + NEW_LINE,
             serializeSingle(writer, mtd));
     }

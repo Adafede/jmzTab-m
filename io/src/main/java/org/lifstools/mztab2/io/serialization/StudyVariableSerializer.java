@@ -84,22 +84,18 @@ public class StudyVariableSerializer extends StdSerializer<StudyVariable> {
                 studyVariable,
                 studyVariable.getName());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                StudyVariable.Properties.description.getPropertyName(),
+                StudyVariable.JSON_PROPERTY_DESCRIPTION,
                 studyVariable, studyVariable.getDescription());
-            addSubElementParameters(jg, Section.Metadata.getPrefix(),
-                studyVariable,
-                StudyVariable.Properties.factors.getPropertyName(),
-                studyVariable.getFactors(), true);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                StudyVariable.Properties.averageFunction.getPropertyName(),
+                StudyVariable.JSON_PROPERTY_AVERAGE_FUNCTION,
                 studyVariable, studyVariable.
                     getAverageFunction());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                StudyVariable.Properties.variationFunction.getPropertyName(),
+                StudyVariable.JSON_PROPERTY_VARIATION_FUNCTION,
                 studyVariable, studyVariable.
                     getVariationFunction());
             addSubElementStrings(jg, Section.Metadata.getPrefix(), studyVariable,
-                StudyVariable.Properties.assayRefs.getPropertyName(), Optional.
+                StudyVariable.JSON_PROPERTY_ASSAY_REFS, Optional.
                 ofNullable(studyVariable.getAssayRefs()).
                 orElse(Collections.emptyList()).
                 stream().
@@ -109,8 +105,7 @@ public class StudyVariableSerializer extends StdSerializer<StudyVariable> {
                 )).
                 map((assayRef) ->
                 {
-                    return new StringBuilder().append(Metadata.Properties.assay.
-                        getPropertyName()).
+                    return new StringBuilder().append(Metadata.JSON_PROPERTY_ASSAY).
                         append("[").
                         append(assayRef.getId()).
                         append("]").

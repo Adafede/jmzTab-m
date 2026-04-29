@@ -17,8 +17,8 @@ package uk.ac.ebi.pride.jmztab2.model;
 
 import org.lifstools.mztab2.model.IndexedElement;
 import org.lifstools.mztab2.model.Parameter;
+import org.lifstools.mztab2.model.SmallMoleculeFeature;
 import org.lifstools.mztab2.model.SmallMoleculeSummary;
-import static org.lifstools.mztab2.model.SmallMoleculeSummary.Properties.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -54,38 +54,30 @@ public class SmallMoleculeColumn implements ISmallMoleculeColumn {
      * Stable {@link SmallMoleculeColumn} definition templates.
      */
     public static enum Stable {
-        SML_ID(smlId.toUpper(), String.class, false, "01"),
-        SMF_ID_REFS(smfIdRefs.toUpper(), SplitList.class, false, "02"),
-        DATABASE_IDENTIFIER(databaseIdentifier, SplitList.class, false, "03"),
-        CHEMICAL_FORMULA(chemicalFormula, String.class, false, "04"),
-        SMILES(smiles,
+        SML_ID(SmallMoleculeSummary.JSON_PROPERTY_SML_ID.toUpperCase(), String.class, false, "01"),
+        SMF_ID_REFS(SmallMoleculeSummary.JSON_PROPERTY_SMF_ID_REFS.toUpperCase(), SplitList.class, false, "02"),
+        DATABASE_IDENTIFIER(SmallMoleculeSummary.JSON_PROPERTY_DATABASE_IDENTIFIER, SplitList.class, false, "03"),
+        CHEMICAL_FORMULA(SmallMoleculeSummary.JSON_PROPERTY_CHEMICAL_FORMULA, String.class, false, "04"),
+        SMILES(SmallMoleculeSummary.JSON_PROPERTY_SMILES,
             SplitList.class, false, "05"),
-        INCHI(inchi,
+        INCHI(SmallMoleculeSummary.JSON_PROPERTY_INCHI,
             SplitList.class, false, "06"),
         CHEMICAL_NAME(
-            chemicalName, SplitList.class, false, "07"),
-        URI(uri,
+            SmallMoleculeSummary.JSON_PROPERTY_CHEMICAL_NAME, SplitList.class, false, "07"),
+        URI(SmallMoleculeSummary.JSON_PROPERTY_URI,
             java.net.URI.class, false, "08"),
         THEOR_NEUTRAL_MASS(
-            theoreticalNeutralMass, Double.class, false, "09"),
+            SmallMoleculeSummary.JSON_PROPERTY_THEORETICAL_NEUTRAL_MASS, Double.class, false, "09"),
         ADDUCT_IONS(
-            adductIons, SplitList.class, false, "10"),
+            SmallMoleculeSummary.JSON_PROPERTY_ADDUCT_IONS, SplitList.class, false, "10"),
         RELIABILITY(
-            reliability, String.class, false, "11"),
+            SmallMoleculeSummary.JSON_PROPERTY_RELIABILITY, String.class, false, "11"),
         BEST_ID_CONFIDENCE_MEASURE(
-            bestIdConfidenceMeasure, Parameter.class, false, "12"),
+            SmallMoleculeSummary.JSON_PROPERTY_BEST_ID_CONFIDENCE_MEASURE, Parameter.class, false, "12"),
         BEST_ID_CONFIDENCE_VALUE(
-            bestIdConfidenceValue, Double.class, false, "13");
+            SmallMoleculeSummary.JSON_PROPERTY_BEST_ID_CONFIDENCE_VALUE, Double.class, false, "13");
 
         private final ISmallMoleculeColumn column;
-
-        private Stable(SmallMoleculeSummary.Properties property,
-            Class columnType, boolean optional,
-            String order) {
-            this.column = new SmallMoleculeColumn(property.getPropertyName(),
-                columnType, optional,
-                order);
-        }
 
         private Stable(String name, Class columnType, boolean optional,
             String order) {

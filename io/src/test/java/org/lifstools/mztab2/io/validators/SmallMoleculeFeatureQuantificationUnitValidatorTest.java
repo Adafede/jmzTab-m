@@ -42,7 +42,7 @@ public class SmallMoleculeFeatureQuantificationUnitValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.smallMoleculeFeatureQuantificationUnit.getPropertyName(),
+                Metadata.JSON_PROPERTY_SMALL_MOLECULE_FEATURE_QUANTIFICATION_UNIT,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

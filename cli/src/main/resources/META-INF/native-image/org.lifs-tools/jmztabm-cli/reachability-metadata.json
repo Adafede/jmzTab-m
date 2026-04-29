@@ -1,0 +1,2661 @@
+{
+  "reflection": [
+    {
+      "type": "apple.security.AppleProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.filter.ThresholdFilter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setLevel",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.classic.spi.LogbackServiceProvider"
+    },
+    {
+      "type": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.ConsoleAppender",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.OutputStreamAppender",
+      "methods": [
+        {
+          "name": "setEncoder",
+          "parameterTypes": [
+            "ch.qos.logback.core.encoder.Encoder"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.UnsynchronizedAppenderBase",
+      "methods": [
+        {
+          "name": "addFilter",
+          "parameterTypes": [
+            "ch.qos.logback.core.filter.Filter"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.Encoder"
+    },
+    {
+      "type": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+      "methods": [
+        {
+          "name": "setParent",
+          "parameterTypes": [
+            "ch.qos.logback.core.spi.ContextAware"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.filter.Filter"
+    },
+    {
+      "type": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+      "methods": [
+        {
+          "name": "setPattern",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ch.qos.logback.core.spi.ContextAware"
+    },
+    {
+      "type": "com.ctc.wstx.stax.WstxInputFactory"
+    },
+    {
+      "type": "com.ctc.wstx.stax.WstxOutputFactory"
+    },
+    {
+      "type": "com.fasterxml.jackson.core.JsonGenerator"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ObjectMapper"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.deser.BeanDeserializerModifier[]"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ser.BeanSerializerModifier[]"
+    },
+    {
+      "type": "com.fasterxml.jackson.dataformat.cbor.CBORFactory"
+    },
+    {
+      "type": "com.fasterxml.jackson.dataformat.smile.SmileFactory"
+    },
+    {
+      "type": "com.fasterxml.jackson.dataformat.xml.XmlMapper"
+    },
+    {
+      "type": "com.fasterxml.jackson.dataformat.yaml.YAMLFactory"
+    },
+    {
+      "type": "com.fasterxml.jackson.datatype.jdk8.Jdk8Module"
+    },
+    {
+      "type": "com.fasterxml.jackson.datatype.jsr310.JavaTimeModule"
+    },
+    {
+      "type": "com.fasterxml.jackson.module.paramnames.ParameterNamesModule"
+    },
+    {
+      "type": "com.google.gson.Gson"
+    },
+    {
+      "type": "com.rometools.rome.feed.WireFeed"
+    },
+    {
+      "type": "com.sun.crypto.provider.AESCipher$General",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ARCFOURCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DESCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DESedeCipher",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.DHParameters",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.HKDFKeyDerivation$HKDFSHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "javax.crypto.KDFParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.HmacCore$HmacSHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.crypto.provider.TlsMasterSecretGenerator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMapping",
+      "fields": [
+        {
+          "name": "cvMappingRuleList"
+        },
+        {
+          "name": "cvReferenceList"
+        },
+        {
+          "name": "modelName"
+        },
+        {
+          "name": "modelURI"
+        },
+        {
+          "name": "modelVersion"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMapping$CvMappingRuleList",
+      "fields": [
+        {
+          "name": "cvMappingRule"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMapping$CvReferenceList",
+      "fields": [
+        {
+          "name": "cvReference"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMappingRule",
+      "fields": [
+        {
+          "name": "cvElementPath"
+        },
+        {
+          "name": "cvTerm"
+        },
+        {
+          "name": "cvTermsCombinationLogic"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "requirementLevel"
+        },
+        {
+          "name": "scopePath"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMappingRule$CvTermsCombinationLogic",
+      "fields": [
+        {
+          "name": "AND"
+        },
+        {
+          "name": "OR"
+        },
+        {
+          "name": "XOR"
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvMappingRule$RequirementLevel",
+      "fields": [
+        {
+          "name": "MAY"
+        },
+        {
+          "name": "MUST"
+        },
+        {
+          "name": "SHOULD"
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvReference",
+      "fields": [
+        {
+          "name": "cvIdentifier"
+        },
+        {
+          "name": "cvName"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "info.psidev.cvmapping.CvTerm",
+      "fields": [
+        {
+          "name": "allowChildren"
+        },
+        {
+          "name": "cvIdentifierRef"
+        },
+        {
+          "name": "isRepeatable"
+        },
+        {
+          "name": "termAccession"
+        },
+        {
+          "name": "termName"
+        },
+        {
+          "name": "useTerm"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.json.bind.Jsonb"
+    },
+    {
+      "type": "jakarta.xml.bind.Binder"
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlElement",
+      "methods": [
+        {
+          "name": "type",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlEnum",
+      "methods": [
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.XmlType",
+      "methods": [
+        {
+          "name": "factoryClass",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter",
+      "methods": [
+        {
+          "name": "type",
+          "parameterTypes": []
+        },
+        {
+          "name": "value",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.beans.PropertyVetoException"
+    },
+    {
+      "type": "java.lang.Boolean",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.BooleanBeanInfo"
+    },
+    {
+      "type": "java.lang.BooleanCustomizer"
+    },
+    {
+      "type": "java.lang.CharSequence"
+    },
+    {
+      "type": "java.lang.Class"
+    },
+    {
+      "type": "java.lang.ClassBeanInfo"
+    },
+    {
+      "type": "java.lang.ClassCustomizer"
+    },
+    {
+      "type": "java.lang.Class[]"
+    },
+    {
+      "type": "java.lang.Comparable"
+    },
+    {
+      "type": "java.lang.Double"
+    },
+    {
+      "type": "java.lang.DoubleBeanInfo"
+    },
+    {
+      "type": "java.lang.DoubleCustomizer"
+    },
+    {
+      "type": "java.lang.Enum",
+      "methods": [
+        {
+          "name": "getDeclaringClass",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.EnumBeanInfo"
+    },
+    {
+      "type": "java.lang.EnumCustomizer"
+    },
+    {
+      "type": "java.lang.Integer"
+    },
+    {
+      "type": "java.lang.IntegerBeanInfo"
+    },
+    {
+      "type": "java.lang.IntegerCustomizer"
+    },
+    {
+      "type": "java.lang.Number"
+    },
+    {
+      "type": "java.lang.NumberBeanInfo"
+    },
+    {
+      "type": "java.lang.NumberCustomizer"
+    },
+    {
+      "type": "java.lang.Object"
+    },
+    {
+      "type": "java.lang.Object[]"
+    },
+    {
+      "type": "java.lang.String"
+    },
+    {
+      "type": "java.lang.StringBeanInfo"
+    },
+    {
+      "type": "java.lang.StringCustomizer"
+    },
+    {
+      "type": "java.lang.String[]"
+    },
+    {
+      "type": "java.lang.constant.Constable"
+    },
+    {
+      "type": "java.lang.constant.ConstantDesc"
+    },
+    {
+      "type": "java.lang.invoke.TypeDescriptor"
+    },
+    {
+      "type": "java.lang.invoke.TypeDescriptor$OfField"
+    },
+    {
+      "type": "java.lang.reflect.AnnotatedElement"
+    },
+    {
+      "type": "java.lang.reflect.Constructor[]"
+    },
+    {
+      "type": "java.lang.reflect.GenericDeclaration"
+    },
+    {
+      "type": "java.lang.reflect.Type"
+    },
+    {
+      "type": "java.lang.reflect.TypeVariable[]"
+    },
+    {
+      "type": "java.net.URI",
+      "methods": [
+        {
+          "name": "getAuthority",
+          "parameterTypes": []
+        },
+        {
+          "name": "getFragment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHost",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPath",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPort",
+          "parameterTypes": []
+        },
+        {
+          "name": "getQuery",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawAuthority",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawFragment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawPath",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawQuery",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawSchemeSpecificPart",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRawUserInfo",
+          "parameterTypes": []
+        },
+        {
+          "name": "getScheme",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSchemeSpecificPart",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUserInfo",
+          "parameterTypes": []
+        },
+        {
+          "name": "isAbsolute",
+          "parameterTypes": []
+        },
+        {
+          "name": "isOpaque",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.net.URIBeanInfo"
+    },
+    {
+      "type": "java.net.URICustomizer"
+    },
+    {
+      "type": "java.net.URIXBeanInfo"
+    },
+    {
+      "type": "java.security.AlgorithmParametersSpi"
+    },
+    {
+      "type": "java.security.KeyStoreSpi"
+    },
+    {
+      "type": "java.security.interfaces.ECPrivateKey"
+    },
+    {
+      "type": "java.security.interfaces.ECPublicKey"
+    },
+    {
+      "type": "java.security.interfaces.RSAPrivateKey"
+    },
+    {
+      "type": "java.security.interfaces.RSAPublicKey"
+    },
+    {
+      "type": "java.util.ArrayList",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "kotlin.Metadata"
+    },
+    {
+      "type": "kotlinx.serialization.cbor.Cbor"
+    },
+    {
+      "type": "kotlinx.serialization.json.Json"
+    },
+    {
+      "type": "kotlinx.serialization.protobuf.ProtoBuf"
+    },
+    {
+      "type": "org.apache.commons.beanutils.DynaBean"
+    },
+    {
+      "type": "org.apache.commons.jxpath.ri.JXPathContextFactoryReferenceImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.commons.jxpath.ri.model.dom.DOMPointerFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.apache.logging.log4j.spi.ExtendedLogger"
+    },
+    {
+      "type": "org.apache.logging.slf4j.SLF4JProvider"
+    },
+    {
+      "type": "org.glassfish.jaxb.core.v2.model.nav.ReflectionNavigator",
+      "methods": [
+        {
+          "name": "getInstance",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.JAXBContextFactory"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementLeafProperty"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.ArrayElementNodeProperty",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl",
+            "org.glassfish.jaxb.runtime.v2.model.runtime.RuntimeElementPropertyInfo"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.ArrayReferenceNodeProperty"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.SingleElementLeafProperty"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.SingleElementNodeProperty",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.glassfish.jaxb.runtime.v2.runtime.JAXBContextImpl",
+            "org.glassfish.jaxb.runtime.v2.model.runtime.RuntimeElementPropertyInfo"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.SingleMapNodeProperty"
+    },
+    {
+      "type": "org.glassfish.jaxb.runtime.v2.runtime.property.SingleReferenceNodeProperty"
+    },
+    {
+      "type": "org.jdom.Document"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Assay",
+      "methods": [
+        {
+          "name": "getCustom",
+          "parameterTypes": []
+        },
+        {
+          "name": "getExternalUri",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMsRunRef",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSampleRef",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.AssayBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.AssayCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.AssayXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CV",
+      "methods": [
+        {
+          "name": "getFullName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getLabel",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUri",
+          "parameterTypes": []
+        },
+        {
+          "name": "getVersion",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CVBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CVCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CVXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ColumnParameterMapping",
+      "methods": [
+        {
+          "name": "getColumnName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParam",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ColumnParameterMappingBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ColumnParameterMappingCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ColumnParameterMappingXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Comment",
+      "methods": [
+        {
+          "name": "getLineNumber",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMsg",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Comment$PrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Comment$PrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Comment$PrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Comment$PrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CommentBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CommentCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.CommentXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Database",
+      "methods": [
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParam",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUri",
+          "parameterTypes": []
+        },
+        {
+          "name": "getVersion",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.DatabaseBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.DatabaseCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.DatabaseXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Instrument",
+      "methods": [
+        {
+          "name": "getAnalyzer",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDetector",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSource",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.InstrumentBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.InstrumentCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.InstrumentXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Metadata",
+      "methods": [
+        {
+          "name": "getAssay",
+          "parameterTypes": []
+        },
+        {
+          "name": "getColunitSmallMolecule",
+          "parameterTypes": []
+        },
+        {
+          "name": "getColunitSmallMoleculeEvidence",
+          "parameterTypes": []
+        },
+        {
+          "name": "getColunitSmallMoleculeFeature",
+          "parameterTypes": []
+        },
+        {
+          "name": "getContact",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCustom",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCv",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDatabase",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDerivatizationAgent",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDescription",
+          "parameterTypes": []
+        },
+        {
+          "name": "getExternalStudyUri",
+          "parameterTypes": []
+        },
+        {
+          "name": "getIdConfidenceMeasure",
+          "parameterTypes": []
+        },
+        {
+          "name": "getInstrument",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMsRun",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMzTabID",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMzTabVersion",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPublication",
+          "parameterTypes": []
+        },
+        {
+          "name": "getQuantificationMethod",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSample",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSampleProcessing",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeFeatureQuantificationUnit",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeIdentificationReliability",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeQuantificationUnit",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSoftware",
+          "parameterTypes": []
+        },
+        {
+          "name": "getStudyVariable",
+          "parameterTypes": []
+        },
+        {
+          "name": "getTitle",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUri",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Metadata$PrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Metadata$PrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Metadata$PrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Metadata$PrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MetadataBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MetadataCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MetadataXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MsRun",
+      "methods": [
+        {
+          "name": "getFormat",
+          "parameterTypes": []
+        },
+        {
+          "name": "getFragmentationMethod",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHash",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHashMethod",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getIdFormat",
+          "parameterTypes": []
+        },
+        {
+          "name": "getInstrumentRef",
+          "parameterTypes": []
+        },
+        {
+          "name": "getLocation",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getScanPolarity",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MsRunBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MsRunCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MsRunXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MzTab",
+      "methods": [
+        {
+          "name": "getComment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMetadata",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeEvidence",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeFeature",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmallMoleculeSummary",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MzTabBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MzTabCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.MzTabXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.OptColumnMapping",
+      "methods": [
+        {
+          "name": "getIdentifier",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParam",
+          "parameterTypes": []
+        },
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.OptColumnMappingBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.OptColumnMappingCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.OptColumnMappingXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Parameter",
+      "methods": [
+        {
+          "name": "getCvAccession",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCvLabel",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ParameterBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ParameterCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.ParameterXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Publication",
+      "methods": [
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPublicationItems",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItem",
+      "methods": [
+        {
+          "name": "getAccession",
+          "parameterTypes": []
+        },
+        {
+          "name": "getType",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItem$TypeEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItem$TypeEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItem$TypeEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItem$TypeEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItemBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItemCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationItemXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.PublicationXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Sample",
+      "methods": [
+        {
+          "name": "getCellType",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCustom",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDescription",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDisease",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSpecies",
+          "parameterTypes": []
+        },
+        {
+          "name": "getTissue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleProcessing",
+      "methods": [
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSampleProcessing",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleProcessingBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleProcessingCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleProcessingXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SampleXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence",
+      "methods": [
+        {
+          "name": "getAdductIon",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCharge",
+          "parameterTypes": []
+        },
+        {
+          "name": "getChemicalFormula",
+          "parameterTypes": []
+        },
+        {
+          "name": "getChemicalName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getComment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDatabaseIdentifier",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDerivatizedForm",
+          "parameterTypes": []
+        },
+        {
+          "name": "getEvidenceInputId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getExpMassToCharge",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHeaderPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getIdConfidenceMeasure",
+          "parameterTypes": []
+        },
+        {
+          "name": "getIdentificationMethod",
+          "parameterTypes": []
+        },
+        {
+          "name": "getInchi",
+          "parameterTypes": []
+        },
+        {
+          "name": "getMsLevel",
+          "parameterTypes": []
+        },
+        {
+          "name": "getOpt",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRank",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmeId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmiles",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSpectraRef",
+          "parameterTypes": []
+        },
+        {
+          "name": "getTheoreticalMassToCharge",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUri",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$HeaderPrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$HeaderPrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$HeaderPrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$HeaderPrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$PrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$PrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$PrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidence$PrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidenceBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidenceCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeEvidenceXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature",
+      "methods": [
+        {
+          "name": "getAbundanceAssay",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAdductIon",
+          "parameterTypes": []
+        },
+        {
+          "name": "getCharge",
+          "parameterTypes": []
+        },
+        {
+          "name": "getComment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getExpMassToCharge",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHeaderPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getIsotopomer",
+          "parameterTypes": []
+        },
+        {
+          "name": "getOpt",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRetentionTimeInSeconds",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRetentionTimeInSecondsEnd",
+          "parameterTypes": []
+        },
+        {
+          "name": "getRetentionTimeInSecondsStart",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmeIdRefAmbiguityCode",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmeIdRefs",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmfId",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$HeaderPrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$HeaderPrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$HeaderPrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$HeaderPrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$PrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$PrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$PrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeature$PrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeatureBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeatureCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeFeatureXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary",
+      "methods": [
+        {
+          "name": "getAbundanceAssay",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAbundanceStudyVariable",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAbundanceVariationStudyVariable",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAdductIons",
+          "parameterTypes": []
+        },
+        {
+          "name": "getBestIdConfidenceMeasure",
+          "parameterTypes": []
+        },
+        {
+          "name": "getBestIdConfidenceValue",
+          "parameterTypes": []
+        },
+        {
+          "name": "getChemicalFormula",
+          "parameterTypes": []
+        },
+        {
+          "name": "getChemicalName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getComment",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDatabaseIdentifier",
+          "parameterTypes": []
+        },
+        {
+          "name": "getHeaderPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getInchi",
+          "parameterTypes": []
+        },
+        {
+          "name": "getOpt",
+          "parameterTypes": []
+        },
+        {
+          "name": "getPrefix",
+          "parameterTypes": []
+        },
+        {
+          "name": "getReliability",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmfIdRefs",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmiles",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSmlId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getTheoreticalNeutralMass",
+          "parameterTypes": []
+        },
+        {
+          "name": "getUri",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$HeaderPrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$HeaderPrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$HeaderPrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$HeaderPrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$PrefixEnum",
+      "methods": [
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$PrefixEnumBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$PrefixEnumCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummary$PrefixEnumXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummaryBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummaryCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SmallMoleculeSummaryXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Software",
+      "methods": [
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getParameter",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSetting",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SoftwareBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SoftwareCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SoftwareXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SpectraRef",
+      "methods": [
+        {
+          "name": "getMsRun",
+          "parameterTypes": []
+        },
+        {
+          "name": "getReference",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SpectraRefBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SpectraRefCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.SpectraRefXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.StudyVariable",
+      "methods": [
+        {
+          "name": "getAssayRefs",
+          "parameterTypes": []
+        },
+        {
+          "name": "getAverageFunction",
+          "parameterTypes": []
+        },
+        {
+          "name": "getDescription",
+          "parameterTypes": []
+        },
+        {
+          "name": "getFactors",
+          "parameterTypes": []
+        },
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "getVariationFunction",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.StudyVariableBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.StudyVariableCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.StudyVariableXBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.Uri",
+      "methods": [
+        {
+          "name": "getId",
+          "parameterTypes": []
+        },
+        {
+          "name": "getValue",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.lifstools.mztab2.model.UriBeanInfo"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.UriCustomizer"
+    },
+    {
+      "type": "org.lifstools.mztab2.model.UriXBeanInfo"
+    },
+    {
+      "type": "org.slf4j.Logger"
+    },
+    {
+      "type": "org.slf4j.spi.LocationAwareLogger"
+    },
+    {
+      "type": "org.springframework.util.ConcurrentReferenceHashMap$Segment[]"
+    },
+    {
+      "type": "org.w3c.dom.Node"
+    },
+    {
+      "type": "sun.security.pkcs12.PKCS12KeyStore",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.pkcs12.PKCS12KeyStore$DualFormatPKCS12",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.DSA$SHA224withDSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.DSA$SHA256withDSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$DualFormatJKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.JavaKeyStore$JKS",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.NativePRNG",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.security.SecureRandomParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA2$SHA224",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA2$SHA256",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA5$SHA384",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.SHA5$SHA512",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.X509Factory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.provider.certpath.PKIXCertPathValidator",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.PSSParameters",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSAKeyFactory$Legacy",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSAPSSSignature",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSASignature$SHA224withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSASignature$SHA256withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.rsa.RSASignature$SHA384withRSA",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.KeyManagerFactoryImpl$SunX509",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.SSLContextImpl$DefaultSSLContext",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.ssl.TrustManagerFactoryImpl$PKIXFactory",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.AuthorityInfoAccessExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.AuthorityKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.BasicConstraintsExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.CRLDistributionPointsExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.CertificatePoliciesExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.ExtendedKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.KeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.NetscapeCertTypeExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.PrivateKeyUsageExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectAlternativeNameExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.security.x509.SubjectKeyIdentifierExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Boolean",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Annotation",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "set",
+          "parameterTypes": [
+            "java.lang.String",
+            "java.lang.String[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Href",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setHref",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.ITerm"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Link",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "set",
+          "parameterTypes": [
+            "java.lang.String",
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Href"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOSynonym"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOSynonym[]"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOXRef",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setDatabase",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setDescription",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setId",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOXRef[]"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OboDefinitionCitation",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setOboXrefs",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOXRef[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.OboDefinitionCitation[]"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Page",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setNumber",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "setSize",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "setTotalElements",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "setTotalPages",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.QueryResult",
+      "methods": [
+        {
+          "name": "setLink",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Link"
+          ]
+        },
+        {
+          "name": "setPage",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Page"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Term",
+      "fields": [
+        {
+          "name": "oboSynonyms"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setAnnotation",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Annotation"
+          ]
+        },
+        {
+          "name": "setDefinedOntology",
+          "parameterTypes": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "setDescription",
+          "parameterTypes": [
+            "java.lang.String[]"
+          ]
+        },
+        {
+          "name": "setHasChildren",
+          "parameterTypes": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "setIri",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setLabel",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setLink",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Link"
+          ]
+        },
+        {
+          "name": "setOboDefinitionCitation",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.OboDefinitionCitation[]"
+          ]
+        },
+        {
+          "name": "setOboId",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setOboXRefs",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.OBOXRef[]"
+          ]
+        },
+        {
+          "name": "setOntologyIri",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setOntologyName",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setOntologyPrefix",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setRoot",
+          "parameterTypes": [
+            "boolean"
+          ]
+        },
+        {
+          "name": "setShortForm",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setSynonyms",
+          "parameterTypes": [
+            "java.lang.String[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.TermEmbedded",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setTerms",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.Term[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.TermQuery",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setTermEmbedded",
+          "parameterTypes": [
+            "uk.ac.ebi.pride.utilities.ols.web.service.model.TermEmbedded"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Term[]"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Xref"
+    },
+    {
+      "type": "uk.ac.ebi.pride.utilities.ols.web.service.model.Xref[]"
+    },
+    {
+      "type": {
+        "proxy": [
+          "org.lifstools.mztab2.model.IndexedElement"
+        ]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/services/ch.qos.logback.classic.spi.Configurator"
+    },
+    {
+      "glob": "META-INF/services/jakarta.xml.bind.JAXBContextFactory"
+    },
+    {
+      "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
+    },
+    {
+      "glob": "META-INF/services/java.net.spi.URLStreamHandlerProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.parsers.SAXParserFactory"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.stream.XMLInputFactory"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.stream.XMLOutputFactory"
+    },
+    {
+      "glob": "META-INF/services/org.apache.commons.jxpath.JXPathContextFactory"
+    },
+    {
+      "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "application.properties"
+    },
+    {
+      "glob": "conf1_1/mztab.properties"
+    },
+    {
+      "glob": "conf1_1/mztab_crosscheck_error.properties"
+    },
+    {
+      "glob": "conf1_1/mztab_format_error.properties"
+    },
+    {
+      "glob": "conf1_1/mztab_logical_error.properties"
+    },
+    {
+      "glob": "logback-test.xml"
+    },
+    {
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfc.nrm"
+    },
+    {
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/nfkc.nrm"
+    },
+    {
+      "module": "java.base",
+      "glob": "jdk/internal/icu/impl/data/icudt76b/uprops.icu"
+    },
+    {
+      "module": "java.base",
+      "glob": "sun/net/idn/uidna.spp"
+    }
+  ]
+}

@@ -40,8 +40,9 @@
                                         <withXml>false</withXml>
                                         <supportsInheritance>true</supportsInheritance>
                                         <useJakartaEe>true</useJakartaEe>
+                                        <useJackson3>true</useJackson3>
                                     </configOptions>
-                                    <library>native</library>
+                                    <library>resttemplate</library>
                                     <output>${project.basedir}</output>
                                     <annotationLibrary>swagger2</annotationLibrary>
                                     <modelPackage>org.lifstools.mztab2.model</modelPackage>

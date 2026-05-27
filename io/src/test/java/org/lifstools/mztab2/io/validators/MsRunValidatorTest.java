@@ -23,8 +23,8 @@ import org.lifstools.mztab2.model.Parameter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import uk.ac.ebi.pride.jmztab2.utils.errors.LogicalErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabError;
 import uk.ac.ebi.pride.jmztab2.utils.parser.MZTabParserContext;
@@ -48,7 +48,7 @@ public class MsRunValidatorTest {
         metadata.addMsRunItem(msRun);
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.msRun + "[" + 1 + "]-" + MsRun.Properties.location));
+                Metadata.JSON_PROPERTY_MS_RUN + "[" + 1 + "]-" + MsRun.JSON_PROPERTY_LOCATION));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
     }
@@ -66,7 +66,7 @@ public class MsRunValidatorTest {
         metadata.addMsRunItem(msRun);
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.msRun + "[" + 1 + "]-" + MsRun.Properties.scanPolarity));
+                Metadata.JSON_PROPERTY_MS_RUN + "[" + 1 + "]-" + MsRun.JSON_PROPERTY_SCAN_POLARITY));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
         

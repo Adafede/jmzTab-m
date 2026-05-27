@@ -31,28 +31,25 @@ import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_NEGATIVE
 import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL;
 import static org.lifstools.mztab2.test.utils.ClassPathFile.STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL;
 import org.lifstools.mztab2.test.utils.ExtractClassPathFiles;
-import org.lifstools.mztab2.test.utils.LogMethodName;
+import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_EXAMPLE;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import jakarta.xml.bind.JAXBException;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
-import static org.lifstools.mztab2.test.utils.ClassPathFile.XCMS_EXAMPLE;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorOverflowException;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
@@ -63,20 +60,12 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  * @author nilshoffmann
  */
 @Slf4j
-@RunWith(Parameterized.class)
 public class ExampleFilesValidationTestIT {
-
-    @Rule
-    public LogMethodName methodNameLogger = new LogMethodName();
 
     public static final CvParameterLookupService LOOKUP_SERVICE = new CvParameterLookupService();
 
-    @ClassRule
-    public static final TemporaryFolder TF = new TemporaryFolder();
-
-    @ClassRule
-    public static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
-        TF,
+    @RegisterExtension
+    static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
         MTBLS263,
         MOUSELIVER_NEGATIVE,
         MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT,
@@ -90,80 +79,62 @@ public class ExampleFilesValidationTestIT {
         XCMS_EXAMPLE
     );
 
-    @Parameters(
-        name = "{index}: semantic validation of ''{0}'' on level ''{1}'' expecting ''{2}'' structural/logical errors and ''{3}'' cross check/semantic errors.")
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-            {XCMS_EXAMPLE, MZTabErrorType.Level.Info, 1, 15},
-            {LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Info,
-                0, 6},
-            {MTBLS263, MZTabErrorType.Level.Info, 0, 11},
-            //            {MOUSELIVER_NEGATIVE, MZTabErrorType.Level.Info, 0, 1},
-            //            {MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT,
-            //                MZTabErrorType.Level.Info, 1, 3},
-            {STANDARDMIX_NEGATIVE_EXPORTPOSITIONLEVEL,
-                MZTabErrorType.Level.Info, 0, 5},
-            {STANDARDMIX_NEGATIVE_EXPORTSPECIESLEVEL,
-                MZTabErrorType.Level.Info, 0, 5},
-            {STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL,
-                MZTabErrorType.Level.Info, 0, 5},
-            {STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL,
-                MZTabErrorType.Level.Info, 0, 5},
-            {GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Info, 0, 4},
-            {GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Warn, 0, 0},
-            {LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Warn, 0, 0},
-            {LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Error, 0, 0},
-        });
+    static Stream<Arguments> data() {
+        return Stream.of(
+            Arguments.of(XCMS_EXAMPLE, MZTabErrorType.Level.Info, 1, 15),
+            Arguments.of(LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Info, 0, 6),
+            Arguments.of(MTBLS263, MZTabErrorType.Level.Info, 0, 11),
+            Arguments.of(STANDARDMIX_NEGATIVE_EXPORTPOSITIONLEVEL, MZTabErrorType.Level.Info, 0, 5),
+            Arguments.of(STANDARDMIX_NEGATIVE_EXPORTSPECIESLEVEL, MZTabErrorType.Level.Info, 0, 5),
+            Arguments.of(STANDARDMIX_POSITIVE_EXPORTPOSITIONLEVEL, MZTabErrorType.Level.Info, 0, 5),
+            Arguments.of(STANDARDMIX_POSITIVE_EXPORTSPECIESLEVEL, MZTabErrorType.Level.Info, 0, 5),
+            Arguments.of(GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Info, 0, 4),
+            Arguments.of(GCXGC_MS_EXAMPLE, MZTabErrorType.Level.Warn, 0, 0),
+            Arguments.of(LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Warn, 0, 0),
+            Arguments.of(LIPIDOMICS_EXAMPLE, MZTabErrorType.Level.Error, 0, 0)
+        );
     }
 
-    @Parameter(0)
-    public ClassPathFile resource;
-    @Parameter(1)
-    public MZTabErrorType.Level validationLevel;
-    @Parameter(2)
-    public int expectedStructuralLogicalErrors;
-    @Parameter(3)
-    public int expectedCrossCheckSemanticErrors;
-
-    @Test
-    public void testExamples() throws MZTabException, JAXBException {
-        testSemanticValidation(TF, resource,
+    @ParameterizedTest(name = "{index}: semantic validation of ''{0}'' on level ''{1}'' expecting ''{2}'' structural/logical errors and ''{3}'' cross check/semantic errors.")
+    @MethodSource("data")
+    public void testExamples(ClassPathFile resource, MZTabErrorType.Level validationLevel,
+            int expectedStructuralLogicalErrors, int expectedCrossCheckSemanticErrors)
+            throws MZTabException, JAXBException {
+        testSemanticValidation(EXTRACT_FILES.getBaseDir(), resource,
             validationLevel, expectedStructuralLogicalErrors,
             expectedCrossCheckSemanticErrors);
     }
 
-    List<ValidationMessage> testSemanticValidation(TemporaryFolder tf,
+    List<ValidationMessage> testSemanticValidation(File baseDir,
         ClassPathFile resource,
         MZTabErrorType.Level level,
         Integer expectedErrors, Integer expectedSemanticErrors) throws MZTabException, JAXBException {
         try {
-            MzTab mzTab = SemanticTestResources.parseResource(tf, resource.
-                fileName(),
+            MzTab mzTab = SemanticTestResources.parseResource(baseDir, resource.fileName(),
                 level, expectedErrors);
-            Assert.assertNotNull(mzTab);
-            Assert.assertNotNull(mzTab.getMetadata());
+            assertNotNull(mzTab);
+            assertNotNull(mzTab.getMetadata());
             CvMappingValidator validator = CvMappingValidator.of(
                 ExampleFilesValidationTestIT.class.getResource(
                     "/mappings/mzTab-M-mapping.xml"), LOOKUP_SERVICE,
                 true);
             List<ValidationMessage> messages = validator.validate(mzTab);
-            Map<MessageTypeEnum, List<ValidationMessage>> categorizedMessages = 
+            Map<MessageTypeEnum, List<ValidationMessage>> categorizedMessages =
                     messages.stream().collect(Collectors.groupingBy(ValidationMessage::getMessageType));
             log.debug("CategorizedMessages: {}", categorizedMessages);
             MessageTypeEnum mt = MessageTypeEnum.fromValue(level.toString().toLowerCase());
             if (Optional.ofNullable(categorizedMessages.get(mt)).orElse(Collections.emptyList()).size() != expectedSemanticErrors) {
-                Assert.assertEquals(String.format(
-                    "Expected %d semantic errors for level %s, found %d! ValidationMessages: %s",
-                    expectedSemanticErrors, level, messages.size(), messages),
-                    (long) expectedSemanticErrors, (long) messages.size());
+                assertEquals((long) expectedSemanticErrors, (long) messages.size(),
+                    String.format("Expected %d semantic errors for level %s, found %d! ValidationMessages: %s",
+                        expectedSemanticErrors, level, messages.size(), messages));
             }
             return messages;
         } catch (URISyntaxException ex) {
             log.error("Failed with exception:", ex);
-            Assert.fail(ex.getMessage());
+            fail(ex.getMessage());
         } catch (IOException | IndexOutOfBoundsException ex) {
             log.error("Failed with exception:", ex);
-            Assert.fail(ex.getMessage());
+            fail(ex.getMessage());
         } catch (MZTabException | MZTabErrorOverflowException | JAXBException e) {
             log.error("Failed with exception:", e);
             throw e;

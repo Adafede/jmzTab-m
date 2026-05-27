@@ -21,7 +21,7 @@ import org.lifstools.mztab2.io.TestResources;
 import org.lifstools.mztab2.model.Contact;
 import org.lifstools.mztab2.model.Metadata;
 import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
 
@@ -51,13 +51,13 @@ public class ContactSerializerTest extends AbstractSerializerTest {
             orcid("0000-0001-2345-6789"));
         
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[1]-name" + TAB_STRING + "James D. Watson" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[1]-email" + TAB_STRING + "watson@cam.ac.uk" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[1]-affiliation" + TAB_STRING + "Cambridge University, UK" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[2]-name" + TAB_STRING + "Francis Crick" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[2]-email" + TAB_STRING + "crick@cam.ac.uk" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[2]-affiliation" + TAB_STRING + "Cambridge University, UK" + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.contact + "[2]-orcid" + TAB_STRING + "0000-0001-2345-6789" + NEW_LINE,
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-name" + TAB_STRING + "James D. Watson" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-email" + TAB_STRING + "watson@cam.ac.uk" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[1]-affiliation" + TAB_STRING + "Cambridge University, UK" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[2]-name" + TAB_STRING + "Francis Crick" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[2]-email" + TAB_STRING + "crick@cam.ac.uk" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[2]-affiliation" + TAB_STRING + "Cambridge University, UK" + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_CONTACT + "[2]-orcid" + TAB_STRING + "0000-0001-2345-6789" + NEW_LINE,
             serializeSingle(writer, mtd));
     }
     

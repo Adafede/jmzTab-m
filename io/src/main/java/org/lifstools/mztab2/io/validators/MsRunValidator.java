@@ -41,14 +41,14 @@ public class MsRunValidator implements RefiningValidator<Metadata> {
                     getLocation() == null) {
                 errorList.add(new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.msRun + "[" + id + "]-" + MsRun.Properties.location));
+                        Metadata.JSON_PROPERTY_MS_RUN + "[" + id + "]-" + MsRun.JSON_PROPERTY_LOCATION));
             }
             List<Parameter> scanPolarity = runMap.get(id).
                     getScanPolarity();
             if (scanPolarity == null || scanPolarity.isEmpty()) {
                 errorList.add(new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.msRun + "[" + id + "]-" + MsRun.Properties.scanPolarity));
+                        Metadata.JSON_PROPERTY_MS_RUN + "[" + id + "]-" + MsRun.JSON_PROPERTY_SCAN_POLARITY));
             }
 
         }

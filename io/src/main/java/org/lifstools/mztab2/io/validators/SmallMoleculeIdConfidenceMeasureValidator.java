@@ -38,7 +38,7 @@ public class SmallMoleculeIdConfidenceMeasureValidator implements RefiningValida
                 isEmpty()) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.idConfidenceMeasure + ""));
+                    Metadata.JSON_PROPERTY_ID_CONFIDENCE_MEASURE + ""));
         }
         return Collections.emptyList();
     }

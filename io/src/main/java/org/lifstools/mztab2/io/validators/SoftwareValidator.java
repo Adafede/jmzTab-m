@@ -36,7 +36,7 @@ public class SoftwareValidator implements RefiningValidator<Metadata> {
         if (metadata.getSoftware() == null || metadata.getSoftware().isEmpty()) {
             return Arrays.asList(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.software.getPropertyName(),
+                    Metadata.JSON_PROPERTY_SOFTWARE,
                     metadata.getMzTabVersion()));
         }
         return Collections.emptyList();

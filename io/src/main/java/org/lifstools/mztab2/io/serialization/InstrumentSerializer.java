@@ -76,23 +76,23 @@ public class InstrumentSerializer extends StdSerializer<Instrument> {
         if (instrument != null) {
             Serializers.checkIndexedElement(instrument);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Instrument.Properties.name.getPropertyName(),
+                Instrument.JSON_PROPERTY_NAME,
                 instrument,
                 instrument.getName());
 
             addLineWithPropertyParameters(jg, Section.Metadata.getPrefix(),
-                Instrument.Properties.source.getPropertyName(),
+                Instrument.JSON_PROPERTY_SOURCE,
                 instrument, Arrays.asList(instrument.getSource()));
 
             if (instrument.getAnalyzer() != null) {
                 addSubElementStrings(jg, Section.Metadata.getPrefix(),
                     instrument,
-                    Instrument.Properties.analyzer.getPropertyName(),
+                    Instrument.JSON_PROPERTY_ANALYZER,
                     instrument.getAnalyzer(), false);
             }
             if (instrument.getDetector() != null) {
                 addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    Instrument.Properties.detector.getPropertyName(),
+                    Instrument.JSON_PROPERTY_DETECTOR,
                     instrument,
                     instrument.
                         getDetector());

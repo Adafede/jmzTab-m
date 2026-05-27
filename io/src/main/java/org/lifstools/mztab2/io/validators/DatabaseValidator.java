@@ -39,7 +39,7 @@ public class DatabaseValidator implements RefiningValidator<Metadata> {
                 isEmpty()) {
             errorList.add(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.database + ""));
+                    Metadata.JSON_PROPERTY_DATABASE + ""));
         } else {
             for (Database db : metadata.getDatabase()) {
                 if (db.getParam().
@@ -56,19 +56,19 @@ public class DatabaseValidator implements RefiningValidator<Metadata> {
                             equals("null")) {
                         errorList.add(new MZTabError(
                                 LogicalErrorType.NotDefineInMetadata, -1,
-                                Metadata.Properties.database + "[" + db.getId() + "]-" + Database.Properties.uri));
+                                Metadata.JSON_PROPERTY_DATABASE + "[" + db.getId() + "]-" + Database.JSON_PROPERTY_URI));
                     }
                 } else {
                     if (db.getUri() == null) {
                         errorList.add(new MZTabError(
                                 LogicalErrorType.NotDefineInMetadata, -1,
-                                Metadata.Properties.database + "[" + db.getId() + "]-" + Database.Properties.uri));
+                                Metadata.JSON_PROPERTY_DATABASE + "[" + db.getId() + "]-" + Database.JSON_PROPERTY_URI));
                     }
                 }
                 if (db.getVersion() == null) {
                     errorList.add(new MZTabError(
                             LogicalErrorType.NotDefineInMetadata, -1,
-                            Metadata.Properties.database + "[" + db.getId() + "]-" + Database.Properties.version));
+                            Metadata.JSON_PROPERTY_DATABASE + "[" + db.getId() + "]-" + Database.JSON_PROPERTY_VERSION));
                 }
             }
         }

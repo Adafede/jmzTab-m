@@ -25,6 +25,7 @@ import org.lifstools.mztab2.io.validators.QuantificationMethodValidator;
 import org.lifstools.mztab2.io.validators.SmallMoleculeFeatureQuantificationUnitValidator;
 import org.lifstools.mztab2.io.validators.SmallMoleculeQuantificationUnitValidator;
 import org.lifstools.mztab2.io.validators.SoftwareValidator;
+import org.lifstools.mztab2.io.validators.StudyVariableGroupValidator;
 import org.lifstools.mztab2.io.validators.StudyVariableValidator;
 import org.lifstools.mztab2.model.Assay;
 import org.lifstools.mztab2.model.CV;
@@ -40,6 +41,7 @@ import org.lifstools.mztab2.model.Sample;
 import org.lifstools.mztab2.model.SampleProcessing;
 import org.lifstools.mztab2.model.Software;
 import org.lifstools.mztab2.model.StudyVariable;
+import org.lifstools.mztab2.model.StudyVariableGroup;
 import org.lifstools.mztab2.model.Uri;
 import java.net.URI;
 import java.util.*;
@@ -381,6 +383,10 @@ public class MTDLineParser extends MZTabLineParser {
                     handleStudyVariable(defineLabel, matcher, element,
                         valueLabel);
                     break;
+                case STUDY_VARIABLE_GROUP:
+                    handleStudyVariableGroup(defineLabel, matcher, element,
+                        valueLabel);
+                    break;
                 case CUSTOM:
                     handleCustom(defineLabel, matcher, valueLabel);
                     break;
@@ -425,14 +431,11 @@ public class MTDLineParser extends MZTabLineParser {
         if (!defineLabel.equals("colunit-protein")
             && !defineLabel.equals("colunit-peptide")
             && !defineLabel.equals("colunit-psm")
-            && !defineLabel.equals(Metadata.Properties.colunitSmallMolecule.
-                getPropertyName())
+            && !defineLabel.equals(Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE)
             && !defineLabel.equals(
-                Metadata.Properties.colunitSmallMoleculeEvidence.
-                    getPropertyName())
+                Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE)
             && !defineLabel.equals(
-                Metadata.Properties.colunitSmallMoleculeFeature.
-                    getPropertyName())) {
+                Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE)) {
             errorList.add(new MZTabError(
                 FormatErrorType.MTDDefineLabel, lineNumber,
                 defineLabel));
@@ -449,16 +452,14 @@ public class MTDLineParser extends MZTabLineParser {
                     FormatErrorType.InvalidColunitFormat, lineNumber, valueLabel));
             } else {
                 if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMolecule.getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE)) {
                     context.addSmallMoleculeColUnit(metadata, columnName, p);
                 } else if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMoleculeFeature.
-                        getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_FEATURE)) {
                     context.addSmallMoleculeFeatureColUnit(metadata, columnName,
                         p);
                 } else if (defineLabel.equals(
-                    Metadata.Properties.colunitSmallMoleculeEvidence.
-                        getPropertyName())) {
+                    Metadata.JSON_PROPERTY_COLUNIT_SMALL_MOLECULE_EVIDENCE)) {
                     context.
                         addSmallMoleculeEvidenceColUnit(metadata, columnName, p);
                 } else {
@@ -496,6 +497,13 @@ public class MTDLineParser extends MZTabLineParser {
         property = checkProperty(element, matcher.group(5));
         addStudyVariable(context, metadata, property, defineLabel, valueLabel,
             id);
+    }
+
+    protected void handleStudyVariableGroup(String defineLabel, Matcher matcher,
+        MetadataElement element, String valueLabel) throws MZTabException {
+        Integer id = checkIndex(defineLabel, matcher.group(3));
+        MetadataProperty property = checkProperty(element, matcher.group(5));
+        addStudyVariableGroup(context, metadata, property, defineLabel, valueLabel, id);
     }
 
     protected void handleAssay(Matcher matcher, String defineLabel,
@@ -756,6 +764,7 @@ public class MTDLineParser extends MZTabLineParser {
         validate(metadata, new QuantificationMethodValidator(), context, errorList);
         validate(metadata, new AssayValidator(), context, errorList);
         validate(metadata, new StudyVariableValidator(), context, errorList);
+        validate(metadata, new StudyVariableGroupValidator(), context, errorList);
         validate(metadata, new MsRunValidator(), context, errorList);
         validate(metadata, new CvValidator(), context, errorList);
         validate(metadata, new DatabaseValidator(), context, errorList);
@@ -782,7 +791,7 @@ public class MTDLineParser extends MZTabLineParser {
         if (sp == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
                 lineNumber,
-                Metadata.Properties.sampleProcessing + "[" + id + "]"));
+                Metadata.JSON_PROPERTY_SAMPLE_PROCESSING + "[" + id + "]"));
         }
     }
 
@@ -823,7 +832,7 @@ public class MTDLineParser extends MZTabLineParser {
             MZTabError error = new MZTabError(
                 FormatErrorType.MTDDefineLabel,
                 lineNumber,
-                Metadata.Properties.instrument + "[" + id + "]" + "-" + property);
+                Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]" + "-" + property);
             throw new MZTabException(error);
         }
 
@@ -844,12 +853,12 @@ public class MTDLineParser extends MZTabLineParser {
                 MZTabError error = new MZTabError(
                     FormatErrorType.MTDDefineLabel,
                     lineNumber,
-                    Metadata.Properties.instrument + "[" + id + "]" + "-" + property);
+                    Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]" + "-" + property);
                 throw new MZTabException(error);
         }
         if (instrument == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.instrument + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_INSTRUMENT + "[" + id + "]"));
         }
     }
 
@@ -884,7 +893,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (software == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.software + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_SOFTWARE + "[" + id + "]"));
         }
     }
 
@@ -923,7 +932,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (contact == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.contact + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_CONTACT + "[" + id + "]"));
         }
     }
 
@@ -992,7 +1001,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (msRun == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.msRun + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_MS_RUN + "[" + id + "]"));
         }
     }
 
@@ -1028,7 +1037,7 @@ public class MTDLineParser extends MZTabLineParser {
         }
         if (database == null) {
             throw new MZTabException(new MZTabError(LogicalErrorType.NULL,
-                lineNumber, Metadata.Properties.database + "[" + id + "]"));
+                lineNumber, Metadata.JSON_PROPERTY_DATABASE + "[" + id + "]"));
         }
     }
 
@@ -1182,7 +1191,51 @@ public class MTDLineParser extends MZTabLineParser {
                         addStudyVariableDescription(metadata, id, valueLabel);
                     break;
                 case STUDY_VARIABLE_FACTORS:
-                    context.addStudyVariableFactors(metadata, id,
+                    // removed in version 2.1
+                    //context.addStudyVariableFactors(metadata, id,
+                    //    checkParameter(defineLabel, valueLabel));
+                    //break;
+                case STUDY_VARIABLE_GROUP_REF:
+                    IndexedElement groupRefElement = checkIndexedElement(defineLabel,
+                        valueLabel, MetadataElement.STUDY_VARIABLE_GROUP);
+                    StudyVariableGroup referencedGroup = context.getStudyVariableGroupMap().
+                        get(groupRefElement.getId());
+                    if (referencedGroup == null) {
+                        throw new MZTabException(new MZTabError(
+                            LogicalErrorType.NotDefineInMetadata, lineNumber, valueLabel));
+                    }
+                    context.addStudyVariableGroupRef(metadata, id, referencedGroup);
+                    break;
+                default:
+                    MZTabError error = new MZTabError(
+                        FormatErrorType.MTDDefineLabel,
+                        lineNumber, defineLabel + "-" + valueLabel);
+                    throw new MZTabException(error);
+            }
+        }
+    }
+
+    private void addStudyVariableGroup(MZTabParserContext context,
+        Metadata metadata, MetadataProperty property, String defineLabel,
+        String valueLabel, Integer id) throws MZTabException {
+        if (property == null) {
+            context.addStudyVariableGroup(metadata,
+                new StudyVariableGroup().id(id).parameter(
+                    checkParameter(defineLabel, valueLabel)));
+        } else {
+            switch (property) {
+                case STUDY_VARIABLE_GROUP_DESCRIPTION:
+                    context.addStudyVariableGroupDescription(metadata, id, valueLabel);
+                    break;
+                case STUDY_VARIABLE_GROUP_TYPE:
+                    context.addStudyVariableGroupType(metadata, id,
+                        checkParameter(defineLabel, valueLabel));
+                    break;
+                case STUDY_VARIABLE_GROUP_DATATYPE:
+                    context.addStudyVariableGroupDatatype(metadata, id, valueLabel);
+                    break;
+                case STUDY_VARIABLE_GROUP_UNIT:
+                    context.addStudyVariableGroupUnit(metadata, id,
                         checkParameter(defineLabel, valueLabel));
                     break;
                 default:

@@ -16,8 +16,8 @@
 package org.lifstools.mztab2.io.validators;
 
 import org.lifstools.mztab2.io.validators.RefiningValidator;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *

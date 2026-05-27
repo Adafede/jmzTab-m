@@ -23,7 +23,7 @@ import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
 import org.lifstools.mztab2.model.Publication;
 import org.lifstools.mztab2.model.PublicationItem;
 import java.util.Arrays;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.BAR;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
@@ -63,10 +63,8 @@ public class PublicationSerializerTest extends AbstractSerializerTest {
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.publication.
-                getPropertyName() + "[1]" + TAB_STRING + "pubmed:21063943" + BAR + "doi:10.1007/978-1-60761-987-1_6" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.publication.
-                getPropertyName() + "[2]" + TAB_STRING + "pubmed:20615486" + BAR + "doi:10.1016/j.jprot.2010.06.008"
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_PUBLICATION + "[1]" + TAB_STRING + "pubmed:21063943" + BAR + "doi:10.1007/978-1-60761-987-1_6" + NEW_LINE
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_PUBLICATION + "[2]" + TAB_STRING + "pubmed:20615486" + BAR + "doi:10.1016/j.jprot.2010.06.008"
             + NEW_LINE, serializeSingle(writer, mtd));
     }
 

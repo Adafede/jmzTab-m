@@ -77,7 +77,7 @@ public class PublicationSerializer extends StdSerializer<Publication> {
         if (publication != null) {
             Serializers.checkIndexedElement(publication);
             addLine(jg, Section.Metadata.getPrefix(),
-                Metadata.Properties.publication+"[" + publication.getId() + "]", Optional.ofNullable(
+                Metadata.JSON_PROPERTY_PUBLICATION+"[" + publication.getId() + "]", Optional.ofNullable(
                 publication.
                     getPublicationItems()).
                 orElse(Collections.emptyList()).

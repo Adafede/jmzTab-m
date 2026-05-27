@@ -25,8 +25,8 @@ import org.lifstools.mztab2.model.SmallMoleculeSummary;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.IOptColumnMappingBuilder;
 import uk.ac.ebi.pride.jmztab2.model.MZTabConstants;
 import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilder;
@@ -98,10 +98,10 @@ public class SmallMoleculeSummarySerializerTest extends AbstractSerializerTest {
 
         String serializedString = serializeSequence(writer, mzTabFile.
             getSmallMoleculeSummary());
-        Assert.assertFalse(serializedString.isEmpty());
+        Assertions.assertFalse(serializedString.isEmpty());
         System.out.println(serializedString);
         //check for exactly one header line + 1 entry lines
-        Assert.assertEquals(2,
+        Assertions.assertEquals(2,
             serializedString.split(MZTabConstants.NEW_LINE).length);
         String expected = 
             "SMH	SML_ID	SMF_ID_REFS	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	theoretical_neutral_mass	adduct_ions	reliability	best_id_confidence_measure	best_id_confidence_value	abundance_assay[1]	abundance_assay[2]	abundance_study_variable[1]	abundance_study_variable[2]	abundance_variation_study_variable[1]	abundance_variation_study_variable[2]	opt_global_cv_LM:SP_Category	opt_global_cv_LH:XXXXX_Species	opt_global_cv_LH:XXXXX_Sub_Species	opt_assay[1]_peak_mz	opt_assay[2]_peak_mz	opt_assay[1]_cv_MS:121317_just_for_testing	opt_assay[2]_cv_MS:121317_just_for_testing" + MZTabConstants.NEW_LINE

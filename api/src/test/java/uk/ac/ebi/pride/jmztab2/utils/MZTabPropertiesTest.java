@@ -16,8 +16,8 @@
 package uk.ac.ebi.pride.jmztab2.utils;
 
 import java.util.Optional;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -30,18 +30,19 @@ public class MZTabPropertiesTest {
      */
     @Test
     public void testGetProperty() {
-        Assert.assertEquals("2.0.0-M",MZTabProperties.getProperty("mztab.version"));
-        Assert.assertEquals("UTF-8", MZTabProperties.ENCODE);
-        Assert.assertEquals("UTF-8", MZTabProperties.getProperty("mztab.encode"));
-        Assert.assertEquals("200", MZTabProperties.getProperty("mztab.max_error_count"));
-        Assert.assertEquals("Info", MZTabProperties.getProperty("mztab.level"));
+        Assertions.assertEquals("2.0.0-M",MZTabProperties.getProperty("mztab.version"));
+        Assertions.assertEquals("UTF-8", MZTabProperties.ENCODE);
+        Assertions.assertEquals("UTF-8", MZTabProperties.getProperty("mztab.encode"));
+        Assertions.assertEquals("200", MZTabProperties.getProperty("mztab.max_error_count"));
+        Assertions.assertEquals("Info", MZTabProperties.getProperty("mztab.level"));
     }
     
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testOrElseThrow() {
         String s = null;
-        String t = Optional.ofNullable(s).orElseThrow(() -> new RuntimeException("Element was null"));
-        Assert.fail("Should not reach this code!");
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            Optional.ofNullable(s).orElseThrow(() -> new RuntimeException("Element was null"));
+        });
     }
     
 }

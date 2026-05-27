@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 /**
- * This package contains custom validation annotations for the javax.validation framework.
+ * This package contains custom validation annotations for the jakarta.validation framework.
  */
 package org.lifstools.mztab2.validation.constraints;

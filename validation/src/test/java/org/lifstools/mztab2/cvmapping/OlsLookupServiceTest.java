@@ -22,9 +22,9 @@ import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.utilities.ols.web.service.client.OLSClient;
 import uk.ac.ebi.pride.utilities.ols.web.service.config.OLSWsConfig;
 import uk.ac.ebi.pride.utilities.ols.web.service.model.Identifier;
@@ -43,10 +43,10 @@ public class OlsLookupServiceTest {
         Identifier ident = new Identifier("chmo:0000524",
             Identifier.IdentifierType.OBO);
         List<Term> children = client.searchTermById(ident.getIdentifier(), "CHMO");
-        Assert.assertTrue(children.size() > 0);
+        assertTrue(children.size() > 0);
         ident.setIdentifier("chmo:0000524");
         children = client.searchTermById(ident.getIdentifier(), "chmo");
-        Assert.assertTrue(children.size() > 0);
+        assertTrue(children.size() > 0);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class OlsLookupServiceTest {
         Identifier ident = new Identifier("MS:1000831",
             Identifier.IdentifierType.OBO);
         List<Term> children = client.getTermChildren(ident, "MS", 5);
-        Assert.assertTrue(children.size() > 0);
+        assertTrue(children.size() > 0);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class OlsLookupServiceTest {
             Identifier.IdentifierType.OBO);
         //get immediate children
         List<Term> children = client.getTermChildren(ident, "MS", 1);
-        Assert.assertThat(children.size(), allOf(greaterThan(0),
+        assertThat(children.size(), allOf(greaterThan(0),
             greaterThanOrEqualTo(1)));
     }
     
@@ -82,7 +82,7 @@ public class OlsLookupServiceTest {
         //get immediate children
         List<Term> children = client.getTermChildren(ident, "MS", -1);
         System.out.println("Found "+children.size()+" child terms of "+ident.getIdentifier());
-        Assert.assertThat(children.size(), allOf(greaterThan(0),
+        assertThat(children.size(), allOf(greaterThan(0),
             greaterThanOrEqualTo(1)));
     }
 
@@ -95,11 +95,11 @@ public class OlsLookupServiceTest {
             Identifier.IdentifierType.OBO);
         //get immediate parent
         List<Term> parents = client.getTermParents(ident, "MS", 1);
-        Assert.assertThat(parents.size(), is(1));
-        assertTrue("Retrieved parent term equals reference", isEqualTo(parents.get(0), new Parameter().cvAccession(
+        assertThat(parents.size(), is(1));
+        assertTrue(isEqualTo(parents.get(0), new Parameter().cvAccession(
             "MS:1000560").
             cvLabel("MS").
-            name("mass spectrometer file format")));
+            name("mass spectrometer file format")), "Retrieved parent term equals reference");
     }
 
     

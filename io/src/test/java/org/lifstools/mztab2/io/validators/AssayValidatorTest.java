@@ -21,9 +21,9 @@ import org.lifstools.mztab2.model.Metadata;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Ignore;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import uk.ac.ebi.pride.jmztab2.utils.errors.LogicalErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabError;
 import uk.ac.ebi.pride.jmztab2.utils.parser.MZTabParserContext;
@@ -44,13 +44,13 @@ public class AssayValidatorTest {
         AssayValidator instance = new AssayValidator();
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.assay + ""));
+                Metadata.JSON_PROPERTY_ASSAY + ""));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
     }
     
-    @Ignore
+    @Disabled
     @Test
     public void testValidateMissingName() {
         Metadata metadata = new Metadata();
@@ -59,7 +59,7 @@ public class AssayValidatorTest {
         AssayValidator instance = new AssayValidator();
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.assay + ""));
+                Metadata.JSON_PROPERTY_ASSAY + ""));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(0).toString(), result.get(0).toString());
@@ -80,7 +80,7 @@ public class AssayValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.assay + "[" + 1 + "]-" + Assay.Properties.msRunRef)
+                        Metadata.JSON_PROPERTY_ASSAY + "[" + 1 + "]-" + Assay.JSON_PROPERTY_MS_RUN_REF)
         );
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

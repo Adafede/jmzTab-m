@@ -24,7 +24,7 @@ import org.lifstools.mztab2.model.Metadata;
 import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
 import org.lifstools.mztab2.model.Parameter;
 import java.util.Arrays;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
 
@@ -67,11 +67,11 @@ public class InstrumentSerializerTest extends AbstractSerializerTest {
         metadata.addInstrumentItem(instrument1);
 
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER + 
-            MTD + TAB_STRING + Metadata.Properties.instrument + "[1]-name" + TAB_STRING + new ParameterConverter().convert(instrument1.getName()) + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.instrument + "[1]-source" + TAB_STRING + new ParameterConverter().convert(instrument1.getSource()) + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.instrument + "[1]-analyzer[1]" + TAB_STRING + new ParameterConverter().convert(instrument1.getAnalyzer().get(0)) + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.instrument + "[1]-analyzer[2]" + TAB_STRING + new ParameterConverter().convert(instrument1.getAnalyzer().get(1)) + NEW_LINE +
-            MTD + TAB_STRING + Metadata.Properties.instrument + "[1]-detector" + TAB_STRING + new ParameterConverter().convert(instrument1.getDetector()) + NEW_LINE,
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_INSTRUMENT + "[1]-name" + TAB_STRING + new ParameterConverter().convert(instrument1.getName()) + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_INSTRUMENT + "[1]-source" + TAB_STRING + new ParameterConverter().convert(instrument1.getSource()) + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_INSTRUMENT + "[1]-analyzer[1]" + TAB_STRING + new ParameterConverter().convert(instrument1.getAnalyzer().get(0)) + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_INSTRUMENT + "[1]-analyzer[2]" + TAB_STRING + new ParameterConverter().convert(instrument1.getAnalyzer().get(1)) + NEW_LINE +
+            MTD + TAB_STRING + Metadata.JSON_PROPERTY_INSTRUMENT + "[1]-detector" + TAB_STRING + new ParameterConverter().convert(instrument1.getDetector()) + NEW_LINE,
             serializeSingle(writer, metadata));
 
     }

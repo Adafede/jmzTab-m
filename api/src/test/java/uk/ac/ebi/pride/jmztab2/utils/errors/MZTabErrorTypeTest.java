@@ -15,9 +15,9 @@
  */
 package uk.ac.ebi.pride.jmztab2.utils.errors;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
 import uk.ac.ebi.pride.jmztab2.utils.MZTabProperties;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType.Level;
 
@@ -27,7 +27,7 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType.Level;
  */
 public class MZTabErrorTypeTest {
 
-    @BeforeClass
+    @BeforeAll
     public static void initProperties() {
         MZTabProperties.getProperty("l_code_SingleStudyVariableName");
     }

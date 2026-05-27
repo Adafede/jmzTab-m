@@ -19,11 +19,11 @@ import org.lifstools.mztab2.model.Assay;
 import org.lifstools.mztab2.model.Metadata;
 import org.lifstools.mztab2.model.Sample;
 import org.lifstools.mztab2.test.utils.LogMethodName;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.pride.jmztab2.utils.errors.FormatErrorType;
@@ -40,7 +40,7 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class MTDLineValidateTest {
 
-    @Rule
+    @RegisterExtension
     public LogMethodName methodNameLogger = new LogMethodName();
     private static Logger LOGGER = LoggerFactory.getLogger(
         MTDLineValidateTest.class);
@@ -50,7 +50,7 @@ public class MTDLineValidateTest {
     private MZTabErrorList errorList;
     private MZTabParserContext context;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         context = new MZTabParserContext();
         parser = new MTDLineParser(context);

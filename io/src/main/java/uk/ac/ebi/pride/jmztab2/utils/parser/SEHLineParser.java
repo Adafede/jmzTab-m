@@ -78,7 +78,7 @@ public class SEHLineParser extends MZTabHeaderLineParser {
 
             column = null;
             header = items[physicalPosition];
-            if (header.startsWith(SmallMoleculeEvidence.Properties.idConfidenceMeasure.getPropertyName())) {
+            if (header.startsWith(SmallMoleculeEvidence.JSON_PROPERTY_ID_CONFIDENCE_MEASURE)) {
                 checkIdConfidenceMeasure(header);
             } else if (header.startsWith(MZTabConstants.OPT_PREFIX)) {
                 checkOptColumnName(header);
@@ -110,7 +110,7 @@ public class SEHLineParser extends MZTabHeaderLineParser {
     private void checkIdConfidenceMeasure(String header) throws MZTabException {
         String valueLabel = header;
         
-        Pattern pattern = Pattern.compile(SmallMoleculeEvidence.Properties.idConfidenceMeasure.getPropertyName()+MZTabConstants.REGEX_INDEXED_VALUE);
+        Pattern pattern = Pattern.compile(SmallMoleculeEvidence.JSON_PROPERTY_ID_CONFIDENCE_MEASURE+MZTabConstants.REGEX_INDEXED_VALUE);
         Matcher matcher = pattern.matcher(valueLabel);
         if (!matcher.find()) {
             MZTabError error = new MZTabError(FormatErrorType.StableColumn, lineNumber, header);
@@ -157,7 +157,7 @@ public class SEHLineParser extends MZTabHeaderLineParser {
         IntStream.range(0, metadata.getIdConfidenceMeasure().size()).
         forEachOrdered(i ->
         {
-            mandatoryColumnHeaders.add(SmallMoleculeEvidence.Properties.idConfidenceMeasure.getPropertyName()+"["+(i+1)+"]");
+            mandatoryColumnHeaders.add(SmallMoleculeEvidence.JSON_PROPERTY_ID_CONFIDENCE_MEASURE+"["+(i+1)+"]");
         });
 
         for (String columnHeader : mandatoryColumnHeaders) {

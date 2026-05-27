@@ -73,18 +73,18 @@ public class CvSerializer extends StdSerializer<CV> {
         if (cv != null) {
             Serializers.checkIndexedElement(cv);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                CV.Properties.label.getPropertyName(), cv,
+                CV.JSON_PROPERTY_LABEL, cv,
                 cv.
                     getLabel());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                CV.Properties.uri.getPropertyName(), cv,
+                CV.JSON_PROPERTY_URI, cv,
                 cv.
                     getUri());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                CV.Properties.version.getPropertyName(), cv,
+                CV.JSON_PROPERTY_VERSION, cv,
                 cv.getVersion());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                CV.Properties.fullName.getPropertyName(), cv,
+                CV.JSON_PROPERTY_FULL_NAME, cv,
                 cv.getFullName());
 
         } else {

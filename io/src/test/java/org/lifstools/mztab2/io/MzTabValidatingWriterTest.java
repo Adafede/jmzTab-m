@@ -22,8 +22,8 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -46,51 +46,25 @@ public class MzTabValidatingWriterTest {
     private void assertValidationMessages(Optional<List<ValidationMessage>> messages) {
         System.out.println("Validation messages: " + messages.get().
             toString());
-        Assert.assertEquals(messages.get().
-            toString(), 6, messages.get().
-                size());
-        Assert.assertEquals(messages.get().
-            get(0).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(0).
-            getMessage().
-            contains("quantification_method"));
-        Assert.assertEquals(messages.get().
-            get(1).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(1).
-            getMessage().
-            contains("study_variable[1]"));
-        Assert.assertEquals(messages.get().
-            get(2).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(2).
-            getMessage().
-            contains("study_variable[2]"));
-        Assert.assertEquals(messages.get().
-            get(3).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(3).
-            getMessage().
-            contains("ms_run[1]-scan_polarity"));
-        Assert.assertEquals(messages.get().
-            get(4).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(4).
-            getMessage().
-            contains("ms_run[2]-scan_polarity"));
-        Assert.assertEquals(messages.get().
-            get(5).
-            getMessageType(), ValidationMessage.MessageTypeEnum.ERROR);
-        Assert.assertTrue(messages.get().
-            get(5).
-            getMessage().
-            contains("database"));
+        Assertions.assertEquals(6, messages.get().size(), messages.get().toString());
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(0).getMessageType());
+        Assertions.assertTrue(messages.get().get(0).getMessage().contains("quantification_method"));
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(1).getMessageType());
+        Assertions.assertTrue(messages.get().get(1).getMessage().contains("study_variable[1]"));
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(2).getMessageType());
+        Assertions.assertTrue(messages.get().get(2).getMessage().contains("study_variable[2]"));
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(3).getMessageType());
+        Assertions.assertTrue(messages.get().get(3).getMessage().contains("ms_run[1]-scan_polarity"));
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(4).getMessageType());
+        Assertions.assertTrue(messages.get().get(4).getMessage().contains("ms_run[2]-scan_polarity"));
+        Assertions.assertEquals(ValidationMessage.MessageTypeEnum.ERROR,
+            messages.get().get(5).getMessageType());
+        Assertions.assertTrue(messages.get().get(5).getMessage().contains("database"));
     }
 
     /**

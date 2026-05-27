@@ -84,21 +84,21 @@ public class DatabaseSerializer extends StdSerializer<Database> {
                 getName().
                 equals("no database")) {
                 addLineWithNullProperty(jg, Section.Metadata.getPrefix(),
-                    Database.Properties.prefix.getPropertyName(), database);
+                    Database.JSON_PROPERTY_PREFIX, database);
                 addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    Database.Properties.uri.getPropertyName(), database,
+                    Database.JSON_PROPERTY_URI, database,
                     "null");
             } else {
                 addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    Database.Properties.prefix.getPropertyName(), database,
+                    Database.JSON_PROPERTY_PREFIX, database,
                     database.
                         getPrefix());
                 addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                    Database.Properties.uri.getPropertyName(), database,
+                    Database.JSON_PROPERTY_URI, database,
                     database.getUri());
             }
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Database.Properties.version.getPropertyName(), database,
+                Database.JSON_PROPERTY_VERSION, database,
                 Optional.ofNullable(database.getVersion()).orElse("Unknown"));
 
         } else {

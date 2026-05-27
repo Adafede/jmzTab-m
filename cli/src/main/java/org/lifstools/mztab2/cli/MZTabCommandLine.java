@@ -306,7 +306,7 @@ public class MZTabCommandLine {
     protected static void handleMsgOption(CommandLine line, String msgOpt,
         MZTabErrorTypeMap typeMap) throws NumberFormatException {
         String[] values = line.getOptionValues(msgOpt);
-        Integer code = new Integer(values[0]);
+        Integer code = Integer.valueOf(values[0]);
         MZTabErrorType type = typeMap.getType(code);
 
         if (type == null) {

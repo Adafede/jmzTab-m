@@ -19,8 +19,8 @@ import org.lifstools.mztab2.io.validators.SmallMoleculeQuantificationUnitValidat
 import org.lifstools.mztab2.model.Metadata;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import uk.ac.ebi.pride.jmztab2.utils.errors.LogicalErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabError;
 import uk.ac.ebi.pride.jmztab2.utils.parser.MZTabParserContext;
@@ -42,7 +42,7 @@ public class SmallMoleculeQuantificationUnitValidatorTest {
 
         List<MZTabError> expResult = Arrays.asList(new MZTabError(
                 LogicalErrorType.NotDefineInMetadata, -1,
-                Metadata.Properties.smallMoleculeQuantificationUnit.getPropertyName(),
+                Metadata.JSON_PROPERTY_SMALL_MOLECULE_QUANTIFICATION_UNIT,
                 metadata.getMzTabVersion()));
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());

@@ -34,9 +34,9 @@ import java.net.URI;
 import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.jxpath.Pointer;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.Assert;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -104,10 +104,10 @@ public class CvMappingValidatorTest {
             setCv(new ArrayList());
         CvDefinitionValidationHandler handler = new CvDefinitionValidationHandler();
         List<ValidationMessage> messages = handler.validate(mzTabFile);
-        Assert.assertEquals(0, mzTabFile.getMetadata().
+        Assertions.assertEquals(0, mzTabFile.getMetadata().
             getCv().
             size());
-        Assert.assertEquals(15, messages.size());
+        Assertions.assertEquals(15, messages.size());
 
         mzTabFile.getMetadata().
             addCvItem(new CV().id(1).
@@ -117,11 +117,11 @@ public class CvMappingValidatorTest {
                 version("4.1.11").
                 uri(URI.create("https://raw.githubusercontent.com/HUPO-PSI/psi-ms-CV/master/psi-ms.obo")));
 
-        Assert.assertEquals(1, mzTabFile.getMetadata().
+        Assertions.assertEquals(1, mzTabFile.getMetadata().
             getCv().
             size());
         messages = handler.validate(mzTabFile);
-        Assert.assertEquals(6, messages.size());
+        Assertions.assertEquals(6, messages.size());
 
         mzTabFile.getMetadata().
             addCvItem(
@@ -148,7 +148,7 @@ public class CvMappingValidatorTest {
                 version("2018-03-02").
                 uri(URI.create("https://www.ebi.ac.uk/ols/ontologies/ncbitaxon")));
         messages = handler.validate(mzTabFile);
-        Assert.assertEquals(0, messages.size());
+        Assertions.assertEquals(0, messages.size());
         mzTabFile.getMetadata().
             addCvItem(
                 new CV().id(6).
@@ -158,8 +158,8 @@ public class CvMappingValidatorTest {
                     uri(URI.create("https://www.ebi.ac.uk/ols/ontologies/uo"))
             );
         messages = handler.validate(mzTabFile);
-        Assert.assertEquals(1, messages.size());
-        Assert.assertTrue(messages.get(0).getMessageType()==ValidationMessage.MessageTypeEnum.WARN);
+        Assertions.assertEquals(1, messages.size());
+        Assertions.assertTrue(messages.get(0).getMessageType()==ValidationMessage.MessageTypeEnum.WARN);
     }
 
     protected MzTab createTestData() {

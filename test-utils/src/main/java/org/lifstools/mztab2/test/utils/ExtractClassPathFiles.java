@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nils Hoffmann &lt;nils.hoffmann@isas.de&gt;.
+ * Copyright 2018 Nils Hoffmann <nils.hoffmann@isas.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,99 +22,68 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.rules.ExternalResource;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.extension.AfterAllCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
- * <p>
- * ExtractClassPathFiles class.</p>
+ * JUnit 5 extension that extracts classpath resource files into a temporary
+ * directory before all tests in a class and cleans up afterwards.
  *
  * @author nilshoffmann
- *
  */
-public class ExtractClassPathFiles extends ExternalResource {
+public class ExtractClassPathFiles implements BeforeAllCallback, AfterAllCallback {
 
-    private final TemporaryFolder tf;
     private final ClassPathFile[] classPathFiles;
     private final List<File> files = new LinkedList<>();
     private File baseFolder;
+    private File tempDir;
 
     /**
-     * <p>
-     * Constructor for ExtractClassPathFiles.</p>
-     *
      * @param classPathFiles an array of {@link ClassPathFile} objects to extract.
      */
     public ExtractClassPathFiles(ClassPathFile... classPathFiles) {
-        this(new TemporaryFolder(), classPathFiles);
-    }
-    
-    /**
-     * <p>
-     * Constructor for ExtractClassPathFiles.</p>
-     *
-     * @param tf a {@link org.junit.rules.TemporaryFolder} object.
-     * @param classPathFiles an array of {@link ClassPathFile} objects to extract.
-     */
-    public ExtractClassPathFiles(TemporaryFolder tf, ClassPathFile... classPathFiles) {
-        this.tf = tf;
         this.classPathFiles = classPathFiles;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected void before() throws Throwable {
-        try {
-            this.tf.create();
-        } catch (IOException ex) {
-            throw ex;
-        }
-        baseFolder = tf.getRoot();
-        int i = 0;
+    public void beforeAll(ExtensionContext context) throws Exception {
+        tempDir = Files.createTempDirectory("mztabm-test-").toFile();
+        baseFolder = tempDir;
         for (ClassPathFile resource : classPathFiles) {
-            File file = ZipResourceExtractor.extract(
-                resource.resourcePath(), baseFolder);
+            File file = ZipResourceExtractor.extract(resource.resourcePath(), baseFolder);
             files.add(file);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected void after() {
+    public void afterAll(ExtensionContext context) {
         for (File f : files) {
             if (f != null && f.exists()) {
                 try {
                     Files.deleteIfExists(f.toPath());
                 } catch (IOException ioex) {
-                    Logger.getLogger(ExtractClassPathFiles.class.getName()).
-                        log(Level.SEVERE,
-                            "Caught an IOException while trying to delete file " + f.
-                                getAbsolutePath(), ioex);
+                    Logger.getLogger(ExtractClassPathFiles.class.getName()).log(
+                        Level.SEVERE,
+                        "Caught an IOException while trying to delete file " + f.getAbsolutePath(),
+                        ioex);
                 }
             }
         }
-        tf.delete();
+        if (tempDir != null && tempDir.exists()) {
+            tempDir.delete();
+        }
     }
 
     /**
-     * <p>
-     * Getter for the field <code>files</code>.</p>
-     *
-     * @return a {@link java.util.List} object.
+     * @return a {@link java.util.List} of extracted files.
      */
     public List<File> getFiles() {
         return this.files;
     }
 
     /**
-     * <p>
-     * getBaseDir.</p>
-     *
-     * @return a {@link java.io.File} object.
+     * @return the base directory where files were extracted.
      */
     public File getBaseDir() {
         return baseFolder;

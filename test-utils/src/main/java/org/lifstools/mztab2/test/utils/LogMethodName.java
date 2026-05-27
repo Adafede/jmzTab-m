@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Nils Hoffmann &lt;nils.hoffmann@isas.de&gt;.
+ * Copyright 2018 Nils Hoffmann <nils.hoffmann@isas.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,35 +15,29 @@
  */
 package org.lifstools.mztab2.test.utils;
 
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
- * JUnit TestWatcher to LOGGER the executed test method name.
+ * JUnit 5 extension that logs the executed test method name before each test.
  *
  * @author nilshoffmann
  */
-public class LogMethodName extends TestWatcher {
+public class LogMethodName implements BeforeEachCallback {
 
-    /**
-     * Called when JUnit is about to execute the provided method.
-     *
-     * @param method the method being executed by JUnit.
-     */
     @Override
-    public void starting(Description method) {
+    public void beforeEach(ExtensionContext context) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 80; i++) {
             sb.append("#");
         }
-        sb.append("\n").
-            append("# ").
-            append(method.getMethodName()).
-            append("\n");
+        sb.append("\n")
+          .append("# ")
+          .append(context.getDisplayName())
+          .append("\n");
         for (int i = 0; i < 80; i++) {
             sb.append("#");
         }
         System.out.println(sb.toString());
     }
-
 }

@@ -137,7 +137,7 @@ public class SmallMoleculeEvidenceSerializer extends StdSerializer<SmallMolecule
                     stream().
                     map((spectraRef) ->
                     {
-                        return Metadata.Properties.msRun.getPropertyName() + "[" + spectraRef.
+                        return Metadata.JSON_PROPERTY_MS_RUN + "[" + spectraRef.
                             getMsRun().
                             getId() + "]:" + spectraRef.getReference();
                     }).
@@ -150,8 +150,7 @@ public class SmallMoleculeEvidenceSerializer extends StdSerializer<SmallMolecule
                 smallMoleculeEvidence.
                     getMsLevel());
             Serializers.writeIndexedDoubles(
-                SmallMoleculeEvidence.Properties.idConfidenceMeasure.
-                    getPropertyName(), jg,
+                SmallMoleculeEvidence.JSON_PROPERTY_ID_CONFIDENCE_MEASURE, jg,
                 Optional.ofNullable(smallMoleculeEvidence.
                     getIdConfidenceMeasure()).
                     orElse(Collections.emptyList()));

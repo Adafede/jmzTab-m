@@ -55,18 +55,18 @@ public class StudyVariableValidator implements RefiningValidator<Metadata> {
                     if (sv == null) {
                         errorList.add(new MZTabError(
                                 LogicalErrorType.NotDefineInMetadata, -1,
-                                Metadata.Properties.studyVariable + "[" + id + "]" + "\t<" + StudyVariable.Properties.name + ">"));
+                                Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + id + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME + ">"));
                     } else {
                         if (sv.getName() == null) {
                             errorList.add(new MZTabError(
                                     LogicalErrorType.NotDefineInMetadata, -1,
-                                    Metadata.Properties.studyVariable + "[" + id + "]" + "\t<" + StudyVariable.Properties.name + ">"));
+                                    Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + id + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME + ">"));
                         } else {
                             if (sv.getName().equals("undefined")) {
                                 if (undefinedDefined) {
                                     errorList.add(new MZTabError(
                                             LogicalErrorType.UndefinedStudyVariableNameOnceOnly, -1,
-                                            Metadata.Properties.studyVariable + "[" + id + "]" + "\t<" + StudyVariable.Properties.name
+                                            Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + id + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME
                                             + ">"));
                                 } else {
                                     undefinedDefined = true;
@@ -77,14 +77,14 @@ public class StudyVariableValidator implements RefiningValidator<Metadata> {
                                 getDescription() == null) {
                             errorList.add(new MZTabError(
                                     LogicalErrorType.NotDefineInMetadata, -1,
-                                    Metadata.Properties.studyVariable + "[" + id + "]-" + StudyVariable.Properties.description));
+                                    Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + id + "]-" + StudyVariable.JSON_PROPERTY_DESCRIPTION));
                         }
                         if (sv.
                                 getAssayRefs() == null || sv.getAssayRefs().
                                         isEmpty()) {
                             errorList.add(new MZTabError(
                                     LogicalErrorType.AssayRefs, -1,
-                                    Metadata.Properties.studyVariable + "[" + id + "]-" + StudyVariable.Properties.assayRefs));
+                                    Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + id + "]-" + StudyVariable.JSON_PROPERTY_ASSAY_REFS));
                         }
                     }
                 }

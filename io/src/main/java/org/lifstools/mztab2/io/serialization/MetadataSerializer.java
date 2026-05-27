@@ -36,6 +36,7 @@ import org.lifstools.mztab2.model.Sample;
 import org.lifstools.mztab2.model.SampleProcessing;
 import org.lifstools.mztab2.model.Software;
 import org.lifstools.mztab2.model.StudyVariable;
+import org.lifstools.mztab2.model.StudyVariableGroup;
 import org.lifstools.mztab2.model.Uri;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -109,7 +110,7 @@ public class MetadataSerializer extends StdSerializer<Metadata> {
                         getName() + " must not be null!");
             }
             Optional<IndexedElement> ie = IndexedElement.of(t);
-            if (ie.isPresent()) {
+            if (ie.isPresent() && ie.get().getId() != null && ie.get().getId() > 0) {
                 return ie.get();
             } else {
                 return new IndexedElementImpl(i+1, t);
@@ -151,10 +152,10 @@ public class MetadataSerializer extends StdSerializer<Metadata> {
                         getName() + " must not be null!");
             }
             Optional<IndexedElement> ie = IndexedElement.of(t);
-            if (ie.isPresent()) {
+            if (ie.isPresent() && ie.get().getId() != null && ie.get().getId() > 0) {
                 return ie.get();
             } else {
-                return new IndexedElementImpl(i, t);
+                return new IndexedElementImpl(i+1, t);
             }
         });
         ieStream.forEach((ie) -> {
@@ -220,12 +221,12 @@ public class MetadataSerializer extends StdSerializer<Metadata> {
             if(t.getMzTabVersion()==null || t.getMzTabVersion().isEmpty()) {
                 t.setMzTabVersion(MZTabConstants.VERSION_MZTAB_M);
             }
-            addLine(jg, prefix, Metadata.Properties.mzTabVersion.getPropertyName(), t.getMzTabVersion());
-            addLine(jg, prefix, Metadata.Properties.mzTabID.getPropertyName(), t.
+            addLine(jg, prefix, Metadata.JSON_PROPERTY_MZ_TAB_VERSION, t.getMzTabVersion());
+            addLine(jg, prefix, Metadata.JSON_PROPERTY_MZ_TAB_I_D, t.
                 getMzTabID());
-            addLine(jg, prefix, Metadata.Properties.title.getPropertyName(), t.
+            addLine(jg, prefix, Metadata.JSON_PROPERTY_TITLE, t.
                 getTitle());
-            addLine(jg, prefix, Metadata.Properties.description.getPropertyName(), t.
+            addLine(jg, prefix, Metadata.JSON_PROPERTY_DESCRIPTION, t.
                 getDescription());
             //contacts
             if (t.getContact() != null) {
@@ -355,8 +356,19 @@ public class MetadataSerializer extends StdSerializer<Metadata> {
                     Comparator.nullsFirst(Comparator.naturalOrder())
                 ));
             } else {
-                
+
                     log.debug( "Study Variable is null!");
+            }
+            //study variable group
+            if (t.getStudyVariableGroup() != null) {
+                serializeList(
+                    t.getStudyVariableGroup(), jg, sp, Comparator.comparing(
+                    StudyVariableGroup::getId,
+                    Comparator.nullsFirst(Comparator.naturalOrder())
+                ));
+            } else {
+
+                    log.debug( "Study Variable Group is null!");
             }
             //custom
             if (t.getCustom() != null) {

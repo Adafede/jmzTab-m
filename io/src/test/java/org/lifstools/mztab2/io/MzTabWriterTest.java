@@ -66,10 +66,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.Assert;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorList;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
@@ -82,11 +85,11 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class MzTabWriterTest {
 
-    @Rule
-    public LogMethodName methodNameLogger = new LogMethodName();
+    @RegisterExtension
+    LogMethodName methodNameLogger = new LogMethodName();
 
-    @ClassRule
-    public static ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
+    @RegisterExtension
+    static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
         MTBLS263,
         MOUSELIVER_NEGATIVE,
         MOUSELIVER_NEGATIVE_MZTAB_NULL_COLUNIT,
@@ -133,12 +136,12 @@ public class MzTabWriterTest {
         String s = new ParameterConverter().convert(p);
         System.out.println(s);
         String expected = "[MS, MS:100179, made up for testing, ]";
-        Assert.assertEquals(expected, s);
+        assertEquals(expected, s);
         p.value("some value");
         s = new ParameterConverter().convert(p);
         System.out.println(s);
         expected = "[MS, MS:100179, made up for testing, some value]";
-        Assert.assertEquals(expected, s);
+        assertEquals(expected, s);
     }
 
     @Test
@@ -148,7 +151,7 @@ public class MzTabWriterTest {
         String s = new ParameterConverter().convert(p);
         System.out.println(s);
         String expected = "[, , made up for testing, some arbitrary value]";
-        Assert.assertEquals(expected, s);
+        assertEquals(expected, s);
     }
 
     @Test
@@ -161,7 +164,7 @@ public class MzTabWriterTest {
             sw.flush();
             String metadataString = sw.toString();
             System.out.println(metadataString);
-            Assert.assertFalse(metadataString.isEmpty());
+            assertFalse(metadataString.isEmpty());
         }
     }
 
@@ -216,9 +219,9 @@ public class MzTabWriterTest {
             String smallMoleculeSummary = sw.toString();
             System.out.println("Serialized SmallMoleculeSummary: ");
             System.out.println(smallMoleculeSummary);
-            Assert.assertFalse(smallMoleculeSummary.isEmpty());
+            assertFalse(smallMoleculeSummary.isEmpty());
             //check for exactly one header and one content line
-            Assert.assertEquals(2,
+            assertEquals(2,
                 smallMoleculeSummary.split("\r\n|\r|\n").length);
         }
 
@@ -234,9 +237,9 @@ public class MzTabWriterTest {
             String smallMoleculeFeatures = sw.toString();
             System.out.println("Serialized SmallMoleculeFeatures: ");
             System.out.println(smallMoleculeFeatures);
-            Assert.assertFalse(smallMoleculeFeatures.isEmpty());
+            assertFalse(smallMoleculeFeatures.isEmpty());
             //check for exactly one header line
-            Assert.assertEquals(1,
+            assertEquals(1,
                 smallMoleculeFeatures.split("\r\n|\r|\n").length);
         }
     }
@@ -261,18 +264,19 @@ public class MzTabWriterTest {
         MZTabErrorList errors = parser.parse(System.out,
             MZTabErrorType.Level.Info, 500);
         //we expect errors here, since our test file has neither summary, feature nor evidence sections.
-        Assert.assertFalse(errors.isEmpty());
-        Assert.assertEquals(errors.toString(), 6, errors.size());
+        assertFalse(errors.isEmpty());
+        assertEquals(6, errors.size(), errors.toString());
 //        MzTab mzTabReRead = parser.getMZTabFile();
 //        Assert.assertEquals(mzTabFile, mzTabReRead);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testWriteMzTabToTsvWithJacksonInvalidEncoding() throws IOException {
+    @Test
+    public void testWriteMzTabToTsvWithJacksonInvalidEncoding() {
         MzTab mzTabFile = create2_0TestFile();
         MzTabNonValidatingWriter writer = new MzTabNonValidatingWriter();
-        writer.write(new OutputStreamWriter(System.out, Charset.forName(
-            "ISO-8859-15")), mzTabFile);
+        assertThrows(IllegalArgumentException.class, () ->
+            writer.write(new OutputStreamWriter(System.out, Charset.forName(
+                "ISO-8859-15")), mzTabFile));
     }
 
     @Test
@@ -287,19 +291,19 @@ public class MzTabWriterTest {
         MzTabFileParser parser = new MzTabFileParser(tempFile);
         MZTabErrorList errors = parser.parse(System.out,
             MZTabErrorType.Level.Info, 500);
-        Assert.assertTrue(errors.toString(), errors.isEmpty());
-        Assert.assertNotNull(parser.getMZTabFile().
+        assertTrue(errors.isEmpty(), errors.toString());
+        assertNotNull(parser.getMZTabFile().
             getMetadata().
             getColunitSmallMoleculeEvidence().
             get(0));
-        Assert.assertEquals(2, parser.getMZTabFile().getSmallMoleculeEvidence().get(0).getOpt().size());
+        assertEquals(2, parser.getMZTabFile().getSmallMoleculeEvidence().get(0).getOpt().size());
         //colunit-small_molecule_evidence	opt_global_mass_error=[UO, UO:0000169, parts per million, ]
-        Assert.assertEquals("opt_global_mass_error", parser.getMZTabFile().
+        assertEquals("opt_global_mass_error", parser.getMZTabFile().
             getMetadata().
             getColunitSmallMoleculeEvidence().
             get(0).
             getColumnName());
-        Assert.assertEquals("UO:0000169", parser.getMZTabFile().
+        assertEquals("UO:0000169", parser.getMZTabFile().
             getMetadata().
             getColunitSmallMoleculeEvidence().
             get(0).
@@ -322,7 +326,7 @@ public class MzTabWriterTest {
         MzTabFileParser parser = new MzTabFileParser(tempFile);
         MZTabErrorList errors = parser.parse(System.out,
             MZTabErrorType.Level.Info, 500);
-        Assert.assertTrue(errors.toString(), errors.isEmpty());
+        assertTrue(errors.isEmpty(), errors.toString());
         compareMzTabModels(mzTabFile, parser.getMZTabFile());
     }
 
@@ -340,7 +344,7 @@ public class MzTabWriterTest {
         MzTabFileParser parser = new MzTabFileParser(tempFile);
         MZTabErrorList errors = parser.parse(System.out,
             MZTabErrorType.Level.Info, 500);
-        Assert.assertTrue(errors.toString(), errors.isEmpty());
+        assertTrue(errors.isEmpty(), errors.toString());
         compareMzTabModels(mzTabFile, parser.getMZTabFile());
     }
 
@@ -357,7 +361,7 @@ public class MzTabWriterTest {
         MzTabFileParser parser = new MzTabFileParser(tempFile);
         MZTabErrorList errors = parser.parse(System.out,
             MZTabErrorType.Level.Info, 500);
-        Assert.assertTrue(errors.toString(), errors.isEmpty());
+        assertTrue(errors.isEmpty(), errors.toString());
         compareMzTabModels(mzTabFile, parser.getMZTabFile());
     }
 
@@ -381,7 +385,7 @@ public class MzTabWriterTest {
 
                 }
             });
-            Assert.assertFalse(sb.toString(), metadataDiff.hasChanges());
+            assertFalse(metadataDiff.hasChanges(), sb.toString());
         }
 
         DiffNode summaryDiff = ObjectDifferBuilder.buildDefault().
@@ -402,7 +406,7 @@ public class MzTabWriterTest {
 
                 }
             });
-            Assert.assertFalse(sb.toString(), summaryDiff.hasChanges());
+            assertFalse(summaryDiff.hasChanges(), sb.toString());
         }
 
         DiffNode featureDiff = ObjectDifferBuilder.buildDefault().
@@ -423,7 +427,7 @@ public class MzTabWriterTest {
 
                 }
             });
-            Assert.assertFalse(sb.toString(), featureDiff.hasChanges());
+            assertFalse(featureDiff.hasChanges(), sb.toString());
         }
 
         DiffNode evidenceDiff = ObjectDifferBuilder.buildDefault().
@@ -444,7 +448,7 @@ public class MzTabWriterTest {
 
                 }
             });
-            Assert.assertFalse(sb.toString(), evidenceDiff.hasChanges());
+            assertFalse(evidenceDiff.hasChanges(), sb.toString());
         }
     }
 
@@ -526,7 +530,7 @@ public class MzTabWriterTest {
         writer.write(tempFile.toPath(), mzTabFile);
         long lines = Files.lines(tempFile.toPath()).
             count();
-        Assert.assertEquals(
+        assertEquals(
             3
             + // additional empty lines
             74
@@ -534,11 +538,11 @@ public class MzTabWriterTest {
             1 + 17
             +//summary header and original data
             (17 * expFactor)
-            +//cloned summary data 
+            +//cloned summary data
             1 + 19
             + //feature header and original data
             (19 * expFactor)
-            +//cloned feature data 
+            +//cloned feature data
             1 + 19
             + //evidence header and original data
             (19 * expFactor) //cloned evidence data
@@ -683,9 +687,9 @@ public class MzTabWriterTest {
             });
         long lines = Files.lines(tempFile.toPath()).
             count();
-        Assert.assertEquals(
+        assertEquals(
             3
-            + //additional empty lines 
+            + //additional empty lines
             57
             +//metadata lines
             2 //Small molecule summary header + content

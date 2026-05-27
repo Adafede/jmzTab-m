@@ -16,10 +16,10 @@
 package uk.ac.ebi.pride.jmztab2.model;
 
 import org.lifstools.mztab2.test.utils.LogMethodName;
-import org.junit.Assert;
-import static org.junit.Assert.*;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.Section.Comment;
 import static uk.ac.ebi.pride.jmztab2.model.Section.Metadata;
 import static uk.ac.ebi.pride.jmztab2.model.Section.PSM_Header;
@@ -35,7 +35,7 @@ import static uk.ac.ebi.pride.jmztab2.model.Section.Small_Molecule_Header;
  */
 public class SectionTest {
 
-    @Rule
+    @RegisterExtension
     public LogMethodName methodNameLogger = new LogMethodName();
 
     /**
@@ -106,7 +106,7 @@ public class SectionTest {
     @Test
     public void testFindSection_int() {
         for (Section s : Section.values()) {
-            Assert.assertEquals(s, Section.findSection(s.getLevel()));
+            Assertions.assertEquals(s, Section.findSection(s.getLevel()));
         }
     }
 
@@ -118,10 +118,10 @@ public class SectionTest {
         for (Section s : Section.values()) {
             switch (s) {
                 case Comment:
-                    Assert.assertTrue(s.isComment());
+                    Assertions.assertTrue(s.isComment());
                     break;
                 default:
-                    Assert.assertFalse(s.isComment());
+                    Assertions.assertFalse(s.isComment());
             }
         }
     }
@@ -134,10 +134,10 @@ public class SectionTest {
         for (Section s : Section.values()) {
             switch (s) {
                 case Metadata:
-                    Assert.assertTrue(s.isMetadata());
+                    Assertions.assertTrue(s.isMetadata());
                     break;
                 default:
-                    Assert.assertFalse(s.isMetadata());
+                    Assertions.assertFalse(s.isMetadata());
             }
         }
     }
@@ -155,10 +155,10 @@ public class SectionTest {
                 case Small_Molecule_Evidence_Header:
                 case Small_Molecule_Feature_Header:
                 case Small_Molecule_Header:
-                    Assert.assertTrue(s.isHeader());
+                    Assertions.assertTrue(s.isHeader());
                     break;
                 default:
-                    Assert.assertFalse(s.isHeader());
+                    Assertions.assertFalse(s.isHeader());
             }
         }
     }
@@ -178,10 +178,10 @@ public class SectionTest {
                 case Small_Molecule_Header:
                 case Comment:
                 case Metadata:
-                    Assert.assertFalse(s.isData());
+                    Assertions.assertFalse(s.isData());
                     break;
                 default:
-                    Assert.assertTrue(s.isData());
+                    Assertions.assertTrue(s.isData());
             }
         }
     }
@@ -191,43 +191,43 @@ public class SectionTest {
      */
     @Test
     public void testToHeaderSection() {
-        Assert.assertEquals(Section.Peptide_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.Peptide_Header, Section.toHeaderSection(
             Section.Peptide));
-        Assert.assertEquals(Section.Peptide_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.Peptide_Header, Section.toHeaderSection(
             Section.Peptide_Header));
 
-        Assert.assertEquals(Section.Protein_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.Protein_Header, Section.toHeaderSection(
             Section.Protein));
-        Assert.assertEquals(Section.Protein_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.Protein_Header, Section.toHeaderSection(
             Section.Protein_Header));
 
-        Assert.assertEquals(Section.PSM_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.PSM_Header, Section.toHeaderSection(
             Section.PSM));
-        Assert.assertEquals(Section.PSM_Header, Section.toHeaderSection(
+        Assertions.assertEquals(Section.PSM_Header, Section.toHeaderSection(
             Section.PSM_Header));
 
-        Assert.assertEquals(Section.Small_Molecule_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule));
-        Assert.assertEquals(Section.Small_Molecule_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule_Header));
 
-        Assert.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule_Evidence));
-        Assert.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule_Evidence_Header));
 
-        Assert.assertEquals(Section.Small_Molecule_Feature_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule_Feature));
-        Assert.assertEquals(Section.Small_Molecule_Feature_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature_Header, Section.
             toHeaderSection(
                 Section.Small_Molecule_Feature_Header));
 
-        Assert.assertNull(Section.toHeaderSection(Section.Comment));
+        Assertions.assertNull(Section.toHeaderSection(Section.Comment));
     }
 
     /**
@@ -235,41 +235,41 @@ public class SectionTest {
      */
     @Test
     public void testToDataSection() {
-        Assert.assertEquals(Section.Peptide, Section.toDataSection(
+        Assertions.assertEquals(Section.Peptide, Section.toDataSection(
             Section.Peptide));
-        Assert.assertEquals(Section.Peptide, Section.toDataSection(
+        Assertions.assertEquals(Section.Peptide, Section.toDataSection(
             Section.Peptide_Header));
 
-        Assert.assertEquals(Section.Protein, Section.toDataSection(
+        Assertions.assertEquals(Section.Protein, Section.toDataSection(
             Section.Protein));
-        Assert.assertEquals(Section.Protein, Section.toDataSection(
+        Assertions.assertEquals(Section.Protein, Section.toDataSection(
             Section.Protein_Header));
 
-        Assert.assertEquals(Section.PSM, Section.toDataSection(
+        Assertions.assertEquals(Section.PSM, Section.toDataSection(
             Section.PSM));
-        Assert.assertEquals(Section.PSM, Section.toDataSection(
+        Assertions.assertEquals(Section.PSM, Section.toDataSection(
             Section.PSM_Header));
 
-        Assert.assertEquals(Section.Small_Molecule, Section.toDataSection(
+        Assertions.assertEquals(Section.Small_Molecule, Section.toDataSection(
             Section.Small_Molecule));
-        Assert.assertEquals(Section.Small_Molecule, Section.toDataSection(
+        Assertions.assertEquals(Section.Small_Molecule, Section.toDataSection(
             Section.Small_Molecule_Header));
 
-        Assert.assertEquals(Section.Small_Molecule_Evidence, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence, Section.
             toDataSection(
                 Section.Small_Molecule_Evidence));
-        Assert.assertEquals(Section.Small_Molecule_Evidence, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence, Section.
             toDataSection(
                 Section.Small_Molecule_Evidence_Header));
 
-        Assert.assertEquals(Section.Small_Molecule_Feature, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature, Section.
             toDataSection(
                 Section.Small_Molecule_Feature));
-        Assert.assertEquals(Section.Small_Molecule_Feature, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature, Section.
             toDataSection(
                 Section.Small_Molecule_Feature_Header));
 
-        Assert.assertNull(Section.toDataSection(Section.Comment));
+        Assertions.assertNull(Section.toDataSection(Section.Comment));
     }
 
     /**
@@ -277,56 +277,56 @@ public class SectionTest {
      */
     @Test
     public void testFindSection_String() {
-        Assert.assertNull(Section.findSection(null));
+        Assertions.assertNull(Section.findSection(null));
 
-        Assert.assertEquals(Section.Comment, Section.findSection("comment"));
-        Assert.assertEquals(Section.Comment, Section.findSection("COM"));
+        Assertions.assertEquals(Section.Comment, Section.findSection("comment"));
+        Assertions.assertEquals(Section.Comment, Section.findSection("COM"));
 
-        Assert.assertEquals(Section.Metadata, Section.findSection("metadata"));
-        Assert.assertEquals(Section.Metadata, Section.findSection("MTD"));
+        Assertions.assertEquals(Section.Metadata, Section.findSection("metadata"));
+        Assertions.assertEquals(Section.Metadata, Section.findSection("MTD"));
 
-        Assert.assertEquals(Section.PSM, Section.findSection("psm"));
-        Assert.assertEquals(Section.PSM, Section.findSection("PSM"));
-        Assert.assertEquals(Section.PSM_Header, Section.
+        Assertions.assertEquals(Section.PSM, Section.findSection("psm"));
+        Assertions.assertEquals(Section.PSM, Section.findSection("PSM"));
+        Assertions.assertEquals(Section.PSM_Header, Section.
             findSection("psm_header"));
-        Assert.assertEquals(Section.PSM_Header, Section.findSection("PSH"));
+        Assertions.assertEquals(Section.PSM_Header, Section.findSection("PSH"));
 
-        Assert.assertEquals(Section.Peptide, Section.findSection("peptide"));
-        Assert.assertEquals(Section.Peptide, Section.findSection("PEP"));
-        Assert.assertEquals(Section.Peptide_Header, Section.findSection(
+        Assertions.assertEquals(Section.Peptide, Section.findSection("peptide"));
+        Assertions.assertEquals(Section.Peptide, Section.findSection("PEP"));
+        Assertions.assertEquals(Section.Peptide_Header, Section.findSection(
             "peptide_header"));
-        Assert.assertEquals(Section.Peptide_Header, Section.findSection("PEH"));
+        Assertions.assertEquals(Section.Peptide_Header, Section.findSection("PEH"));
 
-        Assert.assertEquals(Section.Protein, Section.findSection("protein"));
-        Assert.assertEquals(Section.Protein, Section.findSection("PRT"));
-        Assert.assertEquals(Section.Protein_Header, Section.findSection(
+        Assertions.assertEquals(Section.Protein, Section.findSection("protein"));
+        Assertions.assertEquals(Section.Protein, Section.findSection("PRT"));
+        Assertions.assertEquals(Section.Protein_Header, Section.findSection(
             "protein_header"));
-        Assert.assertEquals(Section.Protein_Header, Section.findSection("PRH"));
+        Assertions.assertEquals(Section.Protein_Header, Section.findSection("PRH"));
 
-        Assert.assertEquals(Section.Small_Molecule, Section.findSection(
+        Assertions.assertEquals(Section.Small_Molecule, Section.findSection(
             "small_molecule"));
-        Assert.assertEquals(Section.Small_Molecule, Section.findSection("SML"));
-        Assert.assertEquals(Section.Small_Molecule_Header, Section.findSection(
+        Assertions.assertEquals(Section.Small_Molecule, Section.findSection("SML"));
+        Assertions.assertEquals(Section.Small_Molecule_Header, Section.findSection(
             "small_molecule_header"));
-        Assert.assertEquals(Section.Small_Molecule_Header, Section.findSection(
+        Assertions.assertEquals(Section.Small_Molecule_Header, Section.findSection(
             "SMH"));
 
-        Assert.assertEquals(Section.Small_Molecule_Feature, Section.findSection(
+        Assertions.assertEquals(Section.Small_Molecule_Feature, Section.findSection(
             "small_molecule_feature"));
-        Assert.assertEquals(Section.Small_Molecule_Feature, Section.findSection(
+        Assertions.assertEquals(Section.Small_Molecule_Feature, Section.findSection(
             "SMF"));
-        Assert.assertEquals(Section.Small_Molecule_Feature_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature_Header, Section.
             findSection("small_molecule_feature_header"));
-        Assert.assertEquals(Section.Small_Molecule_Feature_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Feature_Header, Section.
             findSection("SFH"));
 
-        Assert.assertEquals(Section.Small_Molecule_Evidence, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence, Section.
             findSection("small_molecule_evidence"));
-        Assert.assertEquals(Section.Small_Molecule_Evidence, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence, Section.
             findSection("SME"));
-        Assert.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
             findSection("small_molecule_evidence_header"));
-        Assert.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
+        Assertions.assertEquals(Section.Small_Molecule_Evidence_Header, Section.
             findSection("SEH"));
     }
 

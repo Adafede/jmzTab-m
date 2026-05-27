@@ -25,7 +25,7 @@ import org.lifstools.mztab2.model.Metadata;
 import static org.lifstools.mztab2.model.Metadata.PrefixEnum.MTD;
 import org.lifstools.mztab2.model.MsRun;
 import org.lifstools.mztab2.model.Parameter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.NEW_LINE;
 import static uk.ac.ebi.pride.jmztab2.model.MZTabConstants.TAB_STRING;
 
@@ -70,26 +70,26 @@ public class MsRunSerializerTest extends AbstractSerializerTest {
 
         ObjectWriter writer = metaDataWriter();
         assertEqSentry(TestResources.MZTAB_VERSION_HEADER
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-location" + TAB_STRING + msRun1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-location" + TAB_STRING + msRun1.
                 getLocation() + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-instrument_ref" + TAB_STRING + "instrument[" + instrument1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-instrument_ref" + TAB_STRING + "instrument[" + instrument1.
                 getId() + "]" + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-hash" + TAB_STRING + msRun1.
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-hash" + TAB_STRING + msRun1.
                 getHash() + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-hash_method" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-hash_method" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getHashMethod()) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-format" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-format" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getFormat()) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-fragmentation_method[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-fragmentation_method[1]" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getFragmentationMethod().
                     get(0)) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-scan_polarity[1]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-scan_polarity[1]" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getScanPolarity().
                     get(0)) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-scan_polarity[2]" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-scan_polarity[2]" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getScanPolarity().
                     get(1)) + NEW_LINE
-            + MTD + TAB_STRING + Metadata.Properties.msRun + "[1]-id_format" + TAB_STRING + new ParameterConverter().
+            + MTD + TAB_STRING + Metadata.JSON_PROPERTY_MS_RUN + "[1]-id_format" + TAB_STRING + new ParameterConverter().
                 convert(msRun1.getIdFormat()) + NEW_LINE,
             serializeSingle(writer, mtd));
     }

@@ -73,18 +73,18 @@ public class ContactSerializer extends StdSerializer<Contact> {
         if (contact != null) {
             Serializers.checkIndexedElement(contact);
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Contact.Properties.name.getPropertyName(), contact,
+                Contact.JSON_PROPERTY_NAME, contact,
                 contact.
                     getName());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Contact.Properties.email.getPropertyName(), contact,
+                Contact.JSON_PROPERTY_EMAIL, contact,
                 contact.
                     getEmail());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Contact.Properties.affiliation.getPropertyName(), contact,
+                Contact.JSON_PROPERTY_AFFILIATION, contact,
                 contact.getAffiliation());
             addLineWithProperty(jg, Section.Metadata.getPrefix(),
-                Contact.Properties.orcid.getPropertyName(), contact,
+                Contact.JSON_PROPERTY_ORCID, contact,
                 contact.getOrcid());
         } else {
             log.debug(Contact.class.getSimpleName() + " is null!");

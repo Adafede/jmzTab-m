@@ -279,6 +279,7 @@ public class MzTabTestData {
                 name("HCD"));
         mtd.addMsRunItem(msRun2);
         mtd.addCustomItem(new Parameter().
+            id(1).
             name("MS operator").
             value("Florian"));
 
@@ -347,17 +348,17 @@ public class MzTabTestData {
                 "Group A").
             addAssayRefsItem(
                 assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable1);
         StudyVariable studyVariable2 = new StudyVariable().
             id(2).
             description("Group B").
             addAssayRefsItem(assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable2);
         mtd.addCvItem(new CV().id(1).
             label("MS").

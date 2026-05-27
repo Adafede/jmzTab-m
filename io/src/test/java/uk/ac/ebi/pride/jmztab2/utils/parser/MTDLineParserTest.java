@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2018 Leibniz-Institut für Analytische Wissenschaften – ISAS – e.V..
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@ package uk.ac.ebi.pride.jmztab2.utils.parser;
 
 import org.lifstools.mztab2.model.Assay;
 import org.lifstools.mztab2.model.Metadata;
-import static org.lifstools.mztab2.model.Metadata.Properties.uri;
 import org.lifstools.mztab2.model.MsRun;
 import org.lifstools.mztab2.model.Parameter;
 import org.lifstools.mztab2.model.Sample;
@@ -26,21 +25,17 @@ import org.lifstools.mztab2.test.utils.ExtractClassPathFiles;
 import org.lifstools.mztab2.test.utils.LogMethodName;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URI;
 import java.util.List;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.RegisterExtension;
 import uk.ac.ebi.pride.jmztab2.model.MZTabStringUtils;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorList;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabErrorType;
@@ -53,23 +48,18 @@ import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabException;
  */
 public class MTDLineParserTest {
 
-    @Rule
-    public LogMethodName methodNameLogger = new LogMethodName();
+    @RegisterExtension
+    LogMethodName methodNameLogger = new LogMethodName();
 
-    @ClassRule
-    public static final TemporaryFolder TF = new TemporaryFolder();
-
-    @ClassRule
-    public static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(
-        TF,
-        MTDFILE);
+    @RegisterExtension
+    static final ExtractClassPathFiles EXTRACT_FILES = new ExtractClassPathFiles(MTDFILE);
 
     private MTDLineParser parser;
     private Metadata metadata;
     private MZTabErrorList errorList;
     private MZTabParserContext context;
 
-    @Before
+    @BeforeEach
     public void setUp() throws MZTabException {
         context = new MZTabParserContext();
         parser = new MTDLineParser(context);
@@ -231,14 +221,14 @@ public class MTDLineParserTest {
             equals("2.0.0-M"));
         try {
             parser.parse(1, "MTD\tmzTab-version\t1.0.0", errorList);
-            Assert.fail("You shall not pass!");
+            org.junit.jupiter.api.Assertions.fail("You shall not pass!");
         } catch (MZTabException ex) {
 
         }
 
         try {
             parser.parse(1, "MTD\tmzTab-version\t3.0.0", errorList);
-            Assert.fail("You shall not pass!");
+            org.junit.jupiter.api.Assertions.fail("You shall not pass!");
         } catch (MZTabException ex) {
 
         }
@@ -315,7 +305,6 @@ public class MTDLineParserTest {
 
     @Test
     public void testIdConfidenceMeasure() throws MZTabException {
-        //MTD id_confidence_measure[1] [MS, MS:1001419, SpectraST:discriminant score F,]
         parser.parse(1,
             "MTD\tid_confidence_measure[1]\t[MS, MS:1001419, “SpectraST:discriminant score F”,]",
             errorList);
@@ -520,11 +509,6 @@ public class MTDLineParserTest {
 
     @Test
     public void testAssay() throws MZTabException {
-//        parser.parse(1, "MTD\tassay[1]-quantification_reagent\t[PRIDE,PRIDE:0000114,iTRAQ reagent,114]", errorList);
-//        parser.parse(1, "MTD\tassay[2]-quantification_reagent\t[PRIDE,PRIDE:0000115,iTRAQ reagent,115]", errorList);
-//        assertTrue(context.getAssayMap().size() == 2);
-//        assertTrue(context.getAssayMap().get(1).().getAccession().equals("PRIDE:0000114"));
-
         Sample sample1 = new Sample();
         sample1.id(1);
         Sample sample2 = new Sample();
@@ -620,15 +604,10 @@ public class MTDLineParserTest {
 
     @Test
     public void testCreateMetadata() throws Exception {
-        String fileName = "testset/mtdFile.txt";
-        File mtdFile = new File(TF.getRoot(), "mtdFile.txt");
+        File mtdFile = new File(EXTRACT_FILES.getBaseDir(), "mtdFile.txt");
         assertTrue(mtdFile.exists());
-        if (uri != null) {
-            parseMetadata(mtdFile);
-            assertTrue(errorList.isEmpty());
-        } else {
-            throw new FileNotFoundException(fileName);
-        }
+        parseMetadata(mtdFile);
+        assertTrue(errorList.isEmpty());
     }
 
     @Test

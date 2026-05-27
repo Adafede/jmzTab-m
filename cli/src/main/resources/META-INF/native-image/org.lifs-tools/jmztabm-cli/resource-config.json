@@ -1,0 +1,17 @@
+{
+  "resources": {
+    "includes": [
+      {"pattern": "application\\.properties"},
+      {"pattern": "logback\\.xml"},
+      {"pattern": "conf1_1/.*\\.properties"},
+      {"pattern": "mappings/mzTab-M-mapping\\.xml"},
+      {"pattern": "schema/CvMapping\\.xsd"},
+      {"pattern": "schema/bindings\\.xjb"},
+      {"pattern": "schemas/.*\\.json"},
+      {"pattern": "ValidationMessages\\.properties"},
+      {"pattern": "META-INF/services/.*"},
+      {"pattern": "META-INF/MANIFEST\\.MF"}
+    ]
+  },
+  "bundles": []
+}

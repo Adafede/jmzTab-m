@@ -38,28 +38,28 @@ public class CvValidator implements RefiningValidator<Metadata> {
                 isEmpty()) {
             errorList.add(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.cv + ""));
+                    Metadata.JSON_PROPERTY_CV + ""));
         } else {
             for (CV cv : metadata.getCv()) {
                 if (cv.getLabel() == null || cv.getLabel().isEmpty()) {
                     errorList.add(new MZTabError(
                             LogicalErrorType.NotDefineInMetadata, -1,
-                            Metadata.Properties.cv + "[" + cv.getId() + "]-" + CV.Properties.label));
+                            Metadata.JSON_PROPERTY_CV + "[" + cv.getId() + "]-" + CV.JSON_PROPERTY_LABEL));
                 }
                 if (cv.getFullName() == null || cv.getFullName().isEmpty()) {
                     errorList.add(new MZTabError(
                             LogicalErrorType.NotDefineInMetadata, -1,
-                            Metadata.Properties.cv + "[" + cv.getId() + "]-" + CV.Properties.fullName));
+                            Metadata.JSON_PROPERTY_CV + "[" + cv.getId() + "]-" + CV.JSON_PROPERTY_FULL_NAME));
                 }
                 if (cv.getVersion() == null || cv.getVersion().isEmpty()) {
                     errorList.add(new MZTabError(
                             LogicalErrorType.NotDefineInMetadata, -1,
-                            Metadata.Properties.cv + "[" + cv.getId() + "]-" + CV.Properties.version));
+                            Metadata.JSON_PROPERTY_CV + "[" + cv.getId() + "]-" + CV.JSON_PROPERTY_VERSION));
                 }
                 if (cv.getUri() == null || cv.getUri().toASCIIString().isEmpty()) {
                     errorList.add(new MZTabError(
                             LogicalErrorType.NotDefineInMetadata, -1,
-                            Metadata.Properties.cv + "[" + cv.getId() + "]-" + CV.Properties.uri));
+                            Metadata.JSON_PROPERTY_CV + "[" + cv.getId() + "]-" + CV.JSON_PROPERTY_URI));
                 }
             }
         }

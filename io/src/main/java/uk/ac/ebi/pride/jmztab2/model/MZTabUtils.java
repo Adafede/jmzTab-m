@@ -542,15 +542,22 @@ public class MZTabUtils {
             }
             String[] items = pub.split("" + COLON);
             if (items.length == 2) {
-                type = PublicationItem.TypeEnum.fromValue(items[0]);
-                if (type == null) {
+                try {
+                    type = PublicationItem.TypeEnum.fromValue(items[0]);
+                    if (type == null) {
+                        throw new MZTabException(new MZTabError(
+                            FormatErrorType.Publication, lineNumber, target, pub));
+                    }
+                    type = PublicationItem.TypeEnum.fromValue(items[0]);
+                
+                    accession = items[1].trim();
+                    item = new PublicationItem().type(type).
+                        accession(accession);
+                    publication.addPublicationItemsItem(item);
+                } catch (IllegalArgumentException e) {
                     throw new MZTabException(new MZTabError(
                         FormatErrorType.Publication, lineNumber, target, pub));
                 }
-                accession = items[1].trim();
-                item = new PublicationItem().type(type).
-                    accession(accession);
-                publication.addPublicationItemsItem(item);
             } else {
                 throw new MZTabException(new MZTabError(
                     FormatErrorType.Publication, lineNumber, target, pub));

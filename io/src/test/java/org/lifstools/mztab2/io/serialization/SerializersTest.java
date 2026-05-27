@@ -17,10 +17,10 @@ package org.lifstools.mztab2.io.serialization;
 
 import org.lifstools.mztab2.io.serialization.Serializers;
 import org.lifstools.mztab2.test.utils.LogMethodName;
-import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.pride.jmztab2.model.IOptColumnMappingBuilder;
 import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilderTest;
 
@@ -31,27 +31,27 @@ import uk.ac.ebi.pride.jmztab2.model.OptColumnMappingBuilderTest;
  */
 public class SerializersTest {
 
-    @Rule
+    @RegisterExtension
     public LogMethodName methodNameLogger = new LogMethodName();
 
     @Test
     public void testMixedCamelCaseToUnderscore() {
         String camelCase1 = "camelCase";
-        Assert.assertEquals("camel_case", Serializers.
+        Assertions.assertEquals("camel_case", Serializers.
                 camelCaseToUnderscoreLowerCase(camelCase1));
     }
 
     @Test
     public void testCapitalCamelCaseToUnderscore() {
         String camelCase2 = "CamelCase";
-        Assert.assertEquals("camel_case", Serializers.
+        Assertions.assertEquals("camel_case", Serializers.
                 camelCaseToUnderscoreLowerCase(camelCase2));
     }
 
     @Test
     public void testUpperCaseCamelCaseMadnessToUnderscore() {
         String camelCase3 = "CAmelCASE";
-        Assert.assertEquals("camel_case", Serializers.
+        Assertions.assertEquals("camel_case", Serializers.
                 camelCaseToUnderscoreLowerCase(camelCase3));
     }
 

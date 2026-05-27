@@ -21,9 +21,10 @@ import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import org.junit.Assert;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -35,14 +36,14 @@ public class CvParameterLookupServiceTest {
     public void checkChildTermLookup() {
         CvParameterLookupService service = new CvParameterLookupService();
         List<Parameter> children = service.resolveChildren(new Parameter().cvLabel("MS").cvAccession("MS:1000831"));
-        Assert.assertTrue(children.size() > 0);
+        assertTrue(children.size() > 0);
     }
 
     @Test
     public void testTermChildSearch() {
         CvParameterLookupService service = new CvParameterLookupService();
         List<Parameter> children = service.resolveChildren(new Parameter().cvLabel("MS").cvAccession("MS:1000560"));
-        Assert.assertThat(children.size(), allOf(greaterThan(0),
+        assertThat(children.size(), allOf(greaterThan(0),
             greaterThanOrEqualTo(1)));
     }
     
@@ -51,11 +52,11 @@ public class CvParameterLookupServiceTest {
     public void testTermParentSearch() {
         CvParameterLookupService service = new CvParameterLookupService();
         List<Parameter> parents = service.resolveParents(new Parameter().cvLabel("MS").cvAccession("MS:1000564"), 1);
-        Assert.assertThat(parents.size(), is(1));
-        assertTrue("Retrieved parent term equals reference", CvMappingUtils.isEqualTo(parents.get(0), new Parameter().cvAccession(
+        assertThat(parents.size(), is(1));
+        assertTrue(CvMappingUtils.isEqualTo(parents.get(0), new Parameter().cvAccession(
             "MS:1000560").
             cvLabel("MS").
-            name("mass spectrometer file format")));
+            name("mass spectrometer file format")), "Retrieved parent term equals reference");
     }
     
     @Test
@@ -63,7 +64,7 @@ public class CvParameterLookupServiceTest {
         CvParameterLookupService service = new CvParameterLookupService();
         Parameter msFileFormat = new Parameter().cvLabel("MS").cvAccession("MS:1000560");
         ParameterComparisonResult childResult = service.isChildOfOrSame(msFileFormat, new Parameter().cvLabel("MS").cvAccession("MS:1000564"));
-        Assert.assertSame(ParameterComparisonResult.CHILD_OF, childResult);
+        assertSame(ParameterComparisonResult.CHILD_OF, childResult);
     }
     
     @Test
@@ -71,7 +72,7 @@ public class CvParameterLookupServiceTest {
         CvParameterLookupService service = new CvParameterLookupService();
         Parameter msFileFormat = new Parameter().cvLabel("MS").cvAccession("MS:1000560");
         ParameterComparisonResult identityResult = service.isChildOfOrSame(msFileFormat, msFileFormat);
-        Assert.assertSame(ParameterComparisonResult.IDENTICAL, identityResult);
+        assertSame(ParameterComparisonResult.IDENTICAL, identityResult);
     }
     
     @Test
@@ -80,7 +81,7 @@ public class CvParameterLookupServiceTest {
         Parameter msFileFormat = new Parameter().cvLabel("MS").cvAccession("MS:1000560");
         //compare unrelated branches ms file format and software
         ParameterComparisonResult childResult = service.isChildOfOrSame(msFileFormat, new Parameter().cvLabel("MS").cvAccession("MS:1000539"));
-        Assert.assertSame(ParameterComparisonResult.NOT_RELATED, childResult);
+        assertSame(ParameterComparisonResult.NOT_RELATED, childResult);
     }
     
 }

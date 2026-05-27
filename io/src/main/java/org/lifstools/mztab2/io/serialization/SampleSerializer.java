@@ -72,23 +72,23 @@ public class SampleSerializer extends StdSerializer<Sample> {
             addLineWithProperty(jg, Section.Metadata.getPrefix(), null, sample,
                 sample.
                     getName());
-            addLineWithProperty(jg, Section.Metadata.getPrefix(), Sample.Properties.description.getPropertyName(),
+            addLineWithProperty(jg, Section.Metadata.getPrefix(), Sample.JSON_PROPERTY_DESCRIPTION,
                 sample,
                 sample.getDescription());
             addSubElementParameters(jg, Section.Metadata.getPrefix(), sample,
-                Sample.Properties.species.getPropertyName(),
+                Sample.JSON_PROPERTY_SPECIES,
                 sample.getSpecies(), false);
             addSubElementParameters(jg, Section.Metadata.getPrefix(), sample,
-                Sample.Properties.cellType.getPropertyName(),
+                Sample.JSON_PROPERTY_CELL_TYPE,
                 sample.getCellType(), false);
             addSubElementParameters(jg, Section.Metadata.getPrefix(), sample,
-                Sample.Properties.disease.getPropertyName(),
+                Sample.JSON_PROPERTY_DISEASE,
                 sample.getDisease(), false);
             addSubElementParameters(jg, Section.Metadata.getPrefix(), sample,
-                Sample.Properties.tissue.getPropertyName(),
+                Sample.JSON_PROPERTY_TISSUE,
                 sample.getTissue(), false);
             addSubElementParameters(jg, Section.Metadata.getPrefix(), sample,
-                Sample.Properties.custom.getPropertyName(),
+                Sample.JSON_PROPERTY_CUSTOM,
                 sample.getCustom(), false);
         } else {
             log.debug(Sample.class.getSimpleName()+" is null!");

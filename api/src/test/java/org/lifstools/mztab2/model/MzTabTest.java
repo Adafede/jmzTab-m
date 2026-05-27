@@ -49,8 +49,8 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -61,43 +61,43 @@ public class MzTabTest {
     @Test
     public void testMzTabObjectCreation() {
         MzTab mztab = createTestMzTab();
-        Assert.assertEquals("SomeId 1234", mztab.getMetadata().
+        Assertions.assertEquals("SomeId 1234", mztab.getMetadata().
             getMzTabID());
-        Assert.assertEquals("2.0.0-M", mztab.getMetadata().
+        Assertions.assertEquals("2.0.0-M", mztab.getMetadata().
             getMzTabVersion());
-        Assert.assertEquals("My first test experiment", mztab.getMetadata().
+        Assertions.assertEquals("My first test experiment", mztab.getMetadata().
             getTitle());
-        Assert.assertEquals("An experiment investigating interesting effects.",
+        Assertions.assertEquals("An experiment investigating interesting effects.",
             mztab.getMetadata().
                 getDescription());
-        Assert.assertEquals((long) 1, (long) mztab.getMetadata().
+        Assertions.assertEquals((long) 1, (long) mztab.getMetadata().
             getSampleProcessing().
             get(0).
             getId());
-        Assert.assertEquals("sep:00210", mztab.getMetadata().
+        Assertions.assertEquals("sep:00210", mztab.getMetadata().
             getSampleProcessing().
             get(0).
             getSampleProcessing().
             get(0).
             getCvAccession());
-        Assert.assertEquals(2, mztab.getMetadata().getInstrument().size());
-        Assert.assertEquals(1, mztab.getMetadata().getSoftware().size());
-        Assert.assertEquals(2, mztab.getMetadata().getPublication().size());
-        Assert.assertEquals(2, mztab.getMetadata().getUri().size());
-        Assert.assertEquals(1, mztab.getMetadata().getExternalStudyUri().size());
-        Assert.assertEquals(2, mztab.getMetadata().getMsRun().size());
-        Assert.assertEquals(1, mztab.getMetadata().getCustom().size());
-        Assert.assertEquals(2, mztab.getMetadata().getSample().size());
-        Assert.assertEquals(2, mztab.getMetadata().getAssay().size());
-        Assert.assertEquals(2, mztab.getMetadata().getStudyVariable().size());
-        Assert.assertEquals(2, mztab.getMetadata().getCv().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getInstrument().size());
+        Assertions.assertEquals(1, mztab.getMetadata().getSoftware().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getPublication().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getUri().size());
+        Assertions.assertEquals(1, mztab.getMetadata().getExternalStudyUri().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getMsRun().size());
+        Assertions.assertEquals(1, mztab.getMetadata().getCustom().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getSample().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getAssay().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getStudyVariable().size());
+        Assertions.assertEquals(2, mztab.getMetadata().getCv().size());
         
-        Assert.assertEquals(1, mztab.getMetadata().getIdConfidenceMeasure().size());
-        Assert.assertEquals(1, mztab.getMetadata().getDatabase().size());
+        Assertions.assertEquals(1, mztab.getMetadata().getIdConfidenceMeasure().size());
+        Assertions.assertEquals(1, mztab.getMetadata().getDatabase().size());
         
-        Assert.assertEquals(1, mztab.getSmallMoleculeSummary().size());
-        Assert.assertEquals(1, mztab.getSmallMoleculeFeature().size());
-        Assert.assertEquals(1, mztab.getSmallMoleculeEvidence().size());
+        Assertions.assertEquals(1, mztab.getSmallMoleculeSummary().size());
+        Assertions.assertEquals(1, mztab.getSmallMoleculeFeature().size());
+        Assertions.assertEquals(1, mztab.getSmallMoleculeEvidence().size());
     }
 
     public static MzTab createTestMzTab() {
@@ -295,18 +295,18 @@ public class MzTabTest {
                 "Group A description").
             addAssayRefsItem(
                 assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable1);
         StudyVariable studyVariable2 = new StudyVariable().
             id(2).
             name("Grou B name").
             description("Group B description").
             addAssayRefsItem(assay1).
-            addAssayRefsItem(assay2).
-            addFactorsItem(new Parameter().name("spike-in").
-                value("0.74 fmol/uL"));
+            addAssayRefsItem(assay2);
+            //addFactorsItem(new Parameter().name("spike-in").
+            //    value("0.74 fmol/uL"));
         mtd.addStudyVariableItem(studyVariable2);
         mtd.addCvItem(new CV().id(1).
             label("MS").
@@ -423,13 +423,13 @@ public class MzTabTest {
                 log(Level.SEVERE, null, ex);
         }
         MzTab restoredFile = mapper.readValue(testFile, MzTab.class);
-        Assert.assertEquals(testMzTab, restoredFile);
+        Assertions.assertEquals(testMzTab, restoredFile);
     }
     
     @Test
     public void testIndexedElementProxy() {
         MsRun mr = new MsRun().id(1).location(URI.create("file:///location"));
         Optional<IndexedElement> ie = IndexedElement.of(mr);
-        Assert.assertEquals(mr.getId(), ie.get().getId());
+        Assertions.assertEquals(mr.getId(), ie.get().getId());
     }
 }

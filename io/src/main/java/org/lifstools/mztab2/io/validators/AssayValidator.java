@@ -38,7 +38,7 @@ public class AssayValidator implements RefiningValidator<Metadata> {
         if (assayMap.isEmpty()) {
             errorList.add(new MZTabError(
                     LogicalErrorType.NotDefineInMetadata, -1,
-                    Metadata.Properties.assay + ""));
+                    Metadata.JSON_PROPERTY_ASSAY + ""));
         }
 
         for (Integer id : assayMap.keySet()) {
@@ -46,14 +46,14 @@ public class AssayValidator implements RefiningValidator<Metadata> {
             // if (assayMap.get(id).getName() == null || assayMap.get(id).getName().isBlank()) {
             //     errorList.add(new MZTabError(
             //             LogicalErrorType.NotDefineInMetadata, -1,
-            //             Metadata.Properties.assay + "[" + id + "]" + "\t<" + Assay.Properties.name + ">"));
+            //             Metadata.JSON_PROPERTY_ASSAY + "[" + id + "]" + "\t<" + Assay.JSON_PROPERTY_NAME + ">"));
             // }
             if (assayMap.get(id).
                     getMsRunRef() == null || assayMap.get(id).
                             getMsRunRef().isEmpty()) {
                 errorList.add(new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.assay + "[" + id + "]-" + Assay.Properties.msRunRef));
+                        Metadata.JSON_PROPERTY_ASSAY + "[" + id + "]-" + Assay.JSON_PROPERTY_MS_RUN_REF));
             }
         }
         return errorList;

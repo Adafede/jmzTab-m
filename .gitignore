@@ -1,20 +1,47 @@
-/api/target/
-/io/target/
-/api/nbproject/
-/io/nbproject/
-/webapp/target/
-.Rproj.user
-/cli/target/
-/target/
-/cvmapping/target/
-/cvmapping/nbproject/
-/validation/target/
-/validation/nbproject/
-/jmztabm-test-utils/target/
-/test-utils/target/
-/cli/nbproject/
+# ── Build output ────────────────────────────────────────────────────────────
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# Packed/shaded JARs produced at project root
+*-bin.zip
+
+# Maven shade reduced POM
+dependency-reduced-pom.xml
+
+# Maven version backup files
+*.versionsBackup
+
+# ── IDE – IntelliJ IDEA ─────────────────────────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – Eclipse / NetBeans ─────────────────────────────────────────────────
 .classpath
 .project
-.settings
-*.versionsBackup
-dependency-reduced-pom.xml
+.settings/
+nbproject/
+nbactions.xml
+*.nbm
+
+# ── IDE – VS Code ────────────────────────────────────────────────────────────
+.vscode/
+
+# ── OS artefacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ── Logs & temp ──────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.swp
+*.swo
+
+# ── Test / coverage reports ───────────────────────────────────────────────────
+jacoco.exec

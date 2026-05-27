@@ -30,8 +30,8 @@ import org.lifstools.mztab2.model.StudyVariable;
 import org.lifstools.mztab2.model.MzTabAccess;
 import java.util.List;
 import java.util.Optional;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for MzTabAccess.

@@ -21,8 +21,8 @@ import org.lifstools.mztab2.model.Metadata;
 import org.lifstools.mztab2.model.StudyVariable;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import uk.ac.ebi.pride.jmztab2.utils.errors.LogicalErrorType;
 import uk.ac.ebi.pride.jmztab2.utils.errors.MZTabError;
 import uk.ac.ebi.pride.jmztab2.utils.parser.MZTabParserContext;
@@ -95,13 +95,13 @@ public class StudyVariableValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.studyVariable + "[" + 1 + "]" + "\t<" + StudyVariable.Properties.name+">"),
+                        Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + 1 + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME+">"),
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.studyVariable + "[" + 2 + "]" + "\t<" + StudyVariable.Properties.name+">"),
+                        Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + 2 + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME+">"),
                 new MZTabError(
                         LogicalErrorType.NotDefineInMetadata, -1,
-                        Metadata.Properties.studyVariable + "[" + 2 + "]-" + StudyVariable.Properties.description)
+                        Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + 2 + "]-" + StudyVariable.JSON_PROPERTY_DESCRIPTION)
         );
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
@@ -134,7 +134,7 @@ public class StudyVariableValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.UndefinedStudyVariableNameOnceOnly, -1,
-                        Metadata.Properties.studyVariable + "[" + 2 + "]" + "\t<" + StudyVariable.Properties.name+">")
+                        Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + 2 + "]" + "\t<" + StudyVariable.JSON_PROPERTY_NAME+">")
         );
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
@@ -151,7 +151,7 @@ public class StudyVariableValidatorTest {
         List<MZTabError> expResult = Arrays.asList(
                 new MZTabError(
                         LogicalErrorType.AssayRefs, -1,
-                        Metadata.Properties.studyVariable + "[" + 1 + "]-" + StudyVariable.Properties.assayRefs)
+                        Metadata.JSON_PROPERTY_STUDY_VARIABLE + "[" + 1 + "]-" + StudyVariable.JSON_PROPERTY_ASSAY_REFS)
         );
         List<MZTabError> result = instance.validateRefine(metadata, parserContext);
         assertEquals(expResult.size(), result.size());
